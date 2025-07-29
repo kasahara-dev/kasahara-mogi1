@@ -9,21 +9,19 @@
     <link rel="stylesheet" href="{{ asset('css/sanitize.css') }}">
     <link rel="stylesheet" href="{{ asset('css/common.css') }}">
     @yield('css')
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 </head>
 
 <body>
-    <header class="wrapper">
-        <div class="header">
+    <div class="wrapper">
+        <header class="header">
             @section('header')
-            <img src="{{ asset('img/logo.svg') }}" alt="コーチテックロゴ" />
+            <img src="{{ asset('img/logo.svg') }}" alt="コーチテックロゴ" class="header-img" />
             @show
-        </div>
-    </header>
-    <main class="wrapper">
-        @yield('content')
-    </main>
+        </header>
+        <main class="main">
+            @yield('content')
+        </main>
+    </div>
 </body>
 
 </html>
