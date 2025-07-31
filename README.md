@@ -1,6 +1,6 @@
 ## アプリケーション名
 
-フリマアプリ
+coachtech フリマ
 
 ## 環境構築
 
@@ -38,4 +38,4 @@
 
 ## URL
 
-- トップページ：http://localhost/
+トップページ：http://localhost/

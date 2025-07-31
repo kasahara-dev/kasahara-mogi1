@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ItemController;
-use App\Http\Controllers\OrderController;
+use App\Http\Controllers\PurchaseController;
 use App\Http\Controllers\ProfileController;
 /*
 |--------------------------------------------------------------------------
@@ -15,16 +15,15 @@ use App\Http\Controllers\ProfileController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/{tab?}', [ItemController::class, 'index']);
+Route::get('/item/{item_id}', [ItemController::class, 'show']);
 Route::middleware('auth')->group(function () {
-    Route::get('/{tab}', [ItemController::class, 'indexAuth']);
     Route::post('/login', [UserController::class, 'login']);
     Route::post('/register', [UserController::class, 'signUp']);
-    Route::post('/purchase/{item_id}', [OrderController::class, 'buy']);
-    Route::post('/purchase/address/{item_id}', [OrderController::class, 'addressEdit']);
-    Route::get('/sell', [ItemController::class, 'sale']);
-    Route::post('/sell', [ItemController::class, 'putSale']);
-    Route::get('/mypage{page?}', [ProfileController::class, 'profileShow']);
-    Route::post('/mypage/profile', [ProfileController::class, 'profileEdit']);
+    Route::post('/purchase/{item_id}', [PurchaseController::class, 'buy']);
+    Route::post('/purchase/address/{item_id}', [PurchaseController::class, 'edit']);
+    Route::get('/sell', [ItemController::class, 'show']);
+    Route::post('/sell', [ItemController::class, 'sell']);
+    Route::get('/mypage{page?}', [ProfileController::class, 'show']);
+    Route::post('/mypage/profile', [ProfileController::class, 'edit']);
 });
-Route::get('/', [ItemController::class, 'index']);
-Route::get('/item/{item_id}', [ItemController::class, 'detail']);
