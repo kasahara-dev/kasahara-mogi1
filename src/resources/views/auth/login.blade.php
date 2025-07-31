@@ -1,13 +1,13 @@
 @extends('app')
 
 @section('css')
-    <link rel="stylesheet" href="{{ asset('css/index.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/login.css') }}">
 @endsection
 
 @section('content')
     <div class="form-area">
         <h1 class="form-title">ログイン</h1>
-        <form class="form" action="/confirm" method="post" enctype="multipart/form-data">
+        <form class="form" action="/login" method="post">
             @csrf
             <dl class="form-dl">
                 <dt class="form-dt">メールアドレス</dt>
