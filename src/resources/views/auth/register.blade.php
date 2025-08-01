@@ -11,13 +11,37 @@
             @csrf
             <dl class="form-dl">
                 <dt class="form-dt">ユーザー名</dt>
-                <dd class="form-dd"><input type="text" class="form-input" /></dd>
+                <dd class="form-dd"><input type="text" name="name" class="form-input" value="{{ old('name') }}" /></dd>
+                <dd class="form-error">@error('name'){{ $message }}@enderror</dd>
                 <dt class="form-dt">メールアドレス</dt>
-                <dd class="form-dd"><input type="text" class="form-input" /></dd>
+                <dd class="form-dd"><input type="email" name="email" class="form-input" value="{{ old('email') }}" /></dd>
+                <dd class="form-error">@error('email'){{ $message }}@enderror</dd>
                 <dt class="form-dt">パスワード</dt>
-                <dd class="form-dd"><input type="text" class="form-input" /></dd>
+                <dd class="form-dd"><input type="password" name="password" class="form-input"
+                        value="{{ old('password') }}" /></dd>
+                <dd class="form-error">
+                    @error('password')
+                        @foreach ($errors->get('password') as $message)
+                            @if(Str::contains($message, '一致'))
+                            @else
+                                {{ $message }}
+                                @break
+                            @endif
+                        @endforeach
+                    @enderror
+                </dd>
                 <dt class="form-dt">確認用パスワード</dt>
-                <dd class="form-dd"><input type="text" class="form-input" /></dd>
+                <dd class="form-dd"><input type="password" name="password_confirmation" class="form-input"
+                        value="{{ old('password_confirmation') }}" /></dd>
+                <dd class="form-error">
+                    @error('password')
+                        @foreach ($errors->get('password') as $message)
+                            @if(Str::contains($message, '一致'))
+                                {{ $message }}
+                            @endif
+                        @endforeach
+                    @enderror
+                </dd>
             </dl>
             <button type="submit" class="submit-btn register-btn" name="send">登録する</button>
         </form>

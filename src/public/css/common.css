@@ -36,7 +36,12 @@
     font-weight: bold;
 }
 .form-dd {
-    margin: 0 0 20px;
+    margin: 0;
+}
+.form-error {
+    color: #ff5555;
+    margin: 0;
+    height: 30px;
 }
 .form-input {
     box-sizing: border-box;
