@@ -22,7 +22,7 @@
                 <dd class="form-error">
                     @error('password')
                         @foreach ($errors->get('password') as $message)
-                            @if(Str::contains($message, '一致'))
+                            @if(Str::contains($message, config('word.match')))
                             @else
                                 {{ $message }}
                                 @break
@@ -36,7 +36,7 @@
                 <dd class="form-error">
                     @error('password')
                         @foreach ($errors->get('password') as $message)
-                            @if(Str::contains($message, '一致'))
+                            @if(Str::contains($message, config('word.match')))
                                 {{ $message }}
                             @endif
                         @endforeach

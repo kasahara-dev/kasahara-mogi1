@@ -17,15 +17,18 @@ use App\Http\Controllers\ProfileController;
 */
 Route::get('/{tab?}', [ItemController::class, 'index']);
 Route::get('/item/{item_id}', [ItemController::class, 'show']);
-// Route::get('/register', [UserController::class, 'show']);
+Route::get('/register', [UserController::class, 'create']);
 Route::post('/register', [UserController::class, 'store']);
+Route::get('/login', [UserController::class, 'show']);
+Route::post('/login', [UserController::class, 'login']);
 Route::middleware('auth')->group(function () {
-    Route::post('/login', [UserController::class, 'login']);
+    // Route::post('/login', [UserController::class, 'login']);
     // Route::post('/register', [UserController::class, 'signUp']);
     Route::post('/purchase/{item_id}', [PurchaseController::class, 'buy']);
     Route::post('/purchase/address/{item_id}', [PurchaseController::class, 'edit']);
     Route::get('/sell', [ItemController::class, 'show']);
     Route::post('/sell', [ItemController::class, 'sell']);
     Route::get('/mypage{page?}', [ProfileController::class, 'show']);
+    Route::get('/mypage/profile', [ProfileController::class, 'input']);
     Route::post('/mypage/profile', [ProfileController::class, 'edit']);
 });

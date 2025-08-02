@@ -39,7 +39,7 @@
     margin: 0;
 }
 .form-error {
-    color: #ff5555;
+    color: red;
     margin: 0;
     height: 30px;
 }
