@@ -9,15 +9,16 @@
         <h1 class="form-title">会員登録</h1>
         <form class="form" action="/register" method="post">
             @csrf
-            <dl class="form-dl">
-                <dt class="form-dt">ユーザー名</dt>
-                <dd class="form-dd"><input type="text" name="name" class="form-input" value="{{ old('name') }}" /></dd>
+            <dl>
+                <dt class="form-name">ユーザー名</dt>
+                <dd class="form-content"><input type="text" name="name" class="form-input" value="{{ old('name') }}" /></dd>
                 <dd class="form-error">@error('name'){{ $message }}@enderror</dd>
-                <dt class="form-dt">メールアドレス</dt>
-                <dd class="form-dd"><input type="email" name="email" class="form-input" value="{{ old('email') }}" /></dd>
+                <dt class="form-name">メールアドレス</dt>
+                <dd class="form-content"><input type="email" name="email" class="form-input" value="{{ old('email') }}" />
+                </dd>
                 <dd class="form-error">@error('email'){{ $message }}@enderror</dd>
-                <dt class="form-dt">パスワード</dt>
-                <dd class="form-dd"><input type="password" name="password" class="form-input"
+                <dt class="form-name">パスワード</dt>
+                <dd class="form-content"><input type="password" name="password" class="form-input"
                         value="{{ old('password') }}" /></dd>
                 <dd class="form-error">
                     @error('password')
@@ -30,8 +31,8 @@
                         @endforeach
                     @enderror
                 </dd>
-                <dt class="form-dt">確認用パスワード</dt>
-                <dd class="form-dd"><input type="password" name="password_confirmation" class="form-input"
+                <dt class="form-name">確認用パスワード</dt>
+                <dd class="form-content"><input type="password" name="password_confirmation" class="form-input"
                         value="{{ old('password_confirmation') }}" /></dd>
                 <dd class="form-error">
                     @error('password')

@@ -16,6 +16,7 @@
     display: flex;
     align-items: center;
     background-color: black;
+    justify-content: space-between;
 }
 .header-img {
     width: 20%;
@@ -30,12 +31,10 @@
 .form {
     width: 100%;
 }
-.form-dl {
-}
-.form-dt {
+.form-name {
     font-weight: bold;
 }
-.form-dd {
+.form-content {
     margin: 0;
 }
 .form-error {
@@ -63,4 +62,45 @@
 }
 .link:visited {
     color: #0073cc;
+}
+.header-form {
+}
+.header-search {
+    height: 50%;
+    width: 35%;
+    border: 5px;
+    padding-left: 10px;
+}
+.header-btns {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.header-btn {
+    list-style: none;
+}
+.header-logout {
+    color: white;
+    background: black;
+    border: none;
+    height: 50%;
+    margin-right: 10px;
+    cursor: pointer;
+    font-size: 15px;
+}
+.header-mypage {
+    color: white;
+    text-decoration: none;
+    margin-right: 10px;
+    font-size: 15px;
+}
+.header-exhibit {
+    background-color: white;
+    color: black;
+    text-decoration: none;
+    margin-right: 15px;
+    font-size: 15px;
+    cursor: pointer;
+    padding: 8% 15px;
+    border-radius: 4px;
 }

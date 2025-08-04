@@ -3,9 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\RegisterRequest;
-use App\Models\User;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Contracts\Auth\StatefulGuard;
@@ -26,7 +23,6 @@ use Laravel\Fortify\Contracts\LoginViewResponse;
 use Laravel\Fortify\Contracts\LogoutResponse;
 use Laravel\Fortify\Features;
 use App\Http\Requests\LoginRequest;
-// use Laravel\Fortify\Http\Requests\LoginRequest;
 
 class UserController extends Controller
 {
@@ -82,8 +78,6 @@ class UserController extends Controller
 
         return app(RegisterResponse::class);
     }
-
-
 
     /**
      * Show the login view.

@@ -9,12 +9,13 @@
         <h1 class="form-title">ログイン</h1>
         <form class="form" action="/login" method="post">
             @csrf
-            <dl class="form-dl">
-                <dt class="form-dt">メールアドレス</dt>
-                <dd class="form-dd"><input type="text" class="form-input" name="email" value="{{ old('email') }}" /></dd>
+            <dl>
+                <dt class="form-name">メールアドレス</dt>
+                <dd class="form-content"><input type="text" class="form-input" name="email" value="{{ old('email') }}" />
+                </dd>
                 <dd class="form-error">@error('email'){{ $message }}@enderror</dd>
-                <dt class="form-dt">パスワード</dt>
-                <dd class="form-dd"><input type="password" class="form-input" name="password"
+                <dt class="form-name">パスワード</dt>
+                <dd class="form-content"><input type="password" class="form-input" name="password"
                         value="{{ old('password') }}" /></dd>
                 <dd class="form-error">@error('password'){{ $message }}@enderror</dd>
             </dl>

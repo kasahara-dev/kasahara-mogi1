@@ -14,9 +14,22 @@
 <body>
     <div class="wrapper">
         <header class="header">
-            @section('header')
+            {{-- @section('header')--}}
             <img src="{{ asset('img/logo.svg') }}" alt="コーチテックロゴ" class="header-img" />
-            @show
+            @auth
+                <input type="text" placeholder="なにをお探しですか?" class="header-search">
+                <ul class="header-btns">
+                    <li class="header-btn">
+                        <form class="header-form" action="/logout" method="post" class="header-btn">
+                            @csrf
+                            <button type="submit" class="header-logout" name="logout">ログアウト</button>
+                        </form>
+                    </li>
+                    <li class="header-btn"><a href="/mypage" class="header-mypage">マイページ</a></li>
+                    <li class="header-btn"><button onclick="location.href='/sell'" class="header-exhibit">出品</button></li>
+                </ul>
+            @endauth
+            {{-- @show--}}
         </header>
         <main class="main">
             @yield('content')

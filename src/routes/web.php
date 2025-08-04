@@ -22,8 +22,6 @@ Route::post('/register', [UserController::class, 'store']);
 Route::get('/login', [UserController::class, 'show']);
 Route::post('/login', [UserController::class, 'login']);
 Route::middleware('auth')->group(function () {
-    // Route::post('/login', [UserController::class, 'login']);
-    // Route::post('/register', [UserController::class, 'signUp']);
     Route::post('/purchase/{item_id}', [PurchaseController::class, 'buy']);
     Route::post('/purchase/address/{item_id}', [PurchaseController::class, 'edit']);
     Route::get('/sell', [ItemController::class, 'show']);
