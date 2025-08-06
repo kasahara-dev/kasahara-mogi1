@@ -8,6 +8,6 @@ class ProfileController extends Controller
 {
     public function input()
     {
-        return view('auth.profile');
+        return view('profile.profile');
     }
 }

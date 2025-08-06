@@ -1,4 +1,4 @@
-@extends('app')
+@extends('layout.app')
 
 @section('css')
     <link rel="stylesheet" href="{{ asset('css/register.css') }}">
@@ -7,7 +7,7 @@
 @section('content')
     <div class="form-area">
         <h1 class="form-title">会員登録</h1>
-        <form class="form" action="/register" method="post">
+        <form class="form" action="/register" method="post" novalidate>
             @csrf
             <dl>
                 <dt class="form-name">ユーザー名</dt>
