@@ -16,7 +16,7 @@ class ItemsTableSeeder extends Seeder
     {
         $param = [
             'user_id' => '1',
-            'img_path' => 'https://coachtech-matter.s3.ap-northeast-1.amazonaws.com/image/Armani+Mens+Clock.jpg',
+            'img_path' => 'img/item/Armani+Mens+Clock.jpg',
             'condition' => '1',
             'name' => '腕時計',
             'brand' => 'Rolax',
@@ -26,7 +26,7 @@ class ItemsTableSeeder extends Seeder
         DB::table('items')->insert($param);
         $param = [
             'user_id' => '1',
-            'img_path' => 'https://coachtech-matter.s3.ap-northeast-1.amazonaws.com/image/HDD+Hard+Disk.jpg',
+            'img_path' => 'img/item/HDD+Hard+Disk.jpg',
             'condition' => '2',
             'name' => 'HDD',
             'brand' => '西芝',
@@ -36,7 +36,7 @@ class ItemsTableSeeder extends Seeder
         DB::table('items')->insert($param);
         $param = [
             'user_id' => '1',
-            'img_path' => 'https://coachtech-matter.s3.ap-northeast-1.amazonaws.com/image/iLoveIMG+d.jpg',
+            'img_path' => 'img/item/iLoveIMG+d.jpg',
             'condition' => '3',
             'name' => '玉ねぎ3束',
             'brand' => 'なし',
@@ -46,7 +46,7 @@ class ItemsTableSeeder extends Seeder
         DB::table('items')->insert($param);
         $param = [
             'user_id' => '2',
-            'img_path' => 'https://coachtech-matter.s3.ap-northeast-1.amazonaws.com/image/Leather+Shoes+Product+Photo.jpg',
+            'img_path' => 'img/item/Leather+Shoes+Product+Photo.jpg',
             'condition' => '4',
             'name' => '革靴',
             'brand' => '',
@@ -56,7 +56,7 @@ class ItemsTableSeeder extends Seeder
         DB::table('items')->insert($param);
         $param = [
             'user_id' => '2',
-            'img_path' => 'https://coachtech-matter.s3.ap-northeast-1.amazonaws.com/image/Living+Room+Laptop.jpg',
+            'img_path' => 'img/item/Living+Room+Laptop.jpg',
             'condition' => '1',
             'name' => 'ノートPC',
             'brand' => '',
@@ -66,7 +66,7 @@ class ItemsTableSeeder extends Seeder
         DB::table('items')->insert($param);
         $param = [
             'user_id' => '2',
-            'img_path' => 'https://coachtech-matter.s3.ap-northeast-1.amazonaws.com/image/Music+Mic+4632231.jpg',
+            'img_path' => 'img/item/Music+Mic+4632231.jpg',
             'condition' => '2',
             'name' => 'マイク',
             'brand' => 'なし',
@@ -76,7 +76,7 @@ class ItemsTableSeeder extends Seeder
         DB::table('items')->insert($param);
         $param = [
             'user_id' => '2',
-            'img_path' => 'https://coachtech-matter.s3.ap-northeast-1.amazonaws.com/image/Purse+fashion+pocket.jpg',
+            'img_path' => 'img/item/Purse+fashion+pocket.jpg',
             'condition' => '3',
             'name' => 'ショルダーバッグ',
             'brand' => '',
@@ -86,7 +86,7 @@ class ItemsTableSeeder extends Seeder
         DB::table('items')->insert($param);
         $param = [
             'user_id' => '3',
-            'img_path' => 'https://coachtech-matter.s3.ap-northeast-1.amazonaws.com/image/Tumbler+souvenir.jpg',
+            'img_path' => 'img/item/Tumbler+souvenir.jpg',
             'condition' => '4',
             'name' => 'タンブラー',
             'brand' => 'なし',
@@ -96,7 +96,7 @@ class ItemsTableSeeder extends Seeder
         DB::table('items')->insert($param);
         $param = [
             'user_id' => '3',
-            'img_path' => 'https://coachtech-matter.s3.ap-northeast-1.amazonaws.com/image/Waitress+with+Coffee+Grinder.jpg',
+            'img_path' => 'img/item/Waitress+with+Coffee+Grinder.jpg',
             'condition' => '1',
             'name' => 'コーヒーミル',
             'brand' => 'Starbacks',
@@ -106,7 +106,7 @@ class ItemsTableSeeder extends Seeder
         DB::table('items')->insert($param);
         $param = [
             'user_id' => '3',
-            'img_path' => 'https://coachtech-matter.s3.ap-northeast-1.amazonaws.com/image/%E5%A4%96%E5%87%BA%E3%83%A1%E3%82%A4%E3%82%AF%E3%82%A2%E3%83%83%E3%83%95%E3%82%9A%E3%82%BB%E3%83%83%E3%83%88.jpg',
+            'img_path' => 'img/item/外出メイクアップセット.jpg',
             'condition' => '2',
             'name' => 'メイクセット',
             'brand' => '',
