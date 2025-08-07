@@ -9,7 +9,7 @@
     @guest
         <form action="/" method="get" class="header-form">
             @csrf
-            <input type="search" placeholder="なにをお探しですか?" class="header-search">
+            <input type="search" value="{{ $keyword }}" name="search" placeholder="なにをお探しですか?" class="header-search">
         </form>
         <ul class="header-btns">
             <li class="header-btn"><a href="/login" class="header-login">ログイン</a></li>

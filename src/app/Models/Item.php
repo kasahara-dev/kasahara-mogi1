@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+
 class Item extends Model
 {
     use HasFactory;
@@ -40,5 +41,11 @@ class Item extends Model
     {
         return $this->belongsToMany('App\Models\User', 'favorites')
             ->withTimestamps();
+    }
+    public function scopeKeyWordLike($query, $keyword)
+    {
+        if (!empty($keyword)) {
+            $query->where('name', 'like', '%' . $keyword . '%');
+        }
     }
 }
