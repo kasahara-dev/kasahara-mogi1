@@ -21,14 +21,24 @@
 
 @section('content')
     <div class="tab-titles">
-        <a href="" class="tab-title">おすすめ</a>
-        <a href="" class="tab-title">マイリスト</a>
+        @if ($myList == true)
+            <a href="/" class="tab-inactive">おすすめ</a>
+            <a href="/?tab=mylist" class="tab-active">マイリスト</a>
+        @else
+            <a href="/" class="tab-active">おすすめ</a>
+            <a href="/?tab=mylist" class="tab-inactive">マイリスト</a>
+        @endif
     </div>
     <div class="items-area">
         @foreach ($items as $item)
             <div class="item-area">
                 <img title="{{ $item->detail }}" src="{{ $item->img_path }}" alt="{{ $item->name }}" class="item-image"
                     name="{{ $item->id }}" />
+                @if (isset($item->purchase))
+                    <div class="item-sold">
+                        <p class="item-sold-msg">SOLD</p>
+                    </div>
+                @endif
                 <label for="{{ $item->id }}" class="item-name">{{ $item->name }}</label>
             </div>
         @endforeach

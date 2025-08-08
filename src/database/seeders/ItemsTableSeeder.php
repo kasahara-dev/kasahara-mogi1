@@ -100,7 +100,7 @@ class ItemsTableSeeder extends Seeder
             'condition' => '1',
             'name' => 'コーヒーミル',
             'brand' => 'Starbacks',
-            'detail' => '使いやすいタンブラー',
+            'detail' => '手動のコーヒーミル',
             'price' => 4000,
         ];
         DB::table('items')->insert($param);

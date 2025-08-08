@@ -11,7 +11,7 @@
             @csrf
             <dl>
                 <dt class="form-name">メールアドレス</dt>
-                <dd class="form-content"><input type="text" class="form-input" name="email" value="{{ old('email') }}" />
+                <dd class="form-content"><input type="email" class="form-input" name="email" value="{{ old('email') }}" />
                 </dd>
                 <dd class="form-error">@error('email'){{ $message }}@enderror</dd>
                 <dt class="form-name">パスワード</dt>

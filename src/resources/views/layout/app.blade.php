@@ -21,11 +21,12 @@
             @auth
                 <form action="/" method="get" class="header-form">
                     @csrf
-                    <input type="search" name="search" placeholder="なにをお探しですか?" class="header-search">
+                    <input type="search" name="search" value="{{ $keyword }}" placeholder="なにをお探しですか?"
+                        class="header-search">
                 </form>
                 <ul class="header-btns">
                     <li class="header-btn">
-                        <form class="header-form" action="/logout" method="post" class="header-btn">
+                        <form class="header-form-logout" action="/logout" method="post" class="header-btn">
                             @csrf
                             <button type="submit" class="header-logout" name="logout">ログアウト</button>
                         </form>

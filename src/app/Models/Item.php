@@ -48,4 +48,10 @@ class Item extends Model
             $query->where('name', 'like', '%' . $keyword . '%');
         }
     }
+    public function scopeNonUser($query, $userId)
+    {
+        if (!empty($userId)) {
+            $query->where('user_id', '<>', $userId);
+        }
+    }
 }
