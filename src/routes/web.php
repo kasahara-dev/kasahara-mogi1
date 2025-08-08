@@ -15,7 +15,7 @@ use App\Http\Controllers\ProfileController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/{tab?}', [ItemController::class, 'index']);
+Route::get('/', [ItemController::class, 'index']);
 Route::get('/item/{item_id}', [ItemController::class, 'show']);
 Route::get('/register', [UserController::class, 'create']);
 Route::post('/register', [UserController::class, 'store']);
@@ -26,7 +26,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/purchase/address/{item_id}', [PurchaseController::class, 'edit']);
     Route::get('/sell', [ItemController::class, 'show']);
     Route::post('/sell', [ItemController::class, 'sell']);
-    Route::get('/mypage{page?}', [ProfileController::class, 'show']);
+    Route::get('/mypage', [ProfileController::class, 'show']);
     Route::get('/mypage/profile', [ProfileController::class, 'input']);
     Route::post('/mypage/profile', [ProfileController::class, 'edit']);
 });

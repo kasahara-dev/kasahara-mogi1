@@ -21,8 +21,9 @@
             @auth
                 <form action="/" method="get" class="header-form">
                     @csrf
-                    <input type="search" name="search" value="{{ $keyword }}" placeholder="なにをお探しですか?"
+                    <input type="search" name="keyword" value="{{ $keyword }}" placeholder="なにをお探しですか?"
                         class="header-search">
+                    <input type="hidden" value="{{ $tab }}" name="tab" />
                 </form>
                 <ul class="header-btns">
                     <li class="header-btn">

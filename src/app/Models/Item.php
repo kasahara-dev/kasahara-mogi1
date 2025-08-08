@@ -51,7 +51,7 @@ class Item extends Model
     public function scopeNonUser($query, $userId)
     {
         if (!empty($userId)) {
-            $query->where('user_id', '<>', $userId);
+            $query->where('items.user_id', '<>', $userId);
         }
     }
 }
