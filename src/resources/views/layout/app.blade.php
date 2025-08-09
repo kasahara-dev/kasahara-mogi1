@@ -14,18 +14,16 @@
 <body>
     <div class="wrapper">
         <header class="header">
-            @section('header')
             <a href="/" class="header-logo"><img src="{{ asset('img/logo.svg') }}" alt="コーチテックロゴ"
                     class="header-img" /></a>
-            @show
-            @auth
-                <form action="/" method="get" class="header-form">
-                    @csrf
-                    <input type="search" name="keyword" value="{{ $keyword }}" placeholder="なにをお探しですか?"
-                        class="header-search">
-                    <input type="hidden" value="{{ $tab }}" name="tab" />
-                </form>
-                <ul class="header-btns">
+            <form action="/" method="get" class="header-form">
+                @csrf
+                <input type="search" name="keyword" value="{{ $keyword }}" placeholder="なにをお探しですか?"
+                    class="header-search">
+                <input type="hidden" value="{{ $tab }}" name="tab" />
+            </form>
+            <ul class="header-btns">
+                @auth
                     <li class="header-btn">
                         <form class="header-form-logout" action="/logout" method="post" class="header-btn">
                             @csrf
@@ -34,8 +32,13 @@
                     </li>
                     <li class="header-btn"><a href="/mypage" class="header-mypage">マイページ</a></li>
                     <li class="header-btn"><button onclick="location.href='/sell'" class="header-exhibit">出品</button></li>
-                </ul>
-            @endauth
+                @endauth
+                @guest
+                    <li class="header-btn"><a href="/login" class="header-login">ログイン</a></li>
+                    <li class="header-btn"><a class="header-mypage">マイページ</a></li>
+                    <li class="header-btn"><button class="header-exhibit">出品</button></li>
+                @endguest
+            </ul>
         </header>
         <main class="main">
             @yield('content')

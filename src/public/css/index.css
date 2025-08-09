@@ -25,6 +25,7 @@
     grid-auto-rows: 1fr;
     width: 100%;
 }
+
 .items-area > *:first-child::after {
     content: "";
     width: 0px;
@@ -44,6 +45,9 @@
 }
 .item-name {
     cursor: pointer;
+    position: absolute;
+    bottom: 0;
+    left: 0;
 }
 .item-sold {
     position: absolute;
@@ -64,4 +68,18 @@
     font-size: xx-large;
     font-weight: bold;
     pointer-events: none;
+}
+@media screen and (max-width: 480px) {
+    .items-area {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0 15px;
+        grid-auto-rows: 1fr;
+        width: 100%;
+    }
+    .item-area {
+        width: 100%;
+        height: 80%;
+        position: relative;
+    }
 }
