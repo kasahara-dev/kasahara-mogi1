@@ -122,3 +122,42 @@
     padding: 8% 15px;
     border-radius: 4px;
 }
+.hamburger {
+    display: none;
+}
+@media screen and (max-width: 480px) {
+    .header-logo {
+        width: 18%;
+        &.menu-is-open {
+            display: none;
+        }
+    }
+    .header-form {
+        height: 50%;
+        width: 60%;
+        &.menu-is-open {
+            display: none;
+        }
+    }
+    .header-btns {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin: auto;
+        height: 100%;
+    }
+    .hamburger {
+        width: 44px;
+        height: 44px;
+        background: url("../img/bars-solid-full.svg") no-repeat;
+        display: block;
+        &.menu-is-open {
+            background: url("../img/xmark-solid-full.svg") no-repeat;
+        }
+    }
+    .header:has(.hamburger:not(.menu-is-open)) {
+        .header-btns {
+            display: none;
+        }
+    }
+}

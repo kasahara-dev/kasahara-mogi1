@@ -14,15 +14,15 @@
 <body>
     <div class="wrapper">
         <header class="header">
-            <a href="/" class="header-logo"><img src="{{ asset('img/logo.svg') }}" alt="コーチテックロゴ"
+            <a href="/" class="header-logo" id="header-logo"><img src="{{ asset('img/logo.svg') }}" alt="コーチテックロゴ"
                     class="header-img" /></a>
-            <form action="/" method="get" class="header-form">
+            <form action="/" method="get" class="header-form" id="header-form">
                 @csrf
                 <input type="search" name="keyword" value="{{ $keyword }}" placeholder="なにをお探しですか?"
                     class="header-search">
                 <input type="hidden" value="{{ $tab }}" name="tab" />
             </form>
-            <ul class="header-btns">
+            <menu class="header-btns">
                 @auth
                     <li class="header-btn">
                         <form class="header-form-logout" action="/logout" method="post" class="header-btn">
@@ -31,19 +31,22 @@
                         </form>
                     </li>
                     <li class="header-btn"><a href="/mypage" class="header-mypage">マイページ</a></li>
-                    <li class="header-btn"><button onclick="location.href='/sell'" class="header-exhibit">出品</button></li>
+                    <li class="header-btn"><button onclick="location.href='/sell'" class="header-exhibit">出品</button>
+                    </li>
                 @endauth
                 @guest
                     <li class="header-btn"><a href="/login" class="header-login">ログイン</a></li>
                     <li class="header-btn"><a class="header-mypage">マイページ</a></li>
                     <li class="header-btn"><button class="header-exhibit">出品</button></li>
                 @endguest
-            </ul>
+            </menu>
+            <div id="hamburger" class="hamburger"></div>
         </header>
         <main class="main">
             @yield('content')
         </main>
     </div>
+    <script src="{{ asset('/js/hamburger.js') }}"></script>
 </body>
 
 </html>
