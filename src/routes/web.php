@@ -19,7 +19,7 @@ Route::get('/', [ItemController::class, 'index']);
 Route::get('/item/{item_id}', [ItemController::class, 'show']);
 Route::get('/register', [UserController::class, 'create']);
 Route::post('/register', [UserController::class, 'store']);
-Route::get('/login', [UserController::class, 'show']);
+Route::get('/login', [UserController::class, 'show'])->name('login');
 Route::post('/login', [UserController::class, 'login']);
 Route::middleware('auth')->group(function () {
     Route::post('/purchase/{item_id}', [PurchaseController::class, 'buy']);

@@ -25,7 +25,7 @@
                     class="header-search">
                 <input type="hidden" value="{{ $tab }}" name="tab" />
             </form>
-            <menu class="header-btns" id="header-btns">
+            <ul class="header-btns" id="header-btns">
                 @auth
                     <li class="header-btn">
                         <form class="header-form-logout" action="/logout" method="post" class="header-btn">
@@ -39,10 +39,10 @@
                 @endauth
                 @guest
                     <li class="header-btn"><a href="/login" class="header-login">ログイン</a></li>
-                    <li class="header-btn"><a class="header-mypage">マイページ</a></li>
-                    <li class="header-btn"><button class="header-exhibit">出品</button></li>
+                    <li class="header-btn"><a href="/mypage" class="header-mypage">マイページ</a></li>
+                    <li class="header-btn"><button onclick="location.href='/sell'" class="header-exhibit">出品</button></li>
                 @endguest
-            </menu>
+            </ul>
         </header>
         <main class="main">
             @yield('content')

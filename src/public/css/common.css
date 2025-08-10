@@ -137,9 +137,13 @@
         width: 100%;
     }
     .header {
+        height: 44px;
         &.menu-is-open {
             display: block;
-            height: 100%;
+            height: auto;
+            width: auto;
+            position: fixed;
+            z-index: 10;
         }
     }
     .header-logo-area {
