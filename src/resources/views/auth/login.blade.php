@@ -14,8 +14,10 @@
 <body>
     <div class="wrapper">
         <header class="header">
-            <a href="/" class="header-logo"><img src="{{ asset('img/logo.svg') }}" alt="コーチテックロゴ"
-                    class="header-img" /></a>
+            <div class="header-logo-area">
+                <a href="/" class="header-logo"><img src="{{ asset('img/logo.svg') }}" alt="コーチテックロゴ"
+                        class="header-img" /></a>
+            </div>
         </header>
         <main class="main">
             <div class="form-area">

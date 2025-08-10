@@ -13,16 +13,19 @@
 
 <body>
     <div class="wrapper">
-        <header class="header">
-            <a href="/" class="header-logo" id="header-logo"><img src="{{ asset('img/logo.svg') }}" alt="コーチテックロゴ"
-                    class="header-img" /></a>
+        <header class="header" id="header">
+            <div class="header-logo-area">
+                <a href="/" class="header-logo" id="header-logo"><img src="{{ asset('img/logo.svg') }}" alt="コーチテックロゴ"
+                        class="header-img" /></a>
+                <div id="hamburger" class="hamburger"></div>
+            </div>
             <form action="/" method="get" class="header-form" id="header-form">
                 @csrf
                 <input type="search" name="keyword" value="{{ $keyword }}" placeholder="なにをお探しですか?"
                     class="header-search">
                 <input type="hidden" value="{{ $tab }}" name="tab" />
             </form>
-            <menu class="header-btns">
+            <menu class="header-btns" id="header-btns">
                 @auth
                     <li class="header-btn">
                         <form class="header-form-logout" action="/logout" method="post" class="header-btn">
@@ -40,7 +43,6 @@
                     <li class="header-btn"><button class="header-exhibit">出品</button></li>
                 @endguest
             </menu>
-            <div id="hamburger" class="hamburger"></div>
         </header>
         <main class="main">
             @yield('content')

@@ -62,7 +62,7 @@
     font-weight: bold;
     pointer-events: none;
 }
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 768px) {
     .tab-titles {
         display: flex;
         margin: 10px;
