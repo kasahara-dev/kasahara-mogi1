@@ -129,6 +129,7 @@
 }
 .hamburger {
     display: none;
+    cursor: pointer;
 }
 @media screen and (max-width: 768px) {
     .main {
@@ -243,9 +244,4 @@
             background: url("../img/xmark-solid-full.svg") no-repeat;
         }
     }
-    /* .header:has(.hamburger:not(.menu-is-open)) {
-        .header-btns {
-            display: none;
-        }
-    } */
 }
