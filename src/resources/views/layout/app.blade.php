@@ -44,7 +44,7 @@
                 @endguest
             </ul>
         </header>
-        <main class="main">
+        <main class="main" id="main">
             @yield('content')
         </main>
     </div>
