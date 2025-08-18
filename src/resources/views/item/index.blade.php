@@ -18,14 +18,16 @@
         @if(!is_null($items))
             @foreach ($items as $item)
                 <div class="item-area">
-                    <img title="{{ $item->detail }}" src="{{ $item->img_path }}" alt="{{ $item->name }}" class="item-image"
-                        name="{{ $item->id }}" />
-                    @if (isset($item->purchase))
-                        <div class="item-sold">
-                            <p class="item-sold-msg">SOLD</p>
-                        </div>
-                    @endif
-                    <label for="{{ $item->id }}" class="item-name">{{ $item->name }}</label>
+                    <a href="/item/{{ $item->id }}" class="item-link">
+                        <img title="{{ $item->detail }}" src="{{ asset($item->img_path) }}" alt="{{ $item->name }}"
+                            class="item-image" name="{{ $item->id }}" />
+                        @if (isset($item->purchase))
+                            <div class="item-sold">
+                                <p class="item-sold-msg">SOLD</p>
+                            </div>
+                        @endif
+                        <label for="{{ $item->id }}" class="item-name">{{ $item->name }}</label>
+                    </a>
                 </div>
             @endforeach
         @endif

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Item;
+use App\Models\Comment;
 use Illuminate\Support\Facades\Auth;
 
 class ItemController extends Controller
@@ -49,5 +50,14 @@ class ItemController extends Controller
             $items = $items->get();
         }
         return view('item.index', compact(['items', 'keyword', 'tab']));
+    }
+    public function show(Request $request, $item_id)
+    {
+        $keyword = '';
+        $tab = '';
+        $item = Item::where('id', $item_id)->with('categories')->with('purchase')->first();
+        $comments = Comment::where('item_id', $item_id)->get();
+        $commentsCount = count($comments);
+        return view('item.detail', compact(['keyword', 'tab', 'item_id', 'item', 'comments', 'commentsCount']));
     }
 }
