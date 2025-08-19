@@ -53,12 +53,10 @@ class ItemController extends Controller
     }
     public function show(Request $request, $item_id)
     {
-        $keyword = '';
-        $tab = '';
         $item = Item::where('id', $item_id)->with('categories')->with('purchase')->with('favUsers')->first();
         $comments = Comment::where('item_id', $item_id)->with('user')->get();
         $commentsCount = count($comments);
         $favUsersCount = count($item->favUsers);
-        return view('item.detail', compact(['keyword', 'tab', 'item_id', 'item', 'comments', 'commentsCount', 'favUsersCount']));
+        return view('item.detail', compact(['item_id', 'item', 'comments', 'commentsCount', 'favUsersCount']));
     }
 }

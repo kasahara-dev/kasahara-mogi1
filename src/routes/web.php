@@ -6,6 +6,7 @@ use App\Http\Controllers\ItemController;
 use App\Http\Controllers\PurchaseController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\CommentController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,6 +24,8 @@ Route::post('/register', [UserController::class, 'store']);
 Route::get('/login', [LoginController::class, 'create'])->name('login');
 Route::post('/login', [LoginController::class, 'store']);
 Route::middleware('auth')->group(function () {
+    Route::post('/item/{item_id}', [CommentController::class, 'store']);
+    Route::delete('/item/{item_id}', [CommentController::class, 'destroy']);
     Route::get('/purchase/{item_id}', [PurchaseController::class, 'create']);
     Route::post('/purchase/{item_id}', [PurchaseController::class, 'store']);
     Route::get('/purchase/address/{item_id}', [PurchaseController::class, 'create']);

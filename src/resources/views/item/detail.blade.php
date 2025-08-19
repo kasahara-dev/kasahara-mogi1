@@ -28,14 +28,11 @@
                     <div class="icon-count">{{ $commentsCount }}</div>
                 </div>
             </div>
-                @if (isset($item->purchase))
+            @if (isset($item->purchase))
                 <button class="wide-btn inactive-btn">購入手続きへ</button>
-                @else
-                <form action="">
-                @csrf
-                <button type="submit" class="wide-btn">購入手続きへ</button>
-                </form>
-                @endif
+            @else
+                <button onclick="location.href=''" class="wide-btn">購入手続きへ</button>
+            @endif
             <dl class="info-list">
                 <dt class="info-title">商品説明</dt>
                 <dd class="info-detail">{{ $item->detail }}</dd>
@@ -60,7 +57,7 @@
             <div class="comment-title">コメント({{ $commentsCount }})</div>
             <div class="comments-area">
                 @foreach ($comments as $comment)
-                <img src=""></img>
+                    <img src=""></img>
                 @endforeach
             </div>
         </div>

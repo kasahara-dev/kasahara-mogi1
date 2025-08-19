@@ -12,6 +12,7 @@ use Laravel\Fortify\Contracts\CreatesNewUsers;
 use Laravel\Fortify\Contracts\RegisterResponse;
 use Laravel\Fortify\Contracts\RegisterViewResponse;
 use Laravel\Fortify\Fortify;
+use App\Models\Profile;
 
 class UserController extends Controller
 {
@@ -62,6 +63,8 @@ class UserController extends Controller
         }
 
         event(new Registered($user = $creator->create($request->all())));
+
+        Profile::create(['user_id' => $user->id]);
 
         $this->guard->login($user);
 
