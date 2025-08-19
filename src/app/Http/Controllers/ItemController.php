@@ -55,9 +55,10 @@ class ItemController extends Controller
     {
         $keyword = '';
         $tab = '';
-        $item = Item::where('id', $item_id)->with('categories')->with('purchase')->first();
-        $comments = Comment::where('item_id', $item_id)->get();
+        $item = Item::where('id', $item_id)->with('categories')->with('purchase')->with('favUsers')->first();
+        $comments = Comment::where('item_id', $item_id)->with('user')->get();
         $commentsCount = count($comments);
-        return view('item.detail', compact(['keyword', 'tab', 'item_id', 'item', 'comments', 'commentsCount']));
+        $favUsersCount = count($item->favUsers);
+        return view('item.detail', compact(['keyword', 'tab', 'item_id', 'item', 'comments', 'commentsCount', 'favUsersCount']));
     }
 }

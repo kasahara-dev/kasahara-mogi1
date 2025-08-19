@@ -132,6 +132,18 @@
     display: none;
     cursor: pointer;
 }
+.wide-btn {
+    width: 100%;
+    background-color: #ff5555;
+    color: white;
+    margin: 10px 0;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+.inactive-btn {
+    background-color: gray;
+}
 @media screen and (max-width: 768px) {
     .main {
         &.menu-is-open {

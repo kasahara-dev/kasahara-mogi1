@@ -13,11 +13,15 @@ class Profile extends Model
         'img_pass',
         'address_id',
     ];
+    protected $attributes = [
+        'img_pass' => 'img\user-solid-full.svg',
+    ];
     public function user()
     {
         return $this->belongsTo('App\Models\User');
     }
-    public function address(){
+    public function address()
+    {
         return $this->belongsTo('App\Models\Address');
     }
 }

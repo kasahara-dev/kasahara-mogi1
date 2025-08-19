@@ -33,7 +33,7 @@
     font-weight: bold;
 }
 .intro-area {
-    margin: 0;
+    margin: 0 20px;
 }
 .item-name {
     margin: 0;
@@ -47,5 +47,61 @@
     font-size: x-large;
 }
 .item-icon {
-    width: 20px;
+    width: 100%;
+}
+.fav-icon {
+    cursor: pointer;
+}
+.icons-area {
+    display: flex;
+    margin: 15px 0;
+}
+.fav-count {
+    cursor: pointer;
+}
+.icon-area {
+    display: flex;
+    width: 24px;
+    flex-direction: column;
+    align-items: center;
+    font-size: small;
+    margin: 0 10px;
+}
+.info-list {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+}
+.info-title {
+    font-weight: bold;
+    margin-top: 20px;
+}
+.info-detail {
+    margin: 0;
+}
+.inner-list {
+}
+.inner-line {
+    display: flex;
+    margin: 10px 0;
+    align-items: center;
+}
+.inner-title {
+    font-size: small;
+    font-weight: bold;
+}
+.inner-detail {
+    font-size: small;
+    display: flex;
+}
+.category-tag {
+    background-color: #d9d9d9;
+    border-radius: 15px;
+    margin-right: 10px;
+    padding: 0 10px;
+}
+.comment-title {
+    color: #5f5f5f;
+    font-weight: bolder;
+    margin: 10px 0;
 }
