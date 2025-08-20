@@ -19,7 +19,7 @@
             <div class="brand-name">{{ $item->brand }}</div>
             <div class="price-area">&yen;<span class="price">{{ number_format($item->price) }}</span>(税込)</div>
             <div class="icons-area">
-                <div class="icon-area"><img class="item-icon fav-icon" name="fav-icon" alt="お気に入りアイコン"
+                <div class="icon-area"><img class="item-icon fav-icon" id="fav-icon" name="fav-icon" alt="お気に入りアイコン"
                         src="{{ asset('img/star-regular-full.svg') }}">
                     <label for="fav-icon" class="icon-count fav-count">{{ $favUsersCount }}</label>
                 </div>
@@ -57,9 +57,21 @@
             <div class="comment-title">コメント({{ $commentsCount }})</div>
             <div class="comments-area">
                 @foreach ($comments as $comment)
-                    <img src=""></img>
+                    <div class="comment-user-area">
+                        <img class="comment-user-icon" src='{{ asset($comment->user->profile->img_path) }}'>
+                        </img>
+                        {{ $comment->user->name }}
+                    </div>
+                    <div class="comment-detail">{{ $comment->detail }}</div>
                 @endforeach
             </div>
+            <label for="comment-input-area" class="comment-info">商品へのコメント</label>
+            <textarea name="comment-input-area" id="comment-input-area" class="comment-input"></textarea>
+            @if (isset($item->purchase))
+                <button class="wide-btn inactive-btn">コメントを送信する</button>
+            @else
+                <button onclick="location.href=''" class="wide-btn">コメントを送信する</button>
+            @endif
         </div>
     </div>
 @endsection

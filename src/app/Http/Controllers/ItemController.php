@@ -54,7 +54,7 @@ class ItemController extends Controller
     public function show(Request $request, $item_id)
     {
         $item = Item::where('id', $item_id)->with('categories')->with('purchase')->with('favUsers')->first();
-        $comments = Comment::where('item_id', $item_id)->with('user')->get();
+        $comments = Comment::where('item_id', $item_id)->orderBy('updated_at')->with('user.profile')->get();
         $commentsCount = count($comments);
         $favUsersCount = count($item->favUsers);
         return view('item.detail', compact(['item_id', 'item', 'comments', 'commentsCount', 'favUsersCount']));
