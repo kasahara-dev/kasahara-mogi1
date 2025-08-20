@@ -19,10 +19,35 @@
             <div class="brand-name">{{ $item->brand }}</div>
             <div class="price-area">&yen;<span class="price">{{ number_format($item->price) }}</span>(税込)</div>
             <div class="icons-area">
-                <div class="icon-area"><img class="item-icon fav-icon" id="fav-icon" name="fav-icon" alt="お気に入りアイコン"
-                        src="{{ asset('img/star-regular-full.svg') }}">
-                    <label for="fav-icon" class="icon-count fav-count">{{ $favUsersCount }}</label>
-                </div>
+                @auth
+                    @if($favorite)
+                        <form id="favorite-form" action="/item/{{ $item_id }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <input type="hidden" name="favorite" id="favorite" value="{{ $item_id }}" />
+                            <div class="icon-area"><img class="item-icon fav-icon" id="fav-icon" name="fav-icon" alt="お気に入りアイコン"
+                                    src="{{ asset('img/star-solid-full.svg') }}" onclick="destroyFavorite()" />
+                                <label for="fav-icon" class="icon-count fav-count">{{ $favUsersCount }}</label>
+                            </div>
+                        </form>
+                    @else
+                        <form id="favorite-form" action="/item/{{ $item_id }}" method="POST">
+                            @csrf
+                            <input type="hidden" name="favorite" id="favorite" value="{{ $item_id }}" />
+                            <div class="icon-area"><img class="item-icon fav-icon" id="fav-icon" name="fav-icon" alt="お気に入りアイコン"
+                                    src="{{ asset('img/star-regular-full.svg') }}" onclick="storeFavorite()">
+                                <label for="fav-icon" class="icon-count fav-count">{{ $favUsersCount }}</label>
+                            </div>
+                        </form>
+                    @endif
+
+                @endauth
+                @guest
+                    <div class="icon-area"><img class="item-icon" name="fav-icon" alt="お気に入りアイコン"
+                            src="{{ asset('img/star-regular-full.svg') }}">
+                        <label class="icon-count">{{ $favUsersCount }}</label>
+                    </div>
+                @endguest
                 <div class="icon-area"><img class="item-icon" alt="コメントアイコン"
                         src="{{ asset('img/comment-regular-full.svg') }}">
                     <div class="icon-count">{{ $commentsCount }}</div>
@@ -74,4 +99,5 @@
             @endif
         </div>
     </div>
+    <script src="{{ asset('/js/favorite.js') }}"></script>
 @endsection

@@ -54,9 +54,16 @@ class ItemController extends Controller
     public function show(Request $request, $item_id)
     {
         $item = Item::where('id', $item_id)->with('categories')->with('purchase')->with('favUsers')->first();
+        $favorite = false;
+        if (Auth::check()) {
+            $favItems = Auth::user()->favItems->pluck('id')->all();
+            if (in_array($item_id, $favItems)) {
+                $favorite = true;
+            }
+        }
         $comments = Comment::where('item_id', $item_id)->orderBy('updated_at')->with('user.profile')->get();
         $commentsCount = count($comments);
         $favUsersCount = count($item->favUsers);
-        return view('item.detail', compact(['item_id', 'item', 'comments', 'commentsCount', 'favUsersCount']));
+        return view('item.detail', compact(['item_id', 'item', 'comments', 'commentsCount', 'favorite', 'favUsersCount']));
     }
 }

@@ -52,7 +52,7 @@ class CategoryItemSeeder extends Seeder
         DB::table('category_item')->insert(
             [
                 'category_id' => '6',
-                'item_id' => '9',
+                'item_id' => '10',
             ]
         );
     }
