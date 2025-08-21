@@ -24,8 +24,8 @@ Route::post('/register', [UserController::class, 'store']);
 Route::get('/login', [LoginController::class, 'create'])->name('login');
 Route::post('/login', [LoginController::class, 'store']);
 Route::middleware('auth')->group(function () {
-    Route::post('/item/{item_id}', [CommentController::class, 'store'])->name('comment.store');
-    Route::delete('/item/{item_id}', [CommentController::class, 'destroy'])->name('comment.destroy');
+    Route::post('/item/{item_id}', [CommentController::class, 'store']);
+    Route::delete('/item/{item_id}', [CommentController::class, 'destroy']);
     Route::get('/purchase/{item_id}', [PurchaseController::class, 'create']);
     Route::post('/purchase/{item_id}', [PurchaseController::class, 'store']);
     Route::get('/purchase/address/{item_id}', [PurchaseController::class, 'create']);

@@ -40,10 +40,9 @@
                             </div>
                         </form>
                     @endif
-
                 @endauth
                 @guest
-                    <div class="icon-area"><img class="item-icon" name="fav-icon" alt="お気に入りアイコン"
+                    <div c  lass="icon-area"><img class="item-icon" name="fav-icon" alt="お気に入りアイコン"
                             src="{{ asset('img/star-regular-full.svg') }}">
                         <label class="icon-count">{{ $favUsersCount }}</label>
                     </div>
@@ -53,11 +52,16 @@
                     <div class="icon-count">{{ $commentsCount }}</div>
                 </div>
             </div>
-            @if (isset($item->purchase))
+            @auth
+                @if (isset($item->purchase))
+                    <button class="wide-btn inactive-btn">購入手続きへ</button>
+                @else
+                    <button onclick="location.href=''" class="wide-btn">購入手続きへ</button>
+                @endif
+            @endauth
+            @guest
                 <button class="wide-btn inactive-btn">購入手続きへ</button>
-            @else
-                <button onclick="location.href=''" class="wide-btn">購入手続きへ</button>
-            @endif
+            @endguest
             <dl class="info-list">
                 <dt class="info-title">商品説明</dt>
                 <dd class="info-detail">{{ $item->detail }}</dd>
@@ -90,13 +94,27 @@
                     <div class="comment-detail">{{ $comment->detail }}</div>
                 @endforeach
             </div>
-            <label for="comment-input-area" class="comment-info">商品へのコメント</label>
-            <textarea name="comment-input-area" id="comment-input-area" class="comment-input"></textarea>
-            @if (isset($item->purchase))
+            <form action="/item/{{ $item->id }}" class="comment-form" method="POST">
+                @csrf
+                <label for="comment-input" class="comment-info">商品へのコメント</label>
+                <textarea name="commentInput" class="comment-input">{{ old('commentInput') }}</textarea>
+                <div class="form-error">
+                    @error('commentInput')
+                        {{ $message }}
+                    @enderror
+                </div>
+                @auth
+                    @if (isset($item->purchase))
+                        <button class="wide-btn inactive-btn">コメントを送信する</button>
+                    @else
+                        <input type="hidden" value="{{ $item_id }}" name="itemId" />
+                        <button type="submit" class="wide-btn" name="send-comment">コメントを送信する</button>
+                    @endif
+                @endauth
+            </form>
+            @guest
                 <button class="wide-btn inactive-btn">コメントを送信する</button>
-            @else
-                <button onclick="location.href=''" class="wide-btn">コメントを送信する</button>
-            @endif
+            @endguest
         </div>
     </div>
     <script src="{{ asset('/js/favorite.js') }}"></script>

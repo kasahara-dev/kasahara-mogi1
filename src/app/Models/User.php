@@ -47,7 +47,7 @@ class User extends Authenticatable
     }
     public function comItems()
     {
-        return $this->belongsToMany('App\Models\Item', 'comment')
+        return $this->belongsToMany('App\Models\Item', 'comments')
             ->withPivot('detail')
             ->withTimestamps();
     }

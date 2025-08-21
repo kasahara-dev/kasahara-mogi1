@@ -134,9 +134,8 @@
     font-weight: bold;
 }
 .comment-input {
+    width: 100%;
     height: 100px;
-    resize: none;
-    margin-bottom: 20px;
 }
 @media screen and (max-width: 768px) {
     .contents-area {
