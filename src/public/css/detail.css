@@ -61,6 +61,7 @@
 }
 .fav-count {
     cursor: pointer;
+    color: #ffd43b;
 }
 .icon-area {
     display: flex;
@@ -96,6 +97,7 @@
 .inner-detail {
     font-size: small;
     display: flex;
+    margin-left: 20px;
 }
 .category-tag {
     background-color: #d9d9d9;
@@ -136,6 +138,7 @@
 .comment-input {
     width: 100%;
     height: 100px;
+    box-sizing: border-box;
 }
 @media screen and (max-width: 768px) {
     .contents-area {

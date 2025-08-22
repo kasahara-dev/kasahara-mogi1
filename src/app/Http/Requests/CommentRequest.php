@@ -23,9 +23,15 @@ class CommentRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            'commentInput' => ['required', 'max:255'],
-        ];
+        if (isset($_POST['send-comment'])) {
+            // コメント送信時バリデーション
+            return [
+                'commentInput' => ['required', 'max:255'],
+            ];
+        } else {
+            // コメント送信時以外はバリデーションなし
+            return [];
+        }
     }
     public function messages()
     {

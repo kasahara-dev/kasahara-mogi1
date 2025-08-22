@@ -8,13 +8,15 @@ use App\Http\Requests\CommentRequest;
 
 class CommentController extends Controller
 {
-    public function store(Request $request)
+    public function store(CommentRequest $request)
     {
         if (isset($_POST['send-comment'])) {
+            // コメント送信
             $item = $request->itemId;
             $comment = $request->commentInput;
             Auth::user()->comItems()->attach($item, ['detail' => $comment]);
         } else {
+            // お気に入り追加
             $item = $request->favorite;
             Auth::user()->favItems()->attach($item);
         }

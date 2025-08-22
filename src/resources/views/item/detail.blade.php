@@ -36,13 +36,13 @@
                             <input type="hidden" name="favorite" id="favorite" value="{{ $item_id }}" />
                             <div class="icon-area"><img class="item-icon fav-icon" id="fav-icon" name="fav-icon" alt="お気に入りアイコン"
                                     src="{{ asset('img/star-regular-full.svg') }}" onclick="storeFavorite()">
-                                <label for="fav-icon" class="icon-count fav-count">{{ $favUsersCount }}</label>
+                                <label for="fav-icon" class="icon-count">{{ $favUsersCount }}</label>
                             </div>
                         </form>
                     @endif
                 @endauth
                 @guest
-                    <div c  lass="icon-area"><img class="item-icon" name="fav-icon" alt="お気に入りアイコン"
+                    <div class="icon-area"><img class="item-icon" name="fav-icon" alt="お気に入りアイコン"
                             src="{{ asset('img/star-regular-full.svg') }}">
                         <label class="icon-count">{{ $favUsersCount }}</label>
                     </div>
