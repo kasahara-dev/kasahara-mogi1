@@ -56,7 +56,7 @@
                 @if (isset($item->purchase))
                     <button class="wide-btn inactive-btn">購入手続きへ</button>
                 @else
-                    <button onclick="location.href=''" class="wide-btn">購入手続きへ</button>
+                    <button onclick="location.href='/purchase/{{ $item->id }}'" class="wide-btn">購入手続きへ</button>
                 @endif
             @endauth
             @guest

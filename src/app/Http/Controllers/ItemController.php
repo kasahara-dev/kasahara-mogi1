@@ -11,13 +11,13 @@ class ItemController extends Controller
 {
     public function index(Request $request)
     {
-        $items = Item::orderBy('updated_at', 'desc')->with('purchase');
+        $items = Item::orderBy('updated_at', 'desc')->orderBy('id', 'desc')->with('purchase');
         if (isset($request->tab)) {
             if ($request->tab == 'mylist') {
                 if (Auth::check()) {
                     // 認証済みユーザーに対する処理
                     $user = Auth::user();
-                    $items = $user->favItems()->orderBy('updated_at', 'desc')->with('purchase');
+                    $items = $user->favItems()->orderBy('updated_at', 'desc')->orderBy('id', 'desc')->with('purchase');
                 } else {
                     // 未認証ユーザーに対する処理
                     $items = null;
@@ -61,7 +61,7 @@ class ItemController extends Controller
                 $favorite = true;
             }
         }
-        $comments = Comment::where('item_id', $item_id)->orderBy('updated_at')->with('user.profile')->get();
+        $comments = Comment::where('item_id', $item_id)->orderBy('updated_at', 'desc')->with('user.profile')->get();
         $commentsCount = count($comments);
         $favUsersCount = count($item->favUsers);
         return view('item.detail', compact(['item_id', 'item', 'comments', 'commentsCount', 'favorite', 'favUsersCount']));

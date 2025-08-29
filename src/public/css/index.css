@@ -38,6 +38,7 @@
     width: 100%;
     height: 90%;
     cursor: pointer;
+    object-fit: cover;
 }
 .item-name {
     color: black;

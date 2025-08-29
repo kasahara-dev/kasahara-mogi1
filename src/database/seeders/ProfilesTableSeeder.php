@@ -21,11 +21,18 @@ class ProfilesTableSeeder extends Seeder
         $users = User::pluck('id')->all();
         $addresses = Address::pluck('id')->all();
         foreach ($users as $user) {
-            $param = [
-                'user_id' => $user,
-                'address_id' => $addresses[array_rand($addresses)],
-            ];
-            DB::table('profiles')->insert($param);
+            if ($user == '2') {
+                $param = [
+                    'user_id' => $user,
+                ];
+                DB::table('profiles')->insert($param);
+            } else {
+                $param = [
+                    'user_id' => $user,
+                    'address_id' => $addresses[array_rand($addresses)],
+                ];
+                DB::table('profiles')->insert($param);
+            }
         }
     }
 }

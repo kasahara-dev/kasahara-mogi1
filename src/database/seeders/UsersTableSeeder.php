@@ -20,6 +20,12 @@ class UsersTableSeeder extends Seeder
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password,
         ];
         DB::table('users')->insert($param);
+        $param = [
+            'name' => 'テストユーザー2',
+            'email' => 'test2@example.com',
+            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password,
+        ];
+        DB::table('users')->insert($param);
         User::factory()->count(5)->create();
     }
 }
