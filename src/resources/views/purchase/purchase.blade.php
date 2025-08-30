@@ -2,6 +2,7 @@
 
 @section('css')
     <link rel="stylesheet" href="{{ asset('css/purchase.css') }}">
+    <script src="https://js.stripe.com/basil/stripe.js"></script>
 @endsection
 
 @section('content')
@@ -22,7 +23,8 @@
                         <select class="payment-select" name="payment" id="payment-select" onchange="paymentValue()">
                             <option value="" selected hidden>選択してください</option>
                             @foreach(config('payment') as $paymentId => $paymentName)
-                                <option value="{{ $paymentId }}">{{ $paymentName }}</option>
+                                <option value="{{ $paymentId }}" @if(old('payment') == $paymentId) selected @endif>
+                                    {{ $paymentName }}</option>
                             @endforeach
                         </select>
                     </dd>

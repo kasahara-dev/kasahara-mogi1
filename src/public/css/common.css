@@ -141,7 +141,7 @@
     padding: 10px;
     cursor: pointer;
 }
-.inactive-btn {
+.wide-btn:disabled {
     background-color: gray;
 }
 @media screen and (max-width: 768px) {

@@ -12,6 +12,10 @@ coachtech フリマ
 > [!IMPORTANT]
 > MySQL は、OS によって起動しない場合があるのでそれぞれの PC に合わせて docker-compose.yml ファイルを編集してください。
 
+### Stripe 設定
+
+1. Stripe コンソール画面よりコンビニ払い、カード払いを有効化
+
 ### Laravel 環境構築
 
 1. `docker-compose exec php bash`

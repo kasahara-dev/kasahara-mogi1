@@ -54,13 +54,13 @@
             </div>
             @auth
                 @if (isset($item->purchase))
-                    <button class="wide-btn inactive-btn">購入手続きへ</button>
+                    <button class="wide-btn" disabled>購入手続きへ</button>
                 @else
                     <button onclick="location.href='/purchase/{{ $item->id }}'" class="wide-btn">購入手続きへ</button>
                 @endif
             @endauth
             @guest
-                <button class="wide-btn inactive-btn">購入手続きへ</button>
+                <button class="wide-btn" disabled>購入手続きへ</button>
             @endguest
             <dl class="info-list">
                 <dt class="info-title">商品説明</dt>
@@ -105,7 +105,7 @@
                 </div>
                 @auth
                     @if (isset($item->purchase))
-                        <button class="wide-btn inactive-btn">コメントを送信する</button>
+                        <button class="wide-btn" disabled>コメントを送信する</button>
                     @else
                         <input type="hidden" value="{{ $item_id }}" name="itemId" />
                         <button type="submit" class="wide-btn" name="send-comment">コメントを送信する</button>
@@ -113,7 +113,7 @@
                 @endauth
             </form>
             @guest
-                <button class="wide-btn inactive-btn">コメントを送信する</button>
+                <button class="wide-btn" disabled>コメントを送信する</button>
             @endguest
         </div>
     </div>
