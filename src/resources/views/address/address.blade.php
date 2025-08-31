@@ -19,7 +19,7 @@
                         <input type="text" class="form-input" name="postNumber" value="{{ old('postNumber') }}" />
                     @endif
                 </dd>
-                <dd class="form-error">@error('post-number'){{ $message }}@enderror</dd>
+                <dd class="form-error">@error('postNumber'){{ $message }}@enderror</dd>
                 <dt class="form-name">住所</dt>
                 <dd class="form-content">
                     @if(isset($address))
@@ -40,6 +40,7 @@
                 </dd>
                 <dd class="form-error"></dd>
             </dl>
+            <input type="hidden" name="payment" value="{{ $payment }}" />
             <button type="submit" class="wide-btn">更新する</button>
         </form>
     </div>

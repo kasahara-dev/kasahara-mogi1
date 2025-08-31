@@ -11,22 +11,24 @@ class AddressController extends Controller
 {
     public function create(Request $request, $item_id)
     {
+        $payment = $request->payment;
         if (isset($request->addressId)) {
             $addressId = $request->addressId;
             $address = Address::where('id', $addressId)->first();
         } else {
             $address = null;
         }
-        return view('address.address', compact(['item_id', 'address']));
+        return view('address.address', compact(['item_id', 'address', 'payment']));
     }
     public function store(AddressRequest $request, $item_id)
     {
+        $payment = $request->payment;
         $address = Address::create([
             'post_number' => $request->postNumber,
             'address' => $request->address,
             'building' => $request->building,
         ]);
         $addressId = $address->id;
-        return redirect()->route('purchase', compact('item_id', 'addressId'));
+        return redirect()->route('purchase', compact('item_id', 'addressId', 'payment'));
     }
 }

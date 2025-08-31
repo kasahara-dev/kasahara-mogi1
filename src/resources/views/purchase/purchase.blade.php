@@ -23,8 +23,10 @@
                         <select class="payment-select" name="payment" id="payment-select" onchange="paymentValue()">
                             <option value="" selected hidden>選択してください</option>
                             @foreach(config('payment') as $paymentId => $paymentName)
-                                <option value="{{ $paymentId }}" @if(old('payment') == $paymentId) selected @endif>
-                                    {{ $paymentName }}</option>
+                                <option value="{{ $paymentId }}" @if(old('payment') == $paymentId) selected
+                                @elseif($payment == $paymentId) selected @endif>
+                                    {{ $paymentName }}
+                                </option>
                             @endforeach
                         </select>
                     </dd>
@@ -33,10 +35,9 @@
                 <dl class="purchase-list">
                     <dt class="purchase-list-title">配送先
                         @if (isset($address))
-                            <a class="purchase-address-link"
-                                href="/purchase/address/{{ $item->id }}?addressId={{ $address->id }}">変更する</a>
+                            <a class="purchase-address-link" id="purchase-address" href="" onclick="changeAddress()">変更する</a>
                         @else
-                            <a class="purchase-address-link" href="/purchase/address/{{ $item->id }}">変更する</a>
+                            <a class="purchase-address-link" id="purchase-address" href="" onclick="changeNoAddress()">変更する</a>
                         @endif
                     </dt>
                     <dd class="purchase-list-detail">
@@ -57,7 +58,9 @@
                 </div>
                 <div class="confirm-line confirm-line-last">
                     <dt class="confirm-title">支払い方法</dt>
-                    <dd class="confirm-detail"><span id="payment-name"></span></dd>
+                    <dd class="confirm-detail"><span id="payment-name">@if($payment)
+                        {{ config('payment')[$payment] }}
+                    @endif</span></dd>
                 </div>
             </dl>
             @if (isset($address))
@@ -71,6 +74,10 @@
     </div>
     <script>
         const paymentList = @json(config('payment'));
+        const itemId = {{ $item->id }};
+        @if (isset($address))
+            const addressId = {{ $address->id }};
+        @endif
     </script>
     <script src="{{ asset('/js/payment.js') }}"></script>
 @endsection

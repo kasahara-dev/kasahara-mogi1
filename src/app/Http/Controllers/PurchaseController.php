@@ -13,6 +13,11 @@ class PurchaseController extends Controller
 {
     public function create(Request $request, $item_id)
     {
+        if ($request->filled('payment')) {
+            $payment = $request->payment;
+        } else {
+            $payment = '';
+        }
         if ($request->filled('addressId')) {
             $addressId = $request->addressId;
         } elseif (isset(Auth::user()->profile->address->id)) {
@@ -22,7 +27,7 @@ class PurchaseController extends Controller
         }
         $address = Address::where('id', $addressId)->first();
         $item = Item::where('id', $item_id)->first();
-        return view('purchase.purchase', compact(['item', 'address']));
+        return view('purchase.purchase', compact(['item', 'address', 'payment']));
     }
     public function store(PurchaseRequest $request, $item_id)
     {
