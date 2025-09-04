@@ -35,6 +35,8 @@ coachtech フリマ
 - PHP 8.1.33
 - Laravel 8.83.8
 - MySQL 8.0.26
+- Stripe
+- mailhog
 
 ## ER 図
 

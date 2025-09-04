@@ -1,6 +1,42 @@
+.user-info-area {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    width: 100%;
+    margin: 20px 0;
+}
+.user-title {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+.user-name {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+}
+.user-img {
+    width: 20%;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.user-btn-area {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+.profile-edit-btn {
+    padding: 0.5em 2em;
+    color: #ff5555;
+    background-color: white;
+    border: 2px solid;
+    font-weight: bold;
+    border-radius: 10px;
+}
 .tab-titles {
     display: flex;
-    margin: 50px;
+    margin-bottom: 50px;
     width: 100%;
     box-sizing: border-box;
     border-bottom: 1px solid;
@@ -64,6 +100,16 @@
     pointer-events: none;
 }
 @media screen and (max-width: 768px) {
+    .user-info-area {
+        display: flex;
+        width: 100%;
+        margin: 20px 0;
+        flex-direction: column;
+        align-items: center;
+    }
+    .user-img {
+        width: 10%;
+    }
     .tab-titles {
         display: flex;
         margin: 10px;
