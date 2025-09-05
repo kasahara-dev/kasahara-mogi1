@@ -12,6 +12,7 @@
         </div>
         <div class="user-btn-area">
             <form action="/mypage/profile" method="GET">
+                @csrf
                 <button type="submit" class="profile-edit-btn">プロフィールを編集</button>
             </form>
         </div>

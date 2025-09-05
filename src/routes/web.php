@@ -35,5 +35,5 @@ Route::middleware('auth')->group(function () {
     Route::post('/sell', [ItemController::class, 'store']);
     Route::get('/mypage', [ProfileController::class, 'show']);
     Route::get('/mypage/profile', [ProfileController::class, 'edit']);
-    Route::post('/mypage/profile', [ProfileController::class, 'update']);
+    Route::put('/mypage/profile', [ProfileController::class, 'update']);
 });

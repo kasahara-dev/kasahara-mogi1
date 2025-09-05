@@ -1,9 +1,24 @@
 .img-area {
     width: 100%;
+    display: flex;
+    align-items: center;
 }
 .user-img {
     width: 20%;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.profile-img-input {
+    display: none;
 }
 .profile-img-btn {
-    display:none
+    padding: 0.5em 2em;
+    color: #ff5555;
+    background-color: white;
+    border: 2px solid;
+    font-weight: bold;
+    border-radius: 10px;
+    cursor: pointer;
+    margin: 1em;
 }

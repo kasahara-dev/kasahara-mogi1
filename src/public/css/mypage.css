@@ -33,6 +33,7 @@
     border: 2px solid;
     font-weight: bold;
     border-radius: 10px;
+    cursor: pointer;
 }
 .tab-titles {
     display: flex;
