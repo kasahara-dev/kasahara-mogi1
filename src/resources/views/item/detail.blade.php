@@ -53,7 +53,7 @@
                 </div>
             </div>
             @auth
-                @if (isset($item->purchase))
+                @if (isset($item->purchase) or ($item->user_id == auth()->user()->id))
                     <button class="wide-btn" disabled>購入手続きへ</button>
                 @else
                     <button onclick="location.href='/purchase/{{ $item->id }}'" class="wide-btn">購入手続きへ</button>
