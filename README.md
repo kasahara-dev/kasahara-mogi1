@@ -21,7 +21,7 @@ coachtech フリマ
 
 1. `docker-compose exec php bash`
 2. `composer install`
-3. .env.example ファイルから.env を作成し、環境変数を変更(STRIPE_PUBLIC_KEY、STRIPE_SECRET_KEY には Stripe テストアカウントの公開鍵、秘密鍵を設定)
+3. .env.example ファイルから.env を作成し、環境変数を変更(STRIPE_PUBLIC_KEY、STRIPE_SECRET_KEY には Stripe テスト用アカウントの公開鍵、秘密鍵を設定)
 4. `php artisan key:generate`
 5. `php artisan migrate`
 6. `php artisan db:seed`

@@ -32,7 +32,7 @@
                     <a href="/item/{{ $item->id }}" class="item-link">
                         <img title="{{ $item->detail }}" src="{{ asset($item->img_path) }}" alt="{{ $item->name }}"
                             class="item-image" name="{{ $item->id }}" />
-                        @if (isset($item->purchase))
+                        @if (($tab != 'buy') and isset($item->purchase))
                             <div class="item-sold">
                                 <p class="item-sold-msg">SOLD</p>
                             </div>
