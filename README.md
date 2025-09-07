@@ -10,7 +10,7 @@ coachtech フリマ
 2.  `docker-compose up -d --build`
 
 > [!IMPORTANT]
-> MySQL は、OS によって起動しない場合があるのでそれぞれの PC に合わせて docker-compose.yml ファイルを編集してください。
+> MySQL は、OS によって起動しない場合があるのでそれぞれの PC に合わせて docker-compose.yml ファイルを編集
 
 ### Stripe 設定
 
@@ -36,8 +36,6 @@ coachtech フリマ
 - PHP 8.1.33
 - Laravel 8.83.8
 - MySQL 8.0.26
-- Stripe
-- mailhog
 
 ## ER 図
 
