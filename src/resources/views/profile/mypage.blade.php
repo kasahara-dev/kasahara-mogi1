@@ -13,6 +13,7 @@
         <div class="user-btn-area">
             <form action="/mypage/profile" method="GET">
                 @csrf
+                <input type="hidden" name="from" value="header" />
                 <button type="submit" class="profile-edit-btn">プロフィールを編集</button>
             </form>
         </div>

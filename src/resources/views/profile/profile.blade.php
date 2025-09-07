@@ -28,21 +28,37 @@
                     @error('name'){{ $message }}@enderror
                 </dd>
                 <dt class="form-name">郵便番号</dt>
-                <dd class="form-content"><input type="text" name="postNumber" class="form-input"
-                        value="{{ old('postNumber', auth()->user()->profile->address->post_number) }}" /></dd>
+                <dd class="form-content">
+                    @if(isset(auth()->user()->profile->address))
+                        <input type="text" name="postNumber" class="form-input"
+                            value="{{ old('postNumber', auth()->user()->profile->address->post_number) }}" />
+                    @else
+                        <input type="text" name="postNumber" class="form-input" value="{{ old('postNumber') }}" />
+                    @endif
+                </dd>
                 <dd class="form-error">
                     @error('postNumber'){{ $message }}@enderror
                 </dd>
                 <dt class="form-name">住所</dt>
-                <dd class="form-content"><input type="text" name="address" class="form-input"
-                        value="{{ old('address', auth()->user()->profile->address->address) }}" />
+                <dd class="form-content">
+                    @if(isset(auth()->user()->profile->address))
+                        <input type="text" name="address" class="form-input"
+                            value="{{ old('address', auth()->user()->profile->address->address) }}" />
+                    @else
+                        <input type="text" name="address" class="form-input" value="{{ old('address') }}" />
+                    @endif
                 </dd>
                 <dd class="form-error">
                     @error('address'){{ $message }}@enderror
                 </dd>
                 <dt class="form-name">ビル名</dt>
-                <dd class="form-content"><input type="text" name="building" class="form-input"
-                        value="{{ old('building', auth()->user()->profile->address->building) }}" />
+                <dd class="form-content">
+                    @if(isset(auth()->user()->profile->address))
+                        <input type="text" name="building" class="form-input"
+                            value="{{ old('building', auth()->user()->profile->address->building) }}" />
+                    @else
+                        <input type="text" name="building" class="form-input" value="{{ old('building') }}" />
+                    @endif
                 </dd>
                 <dd class="form-error">
                     @error('building'){{ $message }}@enderror

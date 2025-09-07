@@ -13,8 +13,13 @@ use Storage;
 
 class ProfileController extends Controller
 {
-    public function edit()
+    public function edit(Request $request)
     {
+        if (isset($request->from)) {
+            $request->session()->put('from', 'header');
+        } else {
+            $request->session()->put('from', 'register');
+        }
         return view('profile.profile');
     }
     public function show(Request $request)
@@ -50,13 +55,10 @@ class ProfileController extends Controller
             'name' => $request->name
         ]);
         if ($request->hasFile('userImgInput')) {
-            \Log::info('request is ' . $request);
             $file = $request->file('userImgInput');
             $fileName = Str::uuid() . '.' . $file->getClientOriginalExtension();
-            \Log::info('filename is ' . $fileName);
             $path = Storage::disk('public')->putFileAs('profile', $file, $fileName);
             $url = Storage::disk('public')->url($path);
-            \Log::info('path is ' . $path);
             $profile->update([
                 'address_id' => $address->id,
                 'img_path' => 'storage/' . $path,
@@ -66,6 +68,12 @@ class ProfileController extends Controller
                 'address_id' => $address->id,
             ]);
         }
-        return redirect('/mypage/');
+        if (session('from') == 'header') {
+            session()->forget('from');
+            return redirect('/mypage');
+        } else {
+            session()->forget('from');
+            return redirect('/');
+        }
     }
 }

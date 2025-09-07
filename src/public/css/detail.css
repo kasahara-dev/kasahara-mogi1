@@ -119,6 +119,7 @@
     display: flex;
     align-items: center;
     font-weight: bold;
+    column-gap: 1em;
 }
 .comment-user-icon {
     width: 10%;
@@ -131,6 +132,7 @@
     margin-bottom: 10px;
     background-color: #e5e5e5;
     padding: 10px;
+    margin-top: 0.5em;
 }
 .comment-info {
     margin-top: 10px;
