@@ -70,7 +70,7 @@
                     <dl class="inner-list">
                         <div class="inner-line">
                             <dt class="inner-title">カテゴリー</dt>
-                            <dd class="inner-detail">
+                            <dd class="inner-detail categories-area">
                                 @foreach ($item->categories as $category)
                                     <div class="category-tag">{{ $category->name }}</div>
                                 @endforeach

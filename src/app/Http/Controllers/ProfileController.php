@@ -58,7 +58,7 @@ class ProfileController extends Controller
             $file = $request->file('userImgInput');
             $fileName = Str::uuid() . '.' . $file->getClientOriginalExtension();
             $path = Storage::disk('public')->putFileAs('profile', $file, $fileName);
-            $url = Storage::disk('public')->url($path);
+            // $url = Storage::disk('public')->url($path);
             $profile->update([
                 'address_id' => $address->id,
                 'img_path' => 'storage/' . $path,

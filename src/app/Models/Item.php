@@ -11,7 +11,7 @@ class Item extends Model
     use HasFactory;
     protected $fillable = [
         'user_id',
-        'img_pass',
+        'img_path',
         'condition',
         'name',
         'brand',

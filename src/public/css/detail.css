@@ -89,16 +89,21 @@
 .inner-line {
     display: flex;
     margin: 10px 0;
-    align-items: center;
+    align-items: flex-start;
 }
 .inner-title {
     font-size: small;
     font-weight: bold;
+    white-space: nowrap;
 }
 .inner-detail {
     font-size: small;
     display: flex;
     margin-left: 20px;
+}
+.categories-area {
+    flex-wrap: wrap;
+    row-gap: 0.5em;
 }
 .category-tag {
     background-color: #d9d9d9;
