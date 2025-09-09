@@ -64,8 +64,8 @@
                     @error('building'){{ $message }}@enderror
                 </dd>
             </dl>
-            <button type="submit" class="submit-btn register-btn" name="send">更新する</button>
+            <button type="submit" class="submit-btn" name="send">更新する</button>
         </form>
     </div>
-    <script src="{{ asset('/js/profileImg.js') }}"></script>
+    <script src="{{ asset('/js/selectImg.js') }}"></script>
 @endsection

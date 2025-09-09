@@ -68,12 +68,12 @@ class ProfileController extends Controller
                 'address_id' => $address->id,
             ]);
         }
-        if (session('from') == 'header') {
-            session()->forget('from');
-            return redirect('/mypage');
-        } else {
+        if (session('from') == 'register') {
             session()->forget('from');
             return redirect('/');
+        } else {
+            session()->forget('from');
+            return redirect('/mypage');
         }
     }
 }

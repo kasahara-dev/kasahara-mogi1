@@ -22,12 +22,12 @@
         <main class="main">
             <div class="form-area">
                 <h1 class="form-title">会員登録</h1>
-                <form class="form" action="/register" method="post" novalidate>
+                <form class="form" action="/register" method="post" novalidate autocomplete="off">
                     @csrf
                     <dl>
                         <dt class="form-name">ユーザー名</dt>
                         <dd class="form-content"><input type="text" name="name" class="form-input"
-                                value="{{ old('name') }}" /></dd>
+                                value="{{ old('name') }}" autocomplete="off" /></dd>
                         <dd class="form-error">@error('name'){{ $message }}@enderror</dd>
                         <dt class="form-name">メールアドレス</dt>
                         <dd class="form-content"><input type="email" name="email" class="form-input"
@@ -36,7 +36,7 @@
                         <dd class="form-error">@error('email'){{ $message }}@enderror</dd>
                         <dt class="form-name">パスワード</dt>
                         <dd class="form-content"><input type="password" name="password" class="form-input"
-                                value="{{ old('password') }}" /></dd>
+                                value="{{ old('password') }}" autocomplete="off" /></dd>
                         <dd class="form-error">
                             @error('password')
                                 @foreach ($errors->get('password') as $message)
@@ -50,7 +50,7 @@
                         </dd>
                         <dt class="form-name">確認用パスワード</dt>
                         <dd class="form-content"><input type="password" name="password_confirmation" class="form-input"
-                                value="{{ old('password_confirmation') }}" /></dd>
+                                value="{{ old('password_confirmation') }}" autocomplete="off" /></dd>
                         <dd class="form-error">
                             @error('password')
                                 @foreach ($errors->get('password') as $message)

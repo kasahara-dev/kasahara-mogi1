@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Item;
 use App\Models\Comment;
+use App\Models\Category;
 use Illuminate\Support\Facades\Auth;
 
 class ItemController extends Controller
@@ -65,5 +66,10 @@ class ItemController extends Controller
         $commentsCount = count($comments);
         $favUsersCount = count($item->favUsers);
         return view('item.detail', compact(['item_id', 'item', 'comments', 'commentsCount', 'favorite', 'favUsersCount']));
+    }
+    public function create()
+    {
+        $categories = Category::all();
+        return view('item.sell', compact(['categories']));
     }
 }
