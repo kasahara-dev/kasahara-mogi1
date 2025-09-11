@@ -17,8 +17,11 @@ class CreatePurchasesTable extends Migration
             $table->id();
             $table->foreignId('item_id')->constrained('items');
             $table->foreignId('user_id')->constrained('users');
+            $table->string('user_name');
             $table->tinyInteger('payment');
-            $table->foreignId('address_id')->constrained('addresses');
+            $table->string('post_number');
+            $table->string('address');
+            $table->string('building')->nullable();
             $table->timestamp('created_at')->useCurrent()->nullable();
             $table->timestamp('updated_at')->useCurrent()->nullable();
         });

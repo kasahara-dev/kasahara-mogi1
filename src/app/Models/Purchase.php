@@ -11,16 +11,15 @@ class Purchase extends Model
     protected $fillable = [
         'item_id',
         'user_id',
+        'user_name',
         'payment',
-        'address_id',
+        'post_number',
+        'address',
+        'building',
     ];
     public function user()
     {
         return $this->belongsTo('App\Models\User');
-    }
-    public function address()
-    {
-        return $this->belongsTo('App\Models\Address');
     }
     public function item()
     {

@@ -18,29 +18,51 @@ class PurchaseController extends Controller
         } else {
             $payment = '';
         }
-        if ($request->filled('addressId')) {
-            $addressId = $request->addressId;
-        } elseif (isset(Auth::user()->profile->address->id)) {
-            $addressId = Auth::user()->profile->address->id;
+        // if ($request->filled('addressId')) {
+        //     $addressId = $request->addressId;
+        // } elseif (isset(Auth::user()->profile->address->id)) {
+        //     $addressId = Auth::user()->profile->address->id;
+        // } else {
+        //     $addressId = '';
+        // }
+        if ($request->has('address')) {
+            $post_number = $request->post_number;
+            $address = $request->address;
+            $building = $request->building;
+        } elseif (isset(Auth::user()->profile->address)) {
+            $post_number = Auth::user()->profile->address->post_number;
+            $address = Auth::user()->profile->address->address;
+            $building = Auth::user()->profile->address->building;
         } else {
-            $addressId = '';
+            $post_number = '';
+            $address = '';
+            $building = '';
         }
-        $address = Address::where('id', $addressId)->first();
+        session([
+            'post_number' => $post_number,
+            'address' => $address,
+            'building' => $building,
+        ]);
         $item = Item::where('id', $item_id)->first();
-        return view('purchase.purchase', compact(['item', 'address', 'payment']));
+        return view('purchase.purchase', compact(['item', 'payment', 'post_number', 'address', 'building']));
     }
     public function store(PurchaseRequest $request, $item_id)
     {
+        session()->flash('address', session('address'));
         require_once '../vendor/autoload.php';
         // require_once '../secrets.php';
 
         $item = Item::where('id', $item_id)->first();
-
+        // $address = Address::get($request->address);
         Purchase::create([
             'item_id' => $item_id,
             'user_id' => Auth::user()->id,
+            'user_name' => Auth::user()->name,
             'payment' => $request->payment,
-            'address_id' => $request->address,
+            // 'address_id' => $request->address,
+            'post_number' => session('post_number'),
+            'address' => session('address'),
+            'building' => session('building'),
         ]);
 
         if ($request->payment == '1') {
@@ -75,8 +97,8 @@ class PurchaseController extends Controller
                 ],
             ],
             'mode' => 'payment',
-            'success_url' => 'http://localhost/',
-            'cancel_url' => 'http://localhost/',
+            'success_url' => env('APP_URL'),
+            'cancel_url' => env('APP_URL'),
         ]);
 
         header("HTTP/1.1 303 See Other");

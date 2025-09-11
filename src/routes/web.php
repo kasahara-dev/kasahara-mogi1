@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\EmailVerificationController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ItemController;
@@ -25,6 +26,8 @@ Route::post('/register', [UserController::class, 'store']);
 Route::get('/login', [LoginController::class, 'create'])->name('login');
 Route::post('/login', [LoginController::class, 'store']);
 Route::middleware('auth')->group(function () {
+    Route::get('/verify', [EmailVerificationController::class, 'show']);
+    Route::put('/verify', [EmailVerificationController::class, 'update']);
     Route::post('/item/{item_id}', [CommentController::class, 'store']);
     Route::delete('/item/{item_id}', [CommentController::class, 'destroy']);
     Route::get('/purchase/{item_id}', [PurchaseController::class, 'create'])->name('purchase');

@@ -12,23 +12,29 @@ class AddressController extends Controller
     public function create(Request $request, $item_id)
     {
         $payment = $request->payment;
-        if (isset($request->addressId)) {
-            $addressId = $request->addressId;
-            $address = Address::where('id', $addressId)->first();
-        } else {
-            $address = null;
-        }
-        return view('address.address', compact(['item_id', 'address', 'payment']));
+        $post_number = session('post_number');
+        $address = session('address');
+        $building = session('building');
+        // if (isset($request->address)) {
+        //     $addressId = $request->addressId;
+        //     $address = Address::where('id', $addressId)->first();
+        // } else {
+        //     $address = null;
+        // }
+        return view('address.address', compact(['item_id', 'payment', 'post_number', 'address', 'building']));
     }
     public function store(AddressRequest $request, $item_id)
     {
         $payment = $request->payment;
-        $address = Address::create([
-            'post_number' => $request->postNumber,
-            'address' => $request->address,
-            'building' => $request->building,
-        ]);
-        $addressId = $address->id;
-        return redirect()->route('purchase', compact('item_id', 'addressId', 'payment'));
+        $post_number = $request->post_number;
+        $address = $request->address;
+        $building = $request->building;
+        // $address = Address::create([
+        //     'post_number' => $request->postNumber,
+        //     'address' => $request->address,
+        //     'building' => $request->building,
+        // ]);
+        // $addressId = $address->id;
+        return redirect()->route('purchase', compact('item_id', 'payment', 'post_number', 'address', 'building'));
     }
 }

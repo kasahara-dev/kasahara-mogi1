@@ -17,8 +17,4 @@ class Address extends Model
     {
         return $this->belongsTo('App\Models\Profile');
     }
-    public function purchase()
-    {
-        return $this->belongsTo('App\Models\Purchase');
-    }
 }

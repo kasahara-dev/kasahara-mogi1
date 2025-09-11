@@ -6,13 +6,7 @@ function paymentValue() {
 function changeAddress() {
     var select = document.getElementById("payment-select").value;
     var target = document.getElementById("purchase-address");
-    target.href =
-        "/purchase/address/" +
-        itemId +
-        "?addressId=" +
-        addressId +
-        "&payment=" +
-        select;
+    target.href = "/purchase/address/" + itemId + "?payment=" + select;
     return false;
 }
 function changeNoAddress() {
