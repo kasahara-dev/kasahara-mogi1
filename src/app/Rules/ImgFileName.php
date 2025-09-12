@@ -27,7 +27,7 @@ class ImgFileName implements Rule
     public function passes($attribute, $value)
     {
         $name = $value->getClientOriginalName();
-        return (Str::is('*.png', $name) or Str::is('*.jpeg', $name));
+        return (Str::is('*.png', $name) or Str::is('*.jpeg', $name) or Str::is('*.jpg', $name));
     }
 
     /**

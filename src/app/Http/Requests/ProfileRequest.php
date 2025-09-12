@@ -27,7 +27,7 @@ class ProfileRequest extends FormRequest
         return [
             'userImgInput' => ['mimetypes:image/jpeg,image/png', new ImgFileName()],
             'name' => ['required', 'max:20'],
-            'postNumber' => ['required', 'size:8', 'regex:/^[0-9-]+$/'],
+            'post_number' => ['required', 'size:8', 'regex:/^[0-9-]+$/'],
             'address' => ['required'],
         ];
     }
@@ -37,9 +37,9 @@ class ProfileRequest extends FormRequest
             'userImgInput.mimetypes' => '拡張子が.jpegもしくは.pngの画像を選択してください',
             'name.required' => '名前を入力してください',
             'name.max' => '名前は20文字以内で入力してください',
-            'postNumber.required' => '郵便番号を入力してください',
-            'postNumber.size' => '郵便番号はハイフンを含む8文字で入力してください',
-            'postNumber.regex' => '郵便番号はハイフンを含む8文字で入力してください',
+            'post_number.required' => '郵便番号を入力してください',
+            'post_number.size' => '郵便番号はハイフンを含む8文字で入力してください',
+            'post_number.regex' => '郵便番号はハイフンを含む8文字で入力してください',
             'address.required' => '住所を入力してください',
         ];
     }

@@ -30,14 +30,14 @@
                 <dt class="form-name">郵便番号</dt>
                 <dd class="form-content">
                     @if(isset(auth()->user()->profile->address))
-                        <input type="text" name="postNumber" class="form-input"
-                            value="{{ old('postNumber', auth()->user()->profile->address->post_number) }}" />
+                        <input type="text" name="post_number" class="form-input"
+                            value="{{ old('post_number', auth()->user()->profile->address->post_number) }}" />
                     @else
-                        <input type="text" name="postNumber" class="form-input" value="{{ old('postNumber') }}" />
+                        <input type="text" name="post_number" class="form-input" value="{{ old('post_number') }}" />
                     @endif
                 </dd>
                 <dd class="form-error">
-                    @error('postNumber'){{ $message }}@enderror
+                    @error('post_number'){{ $message }}@enderror
                 </dd>
                 <dt class="form-name">住所</dt>
                 <dd class="form-content">

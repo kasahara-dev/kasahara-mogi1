@@ -2,7 +2,6 @@
 
 @section('css')
     <link rel="stylesheet" href="{{ asset('css/purchase.css') }}">
-    <!-- <script src="https://js.stripe.com/basil/stripe.js"></script> -->
 @endsection
 
 @section('content')
@@ -34,18 +33,12 @@
                 </dl>
                 <dl class="purchase-list">
                     <dt class="purchase-list-title">配送先
-                        {{-- @if (isset($address)) --}}
                         <a class="purchase-address-link" id="purchase-address" href="" onclick="changeAddress()">変更する</a>
-                        {{-- @else
-                        <a class="purchase-address-link" id="purchase-address" href="" onclick="changeNoAddress()">変更する</a>
-                        @endif--}}
                     </dt>
                     <dd class="purchase-list-detail">
-                        {{-- @if (isset($address)) --}}
-                        <div class="address-line">〒{{ $post_number }}</div>
+                        <div class="address-line">@if($post_number) 〒 @endif{{ $post_number }}</div>
                         <div class="address-line">{{ $address }}</div>
                         <div class="address-line">{{ $building }}</div>
-                        {{-- @endif--}}
                     </dd>
                     <dd class="form-error">@error('address'){{ $message }}@enderror</dd>
                 </dl>

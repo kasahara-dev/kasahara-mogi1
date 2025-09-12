@@ -46,11 +46,22 @@ class ProfileController extends Controller
     public function update(ProfileRequest $request)
     {
         $profile = Profile::where('user_id', Auth::user()->id)->first();
-        $address = Address::create([
-            'post_number' => $request->postNumber,
-            'address' => $request->address,
-            'building' => $request->building,
-        ]);
+        if (is_null($profile->address_id)) {
+            $address = Address::create([
+                'post_number' => $request->post_number,
+                'address' => $request->address,
+                'building' => $request->building,
+            ]);
+            $profile->update([
+                'address_id' => $address->id,
+            ]);
+        } else {
+            Address::find($profile->address_id)->update([
+                'post_number' => $request->post_number,
+                'address' => $request->address,
+                'building' => $request->building,
+            ]);
+        }
         Auth::user()->update([
             'name' => $request->name
         ]);
@@ -58,14 +69,8 @@ class ProfileController extends Controller
             $file = $request->file('userImgInput');
             $fileName = Str::uuid() . '.' . $file->getClientOriginalExtension();
             $path = Storage::disk('public')->putFileAs('profile', $file, $fileName);
-            // $url = Storage::disk('public')->url($path);
             $profile->update([
-                'address_id' => $address->id,
                 'img_path' => 'storage/' . $path,
-            ]);
-        } else {
-            $profile->update([
-                'address_id' => $address->id,
             ]);
         }
         if (session('from') == 'register') {

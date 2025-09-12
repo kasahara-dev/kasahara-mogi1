@@ -93,6 +93,6 @@ class ItemController extends Controller
         foreach ($request->category as $category) {
             $item->categories()->attach($category);
         }
-        return redirect('/');
+        return redirect('/mypage');
     }
 }
