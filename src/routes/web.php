@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use App\Http\Controllers\EmailVerificationController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
@@ -26,7 +27,11 @@ Route::post('/register', [UserController::class, 'store']);
 Route::get('/login', [LoginController::class, 'create'])->name('login');
 Route::post('/login', [LoginController::class, 'store']);
 Route::middleware('auth')->group(function () {
-    Route::get('/verify', [EmailVerificationController::class, 'show']);
+    Route::get('/verify', [EmailVerificationController::class, 'show'])->name('verification.notice');
+    Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
+        $request->fulfill();
+        return redirect('/?page=mypage');
+    })->middleware(['auth', 'signed'])->name('verification.verify');
     Route::put('/verify', [EmailVerificationController::class, 'update']);
     Route::post('/item/{item_id}', [CommentController::class, 'store']);
     Route::delete('/item/{item_id}', [CommentController::class, 'destroy']);

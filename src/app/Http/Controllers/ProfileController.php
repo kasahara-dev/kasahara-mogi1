@@ -25,12 +25,12 @@ class ProfileController extends Controller
     public function show(Request $request)
     {
         if ($request->has('page')) {
-            $tab = $request->input('page');
+            $page = $request->input('page');
         } else {
-            $tab = 'sell';
+            $page = 'sell';
         }
         $user = Auth::user();
-        if ($tab == 'sell') {
+        if ($page == 'sell') {
             $items = $user->items();
         } else {
             $purchases = $user->purchases()->pluck('item_id');
@@ -41,7 +41,7 @@ class ProfileController extends Controller
         if (!is_null($items)) {
             $items = $items->get();
         }
-        return view('profile.mypage', compact('tab', 'items'));
+        return view('profile.mypage', compact('page', 'items'));
     }
     public function update(ProfileRequest $request)
     {
@@ -75,7 +75,7 @@ class ProfileController extends Controller
         }
         if (session('from') == 'register') {
             session()->forget('from');
-            return redirect('/');
+            return redirect('/?page=mylist');
         } else {
             session()->forget('from');
             return redirect('/mypage');

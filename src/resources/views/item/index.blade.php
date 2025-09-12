@@ -6,12 +6,12 @@
 
 @section('content')
     <div class="tab-titles">
-        @if ($tab == 'mylist')
+        @if ($page == 'mylist')
             <a href="/?keyword={{ $keyword }}" class="tab-inactive">おすすめ</a>
-            <a href="/?tab=mylist&keyword={{ $keyword }}" class="tab-active">マイリスト</a>
+            <a href="/?page=mylist&keyword={{ $keyword }}" class="tab-active">マイリスト</a>
         @else
             <a href="/?keyword={{ $keyword }}" class="tab-active">おすすめ</a>
-            <a href="/?tab=mylist&keyword={{ $keyword }}" class="tab-inactive">マイリスト</a>
+            <a href="/?page=mylist&keyword={{ $keyword }}" class="tab-inactive">マイリスト</a>
         @endif
     </div>
     <div class="items-area">
