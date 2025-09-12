@@ -30,9 +30,15 @@ Route::middleware('auth')->group(function () {
     Route::get('/verify', [EmailVerificationController::class, 'show'])->name('verification.notice');
     Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
         $request->fulfill();
-        return redirect('/?page=mypage');
+        return redirect('/mypage/profile');
     })->middleware(['auth', 'signed'])->name('verification.verify');
-    Route::put('/verify', [EmailVerificationController::class, 'update']);
+    Route::post('/verify', [EmailVerificationController::class, 'send']);
+    // Route::post('/email/verification-notification', function (Request $request) {
+    //     $request->user()->sendEmailVerificationNotification();
+    //     return back()->with('message', 'Verification link sent!');
+    // })->middleware(['auth', 'throttle:6,1'])->name('verification.send');
+});
+Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('/item/{item_id}', [CommentController::class, 'store']);
     Route::delete('/item/{item_id}', [CommentController::class, 'destroy']);
     Route::get('/purchase/{item_id}', [PurchaseController::class, 'create'])->name('purchase');

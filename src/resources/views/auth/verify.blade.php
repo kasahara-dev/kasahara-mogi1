@@ -22,9 +22,8 @@
         <main class="main">
             <div class="form-area">
                 <div class="mail-info">登録していただいたメールアドレスに認証メールを送付しました。<br>メール認証を完了してください。</div>
-                <a href="{{env('APP_URL')}}:8025" class="mail-link" target="_blank">認証はこちらから</a>
+                <a href="{{env('APP_URL')}}:8025" class="mail-link">認証はこちらから</a>
                 <form action="/verify" method="post">
-                    @method('PUT')
                     @csrf
                     <button type="submit" class="resend-link" name="send">認証メールを再送する</button>
                 </form>
