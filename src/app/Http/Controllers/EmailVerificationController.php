@@ -13,9 +13,9 @@ class EmailVerificationController extends Controller
     {
         return view('auth.verify');
     }
-    public function send()
-    {
-        Auth::user()->sendEmailVerificationNotification();
-        return back();
-    }
+    // public function send()
+    // {
+    //     Auth::user()->sendEmailVerificationNotification();
+    //     return back();
+    // }
 }

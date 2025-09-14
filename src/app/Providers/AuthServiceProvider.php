@@ -29,9 +29,10 @@ class AuthServiceProvider extends ServiceProvider
 
         VerifyEmail::toMailUsing(function ($notifiable, $url) {
             return (new MailMessage)
-                ->subject('coachtechフリマメール認証')
-                ->line('クリックで認証を完了してください。')
-                ->action('認証', $url);
+                ->subject('coachtechフリマ仮登録完了メール')
+                ->line('クリックで本登録を完了してください。')
+                ->action('本登録', $url)
+                ->line('このメールに心当たりのない場合は、このメールを破棄してください。');
         });
     }
 }
