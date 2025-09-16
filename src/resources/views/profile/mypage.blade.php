@@ -19,7 +19,7 @@
         </div>
     </div>
     <div class="tab-titles">
-        @if ($tab == 'buy')
+        @if ($page == 'buy')
             <a href="/mypage?page=sell" class="tab-inactive">出品した商品</a>
             <a href="/mypage?page=buy" class="tab-active">購入した商品</a>
         @else
@@ -34,7 +34,7 @@
                     <a href="/item/{{ $item->id }}" class="item-link">
                         <img title="{{ $item->detail }}" src="{{ asset($item->img_path) }}" alt="{{ $item->name }}"
                             class="item-image" name="{{ $item->id }}" />
-                        @if (($tab != 'buy') and isset($item->purchase))
+                        @if (($page != 'buy') and isset($item->purchase))
                             <div class="item-sold">
                                 <p class="item-sold-msg">SOLD</p>
                             </div>
