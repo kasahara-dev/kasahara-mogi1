@@ -7,6 +7,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 use Illuminate\Support\Facades\Mail;
+use App\Models\User;
 
 class RegisterTest extends TestCase
 {
@@ -68,14 +69,17 @@ class RegisterTest extends TestCase
     public function test_register()
     {
         $response = $this->post('/register', [
-            'name' => 'テスト',
+            'name' => 'ログインテスト',
             'email' => 'test@example.com',
             'password' => 'abcdefgh',
             'password_confirmation' => 'abcdefgh',
         ]);
         $this->assertDatabaseHas('users', [
-            'name' => 'テスト',
+            'name' => 'ログインテスト',
             'email' => 'test@example.com',
         ]);
+        $registered_user = User::where('name', 'ログインテスト')->first();
+        $this->assertTrue(Hash::check('abcdefgh', $registered_user->password));
+        $response->assertRedirect('/mypage/profile');
     }
 }
