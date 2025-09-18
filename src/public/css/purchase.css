@@ -18,6 +18,7 @@
 .item-name {
     font-size: xx-large;
     font-weight: bolder;
+    word-break: break-all;
 }
 .item-price {
     font-size: x-large;
