@@ -45,7 +45,7 @@
                         <select name="condition" id="condition" class="condition-area">
                             <option value="" selected hidden>選択してください</option>
                             @foreach (config('condition') as $conditionId => $conditionName)
-                                <option value="{{ $conditionId }}" @if(!empty(old('condition')) && old('condition') == $conditionId ) selected @endif)>{{ $conditionName }}</option>
+                                <option value="{{ $conditionId }}" @if(!empty(old('condition')) && old('condition') == $conditionId) selected @endif)>{{ $conditionName }}</option>
                             @endforeach
                         </select>
                         <div class="form-error">
@@ -83,7 +83,7 @@
                     <dt class="form-name"><label for="price">販売価格</label></dt>
                     <dd class="form-content price-content">
                         <div class="price-area">
-                            <input type="text" class="price" id="price" name="price" value="{{ old('price') }}" />
+                            <input type="number" class="price" id="price" name="price" value="{{ old('price') }}" />
                         </div>
                     </dd>
                     <div class="form-error">

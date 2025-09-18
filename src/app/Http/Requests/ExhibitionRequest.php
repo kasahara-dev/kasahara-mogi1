@@ -31,7 +31,7 @@ class ExhibitionRequest extends FormRequest
             'userImgInput' => ['required', 'mimetypes:image/jpeg,image/png', new ImgFileName()],
             'category' => ['required'],
             'condition' => ['required'],
-            'price' => ['required', 'integer', 'min:0'],
+            'price' => ['required', 'integer', 'min:0', 'max:99999999'],
         ];
     }
     public function messages()
@@ -45,8 +45,9 @@ class ExhibitionRequest extends FormRequest
             'category.required' => '商品のカテゴリーを選択してください',
             'condition.required' => '商品の状態を選択してください',
             'price.required' => '商品価格を入力してください',
-            'price.integer' => '商品価格は0円以上の数値を入力してください',
-            'price.min' => '商品価格は0円以上の数値を入力してください',
+            'price.integer' => '商品価格は0円以上99999999円以下の数値を入力してください',
+            'price.min' => '商品価格は0円以上99999999円以下の数値を入力してください',
+            'price.max' => '商品価格は0円以上99999999円以下の数値を入力してください'
         ];
     }
 }

@@ -4,6 +4,7 @@ namespace Tests\Feature;
 
 use Hash;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 use Illuminate\Support\Facades\Mail;
@@ -11,7 +12,7 @@ use App\Models\User;
 
 class RegisterTest extends TestCase
 {
-    use RefreshDatabase;
+    use DatabaseMigrations;
     /**
      * A basic feature test example.
      *
@@ -69,16 +70,16 @@ class RegisterTest extends TestCase
     public function test_register()
     {
         $response = $this->post('/register', [
-            'name' => 'ログインテスト',
+            'name' => '登録テスト',
             'email' => 'test@example.com',
             'password' => 'abcdefgh',
             'password_confirmation' => 'abcdefgh',
         ]);
         $this->assertDatabaseHas('users', [
-            'name' => 'ログインテスト',
+            'name' => '登録テスト',
             'email' => 'test@example.com',
         ]);
-        $registered_user = User::where('name', 'ログインテスト')->first();
+        $registered_user = User::find(1);
         $this->assertTrue(Hash::check('abcdefgh', $registered_user->password));
         $response->assertRedirect('/mypage/profile');
     }

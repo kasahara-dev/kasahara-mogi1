@@ -41,8 +41,10 @@
 }
 .item-name {
     margin: 0;
+    word-break: break-all;
 }
 .brand-name {
+    word-break: break-all;
 }
 .price-area {
     margin-top: 3px;
@@ -83,6 +85,7 @@
 }
 .info-detail {
     margin: 0;
+    word-break: break-all;
 }
 .inner-list {
 }
