@@ -20,7 +20,7 @@
 .items-area {
     display: grid;
     grid-template-columns: 23.95% 23.95% 23.95% 23.95%;
-    gap: 1.4%;
+    gap: 1em 1.4%;
     width: 100%;
 }
 
