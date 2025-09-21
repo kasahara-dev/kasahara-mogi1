@@ -36,7 +36,7 @@
                             class="item-image" name="{{ $item->id }}" />
                         @if (($page != 'buy') and isset($item->purchase))
                             <div class="item-sold">
-                                <p class="item-sold-msg">SOLD</p>
+                                <p class="item-sold-msg">Sold</p>
                             </div>
                         @endif
                         <label for="{{ $item->id }}" class="item-name">{{ $item->name }}</label>

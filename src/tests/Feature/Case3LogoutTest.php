@@ -8,7 +8,7 @@ use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 use App\Models\User;
 
-class LogoutTest extends TestCase
+class Case3LogoutTest extends TestCase
 {
     use DatabaseMigrations;
     /**
