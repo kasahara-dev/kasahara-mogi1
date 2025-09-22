@@ -7,8 +7,10 @@ use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 use App\Models\User;
 use App\Models\Item;
+use App\Models\Purchase;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Support\Facades\DB;
+use Faker\Factory;
 
 
 class Case5MyListTest extends TestCase
@@ -21,18 +23,59 @@ class Case5MyListTest extends TestCase
      */
     public function test_favorite()
     {
-        User::factory()->count(rand(2, 10))->create();
-        $userId=User::pluck('id')->random();
-        Item::factory()->count(rand(1, 100))->create();
-        $response = $this->get('/?tab=mylist');
-
-        $item = Item::pluck('user_id')->random();
-        $user = User::where('');
+        User::factory()->count(2)->create();
+        $user = User::find(1);
+        $items = Item::factory()->count(rand(1, 100))->create();
+        DB::table('items')->update(['user_id' => 2]);
+        $itemId = Item::pluck('id')->random();
         DB::table('favorites')->insert(
             [
-                'user_id' => '1',
-                'item_id' => '4',
+                'user_id' => 1,
+                'item_id' => $itemId,
             ]
         );
+        $favItemName = Item::find($itemId)->name;
+        $notFavItemName = Item::where('id', '<>', $itemId)->pluck('name');
+        $response = $this->actingAs($user)->get('/?tab=mylist');
+        $response->assertSee($favItemName);
+        $response->assertDontSee($notFavItemName);
+    }
+    public function test_sold()
+    {
+        $faker = Factory::create('ja_JP');
+        User::factory()->count(2)->create();
+        $user = User::find(1);
+        $items = Item::factory()->count(rand(1, 100))->create();
+        DB::table('items')->update(['user_id' => 2]);
+        $itemId = Item::pluck('id')->random();
+        DB::table('favorites')->insert(
+            [
+                'user_id' => $user->id,
+                'item_id' => $itemId,
+            ]
+        );
+        $response = $this->actingAs($user)->get('/?tab=mylist');
+        $response->assertDontSee('Sold');
+        Purchase::create([
+            'item_id' => $itemId,
+            'user_id' => $user->id,
+            'user_name' => $faker->name(),
+            'payment' => rand(1, 2),
+            'post_number' => substr_replace($faker->postcode, '-', 3, 0),
+            'address' => $faker->prefecture . $faker->city . $faker->streetAddress,
+            'building' => $faker->secondaryAddress,
+        ]);
+        $response = $this->actingAs($user)->get('/?tab=mylist');
+        $response->assertSee('Sold');
+    }
+    public function test_guest()
+    {
+        User::factory()->create();
+        Item::factory()->create();
+        $itemNames = Item::pluck('name')->toArray();
+        $response = $this->get('/?tab=mylist');
+        foreach ($itemNames as $itemName) {
+            $response->assertDontSee($itemName);
+        }
     }
 }
