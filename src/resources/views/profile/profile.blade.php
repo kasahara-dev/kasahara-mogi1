@@ -12,11 +12,11 @@
             @csrf
             <div class="img-area">
                 <img id="user-img" class="user-img" src="{{ asset(auth()->user()->profile->img_path) }}" alt="ユーザーアイコン" />
-                <input id="fileElem" name="userImgInput" type="file" class="profile-img-input" />
+                <input id="fileElem" name="user_img_input" type="file" class="profile-img-input" />
                 <button id="fileSelect" type="button" name="profile-img-btn" class="profile-img-btn">画像を選択する</button>
             </div>
             <div class="form-error">
-                @error('userImgInput')
+                @error('user_img_input')
                     {{ $message }}
                 @enderror
             </div>

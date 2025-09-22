@@ -78,7 +78,7 @@ class ItemController extends Controller
     }
     public function store(ExhibitionRequest $request)
     {
-        $file = $request->file('userImgInput');
+        $file = $request->file('item_img_input');
         $fileName = Str::uuid() . '.' . $file->getClientOriginalExtension();
         $path = Storage::disk('public')->putFileAs('item', $file, $fileName);
         $item = Item::create([

@@ -25,7 +25,7 @@ class ProfileRequest extends FormRequest
     public function rules()
     {
         return [
-            'userImgInput' => ['mimetypes:image/jpeg,image/png', new ImgFileName()],
+            'user_img_input' => ['mimetypes:image/jpeg,image/png', new ImgFileName()],
             'name' => ['required', 'max:20'],
             'post_number' => ['required', 'size:8', 'regex:/^[0-9-]+$/'],
             'address' => ['required'],
@@ -34,7 +34,7 @@ class ProfileRequest extends FormRequest
     public function messages()
     {
         return [
-            'userImgInput.mimetypes' => '拡張子が.jpegもしくは.pngの画像を選択してください',
+            'user_img_input.mimetypes' => '拡張子が.jpegもしくは.pngの画像を選択してください',
             'name.required' => '名前を入力してください',
             'name.max' => '名前は20文字以内で入力してください',
             'post_number.required' => '郵便番号を入力してください',

@@ -14,11 +14,11 @@
                 <dd class="form-content">
                     <div class="img-area">
                         <img id="user-img" class="user-img" />
-                        <input id="fileElem" name="userImgInput" type="file" class="item-img-input" />
+                        <input id="fileElem" name="item_img_input" type="file" class="item-img-input" />
                         <button id="fileSelect" type="button" name="item-img-btn" class="item-img-btn">画像を選択する</button>
                     </div>
                     <div class="form-error">
-                        @error('userImgInput')
+                        @error('item_img_input')
                             {{ $message }}
                         @enderror
                     </div>

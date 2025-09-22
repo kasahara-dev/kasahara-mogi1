@@ -65,8 +65,8 @@ class ProfileController extends Controller
         Auth::user()->update([
             'name' => $request->name
         ]);
-        if ($request->hasFile('userImgInput')) {
-            $file = $request->file('userImgInput');
+        if ($request->hasFile('user_img_input')) {
+            $file = $request->file('user_img_input');
             $fileName = Str::uuid() . '.' . $file->getClientOriginalExtension();
             $path = Storage::disk('public')->putFileAs('profile', $file, $fileName);
             $profile->update([
