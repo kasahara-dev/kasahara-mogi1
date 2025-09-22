@@ -30,7 +30,8 @@ class Case4TopPageTest extends TestCase
 
     public function test_all_items()
     {
-        $this->seed();
+        User::factory()->count(rand(1, 10))->create();
+        Item::factory()->count(rand(1, 100))->create();
         $itemNames = Item::orderBy('updated_at', 'desc')->orderBy('id', 'desc')->pluck('name')->toArray();
         $itemImages = Item::orderBy('updated_at', 'desc')->orderBy('id', 'desc')->pluck('img_path')->toArray();
         $response = $this->get('/');
@@ -39,28 +40,21 @@ class Case4TopPageTest extends TestCase
     }
     public function test_sold()
     {
-        $this->seed(
-            [
-                UsersTableSeeder::class,
-                CategoriesTableSeeder::class,
-                ItemsTableSeeder::class,
-                CategoryItemSeeder::class,
-                AddressesTableSeeder::class,
-                ProfilesTableSeeder::class,
-            ]
-        );
-        $soldCount = Purchase::count();
+        User::factory()->count(rand(1, 10))->create();
+        Item::factory()->count(rand(1, 100))->create();
         $response = $this->get('/');
         $response->assertDontSee('Sold');
-        $this->seed(PurchasesTableSeeder::class);
+        Purchase::factory()->count(rand(1, 5))->create();
         $response = $this->get('/');
         $response->assertSee('Sold');
     }
     public function test_sell_items()
     {
-        $this->seed();
-        $user = User::find(1);
-        $sellItems = Item::where('user_id', 1)->pluck('name');
+        $users = User::factory()->count(rand(1, 10))->create();
+        $items = Item::factory()->count(rand(1, 100))->create();
+        $userId = Item::pluck('user_id')->random();
+        $sellItems = Item::where('user_id', $userId)->pluck('name');
+        $user = User::find($userId)->first();
         $response = $this->actingAs($user)->get('/');
         foreach ($sellItems as $sellItem) {
             $response->assertDontSee($sellItem);

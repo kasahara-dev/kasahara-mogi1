@@ -17,8 +17,8 @@ class ItemController extends Controller
     public function index(Request $request)
     {
         $items = Item::orderBy('updated_at', 'desc')->orderBy('id', 'desc')->with('purchase');
-        if (isset($request->page)) {
-            if ($request->page == 'mylist') {
+        if (isset($request->tab)) {
+            if ($request->tab == 'mylist') {
                 if (Auth::check()) {
                     // 認証済みユーザーに対する処理
                     $user = Auth::user();
@@ -28,9 +28,9 @@ class ItemController extends Controller
                     $items = null;
                 }
             }
-            $page = $request->page;
+            $tab = $request->tab;
         } else {
-            $page = '';
+            $tab = '';
         }
         // 自分が出品した商品は表示しない
         if (Auth::check()) {
@@ -54,7 +54,7 @@ class ItemController extends Controller
         if (!is_null($items)) {
             $items = $items->get();
         }
-        return view('item.index', compact(['items', 'keyword', 'page']));
+        return view('item.index', compact(['items', 'keyword', 'tab']));
     }
     public function show(Request $request, $item_id)
     {

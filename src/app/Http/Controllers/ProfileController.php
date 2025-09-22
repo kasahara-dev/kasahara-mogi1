@@ -75,7 +75,7 @@ class ProfileController extends Controller
         }
         if (session('from') == 'register') {
             session()->forget('from');
-            return redirect('/?page=mylist');
+            return redirect('/?tab=mylist');
         } else {
             session()->forget('from');
             return redirect('/mypage');
