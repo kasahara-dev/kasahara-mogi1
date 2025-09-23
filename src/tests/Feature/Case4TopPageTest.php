@@ -50,11 +50,10 @@ class Case4TopPageTest extends TestCase
     }
     public function test_sell_items()
     {
-        $users = User::factory()->count(rand(1, 10))->create();
+        $user = User::factory()->create();
+        User::factory()->create();
         $items = Item::factory()->count(rand(1, 100))->create();
-        $userId = Item::pluck('user_id')->random();
-        $sellItems = Item::where('user_id', $userId)->pluck('name');
-        $user = User::find($userId)->first();
+        $sellItems = Item::where('user_id', $user->id)->pluck('name');
         $response = $this->actingAs($user)->get('/');
         foreach ($sellItems as $sellItem) {
             $response->assertDontSee($sellItem);

@@ -23,14 +23,14 @@ class Case5MyListTest extends TestCase
      */
     public function test_favorite()
     {
-        User::factory()->count(2)->create();
-        $user = User::find(1);
+        $user = User::factory()->create();
+        $other = User::factory()->create();
         $items = Item::factory()->count(rand(1, 100))->create();
-        DB::table('items')->update(['user_id' => 2]);
+        DB::table('items')->update(['user_id' => $other->id]);
         $itemId = Item::pluck('id')->random();
         DB::table('favorites')->insert(
             [
-                'user_id' => 1,
+                'user_id' => $user->id,
                 'item_id' => $itemId,
             ]
         );
@@ -43,10 +43,10 @@ class Case5MyListTest extends TestCase
     public function test_sold()
     {
         $faker = Factory::create('ja_JP');
-        User::factory()->count(2)->create();
-        $user = User::find(1);
+        $user = User::factory()->create();
+        $other = User::factory()->create();
         $items = Item::factory()->count(rand(1, 100))->create();
-        DB::table('items')->update(['user_id' => 2]);
+        DB::table('items')->update(['user_id' => $other->id]);
         $itemId = Item::pluck('id')->random();
         DB::table('favorites')->insert(
             [
@@ -74,8 +74,8 @@ class Case5MyListTest extends TestCase
         Item::factory()->create();
         $itemNames = Item::pluck('name')->toArray();
         $response = $this->get('/?tab=mylist');
-        foreach ($itemNames as $itemName) {
-            $response->assertDontSee($itemName);
-        }
+        // foreach ($itemNames as $itemName) {
+        $response->assertDontSee($itemNames);
+        // }
     }
 }

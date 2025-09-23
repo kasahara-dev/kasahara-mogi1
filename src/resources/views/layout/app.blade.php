@@ -34,8 +34,7 @@
                         </form>
                     </li>
                     <li class="header-btn"><a href="/mypage" class="header-mypage">マイページ</a></li>
-                    <li class="header-btn"><button onclick="location.href='/sell'" class="header-exhibit">出品</button>
-                    </li>
+                    <li class="header-btn"><button onclick="location.href='/sell'" class="header-exhibit">出品</button></li>
                 @endauth
                 @guest
                     <li class="header-btn"><a href="/login" class="header-login">ログイン</a></li>

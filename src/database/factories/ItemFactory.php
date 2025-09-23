@@ -28,8 +28,8 @@ class ItemFactory extends Factory
             'user_id' => $users->random(),
             'img_path' => 'storage/' . $path,
             'condition' => array_rand($conditions),
-            'name' => $this->faker->sentence(),
-            'brand' => $this->faker->optional()->sentence(),
+            'name' => $this->faker->word(),
+            'brand' => $this->faker->optional()->word(),
             'detail' => $this->faker->realText(),
             'price' => $this->faker->randomNumber(8),
         ];
