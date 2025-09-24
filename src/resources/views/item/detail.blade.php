@@ -10,7 +10,7 @@
             <img src="{{ asset($item->img_path) }}" alt='商品画像' class="item-img" />
             @if (isset($item->purchase))
                 <div class="item-sold">
-                    <p class="item-sold-msg">SOLD</p>
+                    <p class="item-sold-msg">Sold</p>
                 </div>
             @endif
         </div>

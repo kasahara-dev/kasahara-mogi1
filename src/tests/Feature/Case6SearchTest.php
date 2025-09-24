@@ -25,31 +25,35 @@ class Case6SearchTest extends TestCase
         $faker = Factory::create('ja_JP');
         User::factory()->count(rand(1, 10))->create();
         Item::factory()->count(rand(1, 100))->create();
-        // $items = Item::orderBy('updated_at', 'desc')->orderBy('id', 'desc');
         $itemNames = Item::pluck('name');
         $searchWord = $faker->randomLetter();
         $matchName = [];
         $noMatchName = [];
         foreach ($itemNames as $itemName) {
             if (Str::contains($itemName, $searchWord)) {
-                if (!in_array($itemName, $matchName, true)) {
-                    array_push($matchName, $itemName . '</label>');
-                }
+                array_push($matchName, $itemName . '</label>');
             } else {
-                if (!in_array($itemName, $noMatchName, true)) {
-                    array_push($noMatchName, $itemName . '</label>');
-                }
+                array_push($noMatchName, $itemName . '</label>');
             }
         }
         $response = $this->get('/?keyword=' . $searchWord);
         $response->assertSee($matchName, false);
         $response->assertDontSee($noMatchName, false);
     }
-    public function test_keep(){
+    public function test_keep()
+    {
         $faker = Factory::create('ja_JP');
-        $user=User::factory()->create();
-        Item::factory()->count(rand(1, 100))->create();
-
+        $other = User::factory()->create();
+        $items = Item::factory()->count(rand(1, 100))->create();
+        $user = User::factory()->create();
+        foreach ($items as $item) {
+            DB::table('favorites')->insert(
+                [
+                    'user_id' => $user->id,
+                    'item_id' => $item->id,
+                ]
+            );
+        }
         // $items = Item::orderBy('updated_at', 'desc')->orderBy('id', 'desc');
         $itemNames = Item::pluck('name');
         $searchWord = $faker->randomLetter();
@@ -57,27 +61,15 @@ class Case6SearchTest extends TestCase
         $noMatchName = [];
         foreach ($itemNames as $itemName) {
             if (Str::contains($itemName, $searchWord)) {
-                if (!in_array($itemName, $matchName, true)) {
-                    array_push($matchName, $itemName . '</label>');
-                }
+                array_push($matchName, $itemName . '</label>');
             } else {
-                if (!in_array($itemName, $noMatchName, true)) {
-                    array_push($noMatchName, $itemName . '</label>');
-                }
+                array_push($noMatchName, $itemName . '</label>');
             }
         }
-        $favMatchId = Item::pluck('id')->random();
-        DB::table('favorites')->insert(
-            [
-                'user_id' => $user->id,
-                'item_id' => $itemId,
-            ]
-        );
-        $favItemName = Item::find($itemId)->name;
-
-        $response = $this->get('/?keyword=' . $searchWord);
+        $response = $this->actingAs($user)->get('/?keyword=' . $searchWord);
+        $response = $this->actingAs($user)->get('/?tab=mylist&keyword=' . $searchWord);
+        $response->assertSee('value="' . $searchWord . '"', false);
         $response->assertSee($matchName, false);
         $response->assertDontSee($noMatchName, false);
-
     }
 }

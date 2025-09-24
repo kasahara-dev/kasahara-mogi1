@@ -55,7 +55,7 @@ class Case5MyListTest extends TestCase
             ]
         );
         $response = $this->actingAs($user)->get('/?tab=mylist');
-        $response->assertDontSee('Sold');
+        $response->assertDontSee('Sold</p>', false);
         Purchase::create([
             'item_id' => $itemId,
             'user_id' => $user->id,
@@ -66,16 +66,16 @@ class Case5MyListTest extends TestCase
             'building' => $faker->secondaryAddress,
         ]);
         $response = $this->actingAs($user)->get('/?tab=mylist');
-        $response->assertSee('Sold');
+        $response->assertSee('Sold</p>', false);
     }
     public function test_guest()
     {
         User::factory()->create();
         Item::factory()->create();
-        $itemNames = Item::pluck('name')->toArray();
+        $itemNames = Item::pluck('id')->toArray();
         $response = $this->get('/?tab=mylist');
-        // foreach ($itemNames as $itemName) {
-        $response->assertDontSee($itemNames);
-        // }
+        foreach ($itemNames as $itemName) {
+            $response->assertDontSee('<a href="/item/' . $itemName . '"', false);
+        }
     }
 }

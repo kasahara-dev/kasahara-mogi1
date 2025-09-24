@@ -53,10 +53,10 @@ class Case4TopPageTest extends TestCase
         $user = User::factory()->create();
         User::factory()->create();
         $items = Item::factory()->count(rand(1, 100))->create();
-        $sellItems = Item::where('user_id', $user->id)->pluck('name');
+        $sellItems = Item::where('user_id', $user->id)->pluck('id');
         $response = $this->actingAs($user)->get('/');
         foreach ($sellItems as $sellItem) {
-            $response->assertDontSee($sellItem);
+            $response->assertDontSee('<a href="/item/' . $sellItem . '"', false);
         }
     }
 }
