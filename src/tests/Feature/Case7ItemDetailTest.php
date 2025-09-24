@@ -45,9 +45,8 @@ class Case7ItemDetailTest extends TestCase
             }
         }
         Comment::factory()->count(rand(1, 10))->create();
-        \Log::info('img is ' . $item->img_path);
         // $response = $this->get('/item/' . $item->id);
-        // $response->assertSee($item->img_path);
+        // $response->assertSee($item->img_path, false);
         // $response->assertSee($item->name);
         // $response->assertSee($item->brand);
         // $response->assertSee($item->price);
