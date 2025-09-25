@@ -21,7 +21,7 @@ use App\Http\Controllers\AddressController;
 |
 */
 Route::get('/', [ItemController::class, 'index']);
-Route::get('/item/{item_id}', [ItemController::class, 'show']);
+Route::get('/item/{item_id}', [ItemController::class, 'show'])->name('detail');
 Route::get('/register', [UserController::class, 'create']);
 Route::post('/register', [UserController::class, 'store']);
 Route::get('/login', [LoginController::class, 'create'])->name('login');
@@ -42,7 +42,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('/item/{item_id}', [CommentController::class, 'store']);
     Route::delete('/item/{item_id}', [CommentController::class, 'destroy']);
     Route::get('/purchase/{item_id}', [PurchaseController::class, 'create'])->name('purchase');
-    Route::post('/purchase/{item_id}', [PurchaseController::class, 'store']);
+    Route::post('/purchase/{item_id}', [PurchaseController::class, 'store'])->name('purchase.store');
     Route::get('/purchase/address/{item_id}', [AddressController::class, 'create']);
     Route::post('/purchase/address/{item_id}', [AddressController::class, 'store']);
     Route::get('/sell', [ItemController::class, 'create']);

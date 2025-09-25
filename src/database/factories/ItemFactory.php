@@ -20,18 +20,18 @@ class ItemFactory extends Factory
     {
         $users = User::pluck('id');
         $conditions = array_keys(config('condition'));
-        Storage::fake('public');
-        $file = UploadedFile::fake()->create('contactTest.jpg', 100, 'image/jpeg');
-        $fileName = Str::uuid() . '.jpeg';
-        $path = Storage::disk('public')->putFileAs('item', $file, $fileName);
+        // Storage::fake('public');
+        // $file = UploadedFile::fake()->image('img.jpeg', 100, 100);
+        // $fileName = Str::uuid() . '.jpeg';
+        // $path = Storage::disk('public')->putFileAs('item', $file, $fileName);
         return [
             'user_id' => $users->random(),
-            'img_path' => 'storage/' . $path,
+            'img_path' => 'img/item/yellow.png',
             'condition' => array_rand($conditions),
             'name' => $this->faker->word(),
             'brand' => $this->faker->optional()->word(),
             'detail' => $this->faker->realText(),
-            'price' => $this->faker->randomNumber(8),
+            'price' => rand(0, 99999999),
         ];
     }
 }

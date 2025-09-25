@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Models\Purchase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
@@ -12,7 +13,6 @@ use App\Models\Category;
 use App\Models\Comment;
 use Illuminate\Support\Facades\DB;
 use Database\Seeders\CategoriesTableSeeder;
-
 class Case7ItemDetailTest extends TestCase
 {
     use DatabaseMigrations;
@@ -45,8 +45,8 @@ class Case7ItemDetailTest extends TestCase
             }
         }
         Comment::factory()->count(rand(1, 10))->create();
-        // $response = $this->get('/item/' . $item->id);
-        // $response->assertSee($item->img_path, false);
+        $response = $this->get(route('detail', ['item_id' => '1']));
+        $response->assertSee($item->img_path, false);
         // $response->assertSee($item->name);
         // $response->assertSee($item->brand);
         // $response->assertSee($item->price);
