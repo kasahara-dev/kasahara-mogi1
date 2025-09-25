@@ -13,7 +13,7 @@ use App\Models\Category;
 use App\Models\Comment;
 use Illuminate\Support\Facades\DB;
 use Database\Seeders\CategoriesTableSeeder;
-class Case7ItemDetailTest extends TestCase
+class Case07ItemDetailTest extends TestCase
 {
     use DatabaseMigrations;
     /**

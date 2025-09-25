@@ -12,7 +12,7 @@ use Faker\Factory;
 use Illuminate\Support\Facades\DB;
 
 
-class Case2LoginTest extends TestCase
+class Case02LoginTest extends TestCase
 {
     use DatabaseMigrations;
     /**

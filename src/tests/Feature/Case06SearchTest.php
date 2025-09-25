@@ -12,7 +12,7 @@ use Faker\Factory;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
 
-class Case6SearchTest extends TestCase
+class Case06SearchTest extends TestCase
 {
     use DatabaseMigrations;
     /**
@@ -31,9 +31,9 @@ class Case6SearchTest extends TestCase
         $noMatchName = [];
         foreach ($itemNames as $itemName) {
             if (Str::contains($itemName, $searchWord)) {
-                array_push($matchName, $itemName . '</label>');
+                array_push($matchName, 'class="item-name">' . $itemName . '</label>');
             } else {
-                array_push($noMatchName, $itemName . '</label>');
+                array_push($noMatchName, 'class="item-name">' . $itemName . '</label>');
             }
         }
         $response = $this->get('/?keyword=' . $searchWord);

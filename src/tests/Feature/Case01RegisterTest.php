@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Mail;
 use App\Models\User;
 use Faker\Factory;
 
-class Case1RegisterTest extends TestCase
+class Case01RegisterTest extends TestCase
 {
     use DatabaseMigrations;
     /**
@@ -111,8 +111,8 @@ class Case1RegisterTest extends TestCase
             'name' => $name,
             'email' => $email,
         ]);
-        $registered_user = User::find(1);
-        $this->assertTrue(Hash::check($password, $registered_user->password));
+        $user = User::first();
+        $this->assertTrue(Hash::check($password, $user->password));
         $response->assertRedirect('/mypage/profile');
     }
 }

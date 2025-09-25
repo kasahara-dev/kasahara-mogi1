@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\DB;
 use Faker\Factory;
 
 
-class Case5MyListTest extends TestCase
+class Case05MyListTest extends TestCase
 {
     use DatabaseMigrations;
     /**

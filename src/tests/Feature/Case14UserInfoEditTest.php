@@ -28,6 +28,10 @@ class Case14UserInfoEditTest extends TestCase
         ]);
         $response = $this->actingAs($user)->get('/mypage/profile');
         $response->assertStatus(200);
-
+        $response->assertSee($user->img_path, false);
+        $response->assertSee('value="' . $user->name . '"', false);
+        $response->assertSee('value="' . $address->post_number . '"', false);
+        $response->assertSee('value="' . $address->address . '"', false);
+        $response->assertSee('value="' . $address->building . '"', false);
     }
 }

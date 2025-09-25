@@ -19,7 +19,7 @@ use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 use App\Models\Item;
 use App\Models\User;
-class Case4TopPageTest extends TestCase
+class Case04TopPageTest extends TestCase
 {
     use DatabaseMigrations;
     /**
