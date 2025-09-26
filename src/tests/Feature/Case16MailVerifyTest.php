@@ -49,4 +49,7 @@ class Case16MailVerifyTest extends TestCase
     {
         User::factory()->create();
     }
+    public function test_redirect()
+    {
+    }
 }

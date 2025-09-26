@@ -35,6 +35,7 @@ class Case04TopPageTest extends TestCase
         $itemNames = Item::orderBy('updated_at', 'desc')->orderBy('id', 'desc')->pluck('name')->toArray();
         $itemImages = Item::orderBy('updated_at', 'desc')->orderBy('id', 'desc')->pluck('img_path')->toArray();
         $response = $this->get('/');
+        $response->assertStatus(200);
         $response->assertSeeInOrder($itemNames);
         $response->assertSeeInOrder($itemImages);
     }
