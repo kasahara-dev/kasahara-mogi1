@@ -19,7 +19,6 @@ class ItemFactory extends Factory
     public function definition()
     {
         $users = User::pluck('id');
-        $conditions = array_keys(config('condition'));
         // Storage::fake('public');
         // $file = UploadedFile::fake()->image('img.jpeg', 100, 100);
         // $fileName = Str::uuid() . '.jpeg';
@@ -27,7 +26,7 @@ class ItemFactory extends Factory
         return [
             'user_id' => $users->random(),
             'img_path' => 'img/item/yellow.png',
-            'condition' => array_rand($conditions),
+            'condition' => rand(1, 4),
             'name' => $this->faker->word(),
             'brand' => $this->faker->optional()->word(),
             'detail' => $this->faker->realText(),

@@ -21,7 +21,7 @@ use App\Http\Controllers\AddressController;
 |
 */
 Route::get('/', [ItemController::class, 'index']);
-Route::get('/item/{item_id}', [ItemController::class, 'show'])->name('detail');
+Route::get('/item/{item_id}', [ItemController::class, 'show']);
 Route::get('/register', [UserController::class, 'create']);
 Route::post('/register', [UserController::class, 'store']);
 Route::get('/login', [LoginController::class, 'create'])->name('login');

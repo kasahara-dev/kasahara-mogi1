@@ -10,6 +10,7 @@ use App\Models\Category;
 use Illuminate\Support\Facades\Auth;
 use Storage;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\DB;
 
 
 class ItemController extends Controller
@@ -56,11 +57,14 @@ class ItemController extends Controller
         }
         return view('item.index', compact(['items', 'keyword', 'tab']));
     }
-    public function show(Request $request, $item_id)
+    public function show($item_id)
     {
         $item = Item::where('id', $item_id)->with('categories')->with('purchase')->with('favUsers')->first();
         $favorite = false;
         if (Auth::check()) {
+            \Log::info('i am ' . Auth::user()->get());
+            \Log::info('item is '.$item->get());
+            \Log::info('fav is ' . DB::table('favorites')->get());
             $favItems = Auth::user()->favItems->pluck('id')->all();
             if (in_array($item_id, $favItems)) {
                 $favorite = true;
