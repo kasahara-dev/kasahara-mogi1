@@ -52,7 +52,6 @@ class Case04TopPageTest extends TestCase
     public function test_sell_items()
     {
         $user = User::factory()->create();
-        User::factory()->create();
         $items = Item::factory()->count(rand(1, 100))->create();
         $sellItems = Item::where('user_id', $user->id)->pluck('id');
         $response = $this->actingAs($user)->get('/');
