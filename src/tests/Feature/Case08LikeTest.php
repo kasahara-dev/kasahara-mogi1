@@ -12,6 +12,7 @@ use App\Models\Item;
 use App\Models\Category;
 use App\Models\Purchase;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class Case08LikeTest extends TestCase
 {
@@ -54,7 +55,7 @@ class Case08LikeTest extends TestCase
     public function test_color()
     {
         $this->seed(CategoriesTableSeeder::class);
-        User::factory()->create();
+        $user = User::factory()->create();
         $item = Item::factory()->create();
         $category = Category::inRandomOrder()->first();
         DB::table('category_item')->insert(
@@ -63,18 +64,32 @@ class Case08LikeTest extends TestCase
                 'item_id' => $item->id,
             ]
         );
-        $user = User::factory()->create();
+        \Log::info('user  is ' . $user->get());
         $response = $this->actingAs($user)->get('/item/' . $item->id);
         $response->assertSee('star-regular-full.svg', false);
         $response->assertDontSee('star-solid-full.svg', false);
-        $response = $this->actingAs($user)->post('/item/' . $item->id, ['favorite' => $item->id]);
+        $response = $this->followingRedirects()->actingAs($user)->post('/item/' . $item->id, ['favorite' => $item->id]);
         $this->assertDatabaseHas('favorites', ['user_id' => $user->id, 'item_id' => $item->id]);
-        $response = $this->actingAs($user)->get('/item/' . $item->id);
+        // $response = $this->actingAs($user)->get('/item/' . $item->id);
         $response->assertOk();
         $response->assertDontSee('star-regular-full.svg', false);
         $response->assertSee('star-solid-full.svg', false);
     }
     public function test_not_like()
     {
+        $this->seed(CategoriesTableSeeder::class);
+        $user = User::factory()->create();
+        $item = Item::factory()->create();
+        $category = Category::inRandomOrder()->first();
+        DB::table('category_item')->insert(
+            [
+                'category_id' => $category->id,
+                'item_id' => $item->id,
+            ]
+        );
+        $response = $this->followingRedirects()->actingAs($user)->post('/item/' . $item->id, ['favorite' => $item->id]);
+        $response->assertSee('fav-count">1</label>', false);
+        $response = $this->followingRedirects()->actingAs($user)->delete('/item/' . $item->id, ['favorite' => $item->id]);
+        $response->assertSee('fav-count">0</label>', false);
     }
 }

@@ -60,15 +60,26 @@ class ItemController extends Controller
     public function show($item_id)
     {
         $item = Item::where('id', $item_id)->with('categories')->with('purchase')->with('favUsers')->first();
+        \Log::info('item is ' . $item->get());
+        \Log::info('category is ' . $item->categories);
+        \Log::info('relation fav is ' . $item->favUsers()->get());
         $favorite = false;
         if (Auth::check()) {
             \Log::info('i am ' . Auth::user()->get());
-            \Log::info('item is '.$item->get());
+            \Log::info('item is ' . $item->get());
             \Log::info('fav is ' . DB::table('favorites')->get());
             $favItems = Auth::user()->favItems->pluck('id')->all();
+            \Log::info('hav fan item ' . Auth::user()->favItems()->get());
+            \Log::info('item id  is ' . $item_id);
             if (in_array($item_id, $favItems)) {
                 $favorite = true;
+                \Log::info('my fav in');
             }
+        }
+        if ($favorite) {
+            \Log::info('my fav');
+        } else {
+            \Log::info('not like');
         }
         $comments = Comment::where('item_id', $item_id)->orderBy('updated_at', 'desc')->with('user.profile')->get();
         $commentsCount = count($comments);

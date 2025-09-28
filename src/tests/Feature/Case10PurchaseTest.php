@@ -37,7 +37,7 @@ class Case10PurchaseTest extends TestCase
             'address' => $faker->address,
             'post_number' => $postNumber,
             'building' => $faker->secondaryAddress,
-        ])->actingAs($user)->post(route('purchase.store', $data));
+        ])->actingAs($user)->post('/purchase/' . $item->id, $data);
         $this->assertEquals(Purchase::count(), 1);
     }
     public function test_sold()
