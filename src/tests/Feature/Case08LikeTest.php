@@ -50,7 +50,7 @@ class Case08LikeTest extends TestCase
         $this->assertDatabaseHas('favorites', ['user_id' => $user->id, 'item_id' => $item->id]);
         $response->assertRedirect('/item/' . $item->id);
         $response = $this->get('/item/' . $item->id);
-        $response->assertSee('class="icon-count">' . DB::table('favorites')->count() . '</label>', false);
+        $response->assertSee(' fav-count">' . DB::table('favorites')->count() . '</label>', false);
     }
     public function test_color()
     {
@@ -64,16 +64,14 @@ class Case08LikeTest extends TestCase
                 'item_id' => $item->id,
             ]
         );
-        \Log::info('user  is ' . $user->get());
         $response = $this->actingAs($user)->get('/item/' . $item->id);
-        // $response->assertSee('star-regular-full.svg', false);
-        // $response->assertDontSee('star-solid-full.svg', false);
-        // $response = $this->followingRedirects()->actingAs($user)->post('/item/' . $item->id, ['favorite' => $item->id]);
-        // $this->assertDatabaseHas('favorites', ['user_id' => $user->id, 'item_id' => $item->id]);
-        // // $response = $this->actingAs($user)->get('/item/' . $item->id);
-        // $response->assertOk();
-        // $response->assertDontSee('star-regular-full.svg', false);
-        // $response->assertSee('star-solid-full.svg', false);
+        $response->assertSee('star-regular-full.svg', false);
+        $response->assertDontSee('star-solid-full.svg', false);
+        $response = $this->followingRedirects()->actingAs($user)->post('/item/' . $item->id, ['favorite' => $item->id]);
+        $this->assertDatabaseHas('favorites', ['user_id' => $user->id, 'item_id' => $item->id]);
+        $response->assertOk();
+        $response->assertDontSee('star-regular-full.svg', false);
+        $response->assertSee('star-solid-full.svg', false);
     }
     public function test_not_like()
     {
@@ -90,6 +88,6 @@ class Case08LikeTest extends TestCase
         $response = $this->followingRedirects()->actingAs($user)->post('/item/' . $item->id, ['favorite' => $item->id]);
         $response->assertSee('fav-count">1</label>', false);
         $response = $this->followingRedirects()->actingAs($user)->delete('/item/' . $item->id, ['favorite' => $item->id]);
-        $response->assertSee('fav-count">0</label>', false);
+        $response->assertSee('"fav-icon" class="icon-count">0</label>', false);
     }
 }

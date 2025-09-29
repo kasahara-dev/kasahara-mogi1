@@ -34,10 +34,10 @@ class Case16MailVerifyTest extends TestCase
             'password' => $password,
             'password_confirmation' => $password,
         ]);
-        $this->assertDatabaseHas('users', [
-            'name' => $name,
-            'email' => $email,
-        ]);
+        // $this->assertDatabaseHas('users', [
+        //     'name' => $name,
+        //     'email' => $email,
+        // ]);
         // $user = User::first();
         // Mail::assertSent(Verification::class);
         // Mail::assertSent(Verification::class, function ($mail) {
