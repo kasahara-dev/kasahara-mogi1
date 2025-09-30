@@ -35,10 +35,9 @@ class Case15SellTest extends TestCase
 
         $response = $this->actingAs($user)->get('/sell');
         $response->assertStatus(200);
-        // $conditions = array_keys(config('condition'));
         Storage::fake('public');
         $file = UploadedFile::fake()->image('img.jpeg', 100, 100);
-        $path = Storage::disk('public')->putFileAs('item', $file, 'img.jpeg');
+        // $path = Storage::disk('public')->putFileAs('item', $file, 'img.jpeg');
 
         $this->assertEquals(0, Item::count());
 
@@ -71,5 +70,10 @@ class Case15SellTest extends TestCase
             'category_id' => $category,
             'item_id' => '1',
         ]);
+        $imgPath = str_replace('storage/', '', Item::first()->img_path);
+        Storage::disk('public')->assertExists($imgPath);
+        $response = $this->actingAs($user)->get('/mypage');
+        $response->assertOk();
+        $response->assertSee(Item::first()->img_path);
     }
 }

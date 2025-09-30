@@ -61,9 +61,9 @@ class Case06SearchTest extends TestCase
         $noMatchName = [];
         foreach ($itemNames as $itemName) {
             if (Str::contains($itemName, $searchWord)) {
-                array_push($matchName, $itemName . '</label>');
+                array_push($matchName, 'class="item-name">' . $itemName . '</label>');
             } else {
-                array_push($noMatchName, $itemName . '</label>');
+                array_push($noMatchName, 'class="item-name">' . $itemName . '</label>');
             }
         }
         $response = $this->actingAs($user)->get('/?keyword=' . $searchWord);
