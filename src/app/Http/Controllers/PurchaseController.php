@@ -41,8 +41,6 @@ class PurchaseController extends Controller
     public function store(PurchaseRequest $request, $item_id)
     {
         session()->flash('address', session('address'));
-        require_once '../vendor/autoload.php';
-        // require_once '../secrets.php';
 
         $item = Item::where('id', $item_id)->first();
         Purchase::create([
@@ -60,6 +58,8 @@ class PurchaseController extends Controller
         } else {
             $payment = 'card';
         }
+        require_once '../vendor/autoload.php';
+        // require_once '../secrets.php';
 
         Stripe::setApiKey(config('services.stripe.secret_key'));
         header('Content-Type: application/json');

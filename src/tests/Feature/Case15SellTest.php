@@ -38,12 +38,8 @@ class Case15SellTest extends TestCase
         // $conditions = array_keys(config('condition'));
         Storage::fake('public');
         $file = UploadedFile::fake()->image('img.jpeg', 100, 100);
-        $fileName = Str::uuid() . '.jpeg';
-        $path = Storage::disk('public')->putFileAs('item', $file, $fileName);
+        $path = Storage::disk('public')->putFileAs('item', $file, 'img.jpeg');
 
-        // $file = $request->file('item_img_input');
-        // $fileName = Str::uuid() . '.' . $file->getClientOriginalExtension();
-        // $path = Storage::disk('public')->putFileAs('item', $file, $fileName);
         $this->assertEquals(0, Item::count());
 
         $category[] = '1';
