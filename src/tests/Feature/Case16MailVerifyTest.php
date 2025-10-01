@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Mail;
 use App\Mail\ContactMail;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Auth\Notifications\VerifyEmail;
+use Illuminate\Mail\Mailable;
 
 class Case16MailVerifyTest extends TestCase
 {
@@ -42,7 +43,7 @@ class Case16MailVerifyTest extends TestCase
         //     'email' => $email,
         // ]);
         // $user = User::first();
-        // Mail::assertSent(VerifyEmail::class);
+        // Mail::assertSent(VerifyEmail::class,1);
         // Mail::assertSent(Verification::class, function ($mail) {
         //     return $mail->hasTo($email);
         // });
@@ -55,7 +56,7 @@ class Case16MailVerifyTest extends TestCase
         $faker = Factory::create('ja_JP');
         $email = $faker->safeEmail();
         $password = $faker->unique->password;
-        $user = User::factory()->create([
+        $user = User::create([
             'name' => $faker->name(),
             'email' => $email,
             'password' => bcrypt($password),
@@ -64,5 +65,14 @@ class Case16MailVerifyTest extends TestCase
     }
     public function test_redirect()
     {
+        $faker = Factory::create('ja_JP');
+        $email = $faker->safeEmail();
+        $password = $faker->unique->password;
+        $user = User::create([
+            'name' => $faker->name(),
+            'email' => $email,
+            'password' => bcrypt($password),
+        ]);
+        // $this->followingRedirects()->actingAs($user)->get('/email/verify/' . $user->id.'/')->assertRedirect('/mypage/profile');
     }
 }

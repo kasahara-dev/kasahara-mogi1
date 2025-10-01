@@ -37,7 +37,6 @@ class Case15SellTest extends TestCase
         $response->assertStatus(200);
         Storage::fake('public');
         $file = UploadedFile::fake()->image('img.jpeg', 100, 100);
-        // $path = Storage::disk('public')->putFileAs('item', $file, 'img.jpeg');
 
         $this->assertEquals(0, Item::count());
 
@@ -59,7 +58,6 @@ class Case15SellTest extends TestCase
         $response->assertOk();
 
         $this->assertDatabaseHas(Item::class, [
-            // 'img_path' => 'storage/' . $path,
             'condition' => $condition,
             'name' => $itemName,
             'brand' => $brandName,
