@@ -4,10 +4,6 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use App\Models\User;
-use Storage;
-use Illuminate\Http\UploadedFile;
-use Illuminate\Support\Str;
-
 
 class ItemFactory extends Factory
 {

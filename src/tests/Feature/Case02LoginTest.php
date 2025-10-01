@@ -2,15 +2,10 @@
 
 namespace Tests\Feature;
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 use App\Models\User;
-use App\Models\Profile;
 use Faker\Factory;
-use Illuminate\Support\Facades\DB;
-
 
 class Case02LoginTest extends TestCase
 {
@@ -59,11 +54,6 @@ class Case02LoginTest extends TestCase
             'password' => bcrypt($password),
             'email_verified_at' => now(),
         ]);
-        // $param = [
-        //     'user_id' => $user->id,
-        //     'address_id' => null,
-        // ];
-        // DB::table('profiles')->insert($param);
         $response = $this->post('/login', [
             'email' => $email,
             'password' => $faker->unique->password,
@@ -83,11 +73,6 @@ class Case02LoginTest extends TestCase
             'password' => bcrypt($password),
             'email_verified_at' => now(),
         ]);
-        // $param = [
-        //     'user_id' => $user->id,
-        //     'address_id' => null,
-        // ];
-        // DB::table('profiles')->insert($param);
         $response = $this->post('/login', [
             'email' => $email,
             'password' => $password,

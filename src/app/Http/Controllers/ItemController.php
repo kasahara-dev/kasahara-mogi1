@@ -10,7 +10,6 @@ use App\Models\Category;
 use Illuminate\Support\Facades\Auth;
 use Storage;
 use Illuminate\Support\Str;
-use Illuminate\Support\Facades\DB;
 
 
 class ItemController extends Controller

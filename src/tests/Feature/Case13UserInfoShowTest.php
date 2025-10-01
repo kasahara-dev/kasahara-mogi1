@@ -2,8 +2,6 @@
 
 namespace Tests\Feature;
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use App\Models\User;
@@ -11,7 +9,6 @@ use App\Models\Address;
 use App\Models\Purchase;
 use App\Models\Item;
 use App\Models\Profile;
-use Illuminate\Support\Facades\DB;
 
 class Case13UserInfoShowTest extends TestCase
 {

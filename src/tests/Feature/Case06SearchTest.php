@@ -2,8 +2,6 @@
 
 namespace Tests\Feature;
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use App\Models\User;
@@ -54,7 +52,6 @@ class Case06SearchTest extends TestCase
                 ]
             );
         }
-        // $items = Item::orderBy('updated_at', 'desc')->orderBy('id', 'desc');
         $itemNames = Item::pluck('name');
         $searchWord = $faker->randomLetter();
         $matchName = [];

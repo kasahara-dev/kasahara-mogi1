@@ -2,8 +2,6 @@
 
 namespace Tests\Feature;
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use App\Models\User;
@@ -12,7 +10,6 @@ use App\Models\Profile;
 use Faker\Factory;
 use Storage;
 use Illuminate\Http\UploadedFile;
-use Illuminate\Support\Str;
 use Database\Seeders\CategoriesTableSeeder;
 
 class Case15SellTest extends TestCase

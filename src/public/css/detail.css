@@ -87,8 +87,6 @@
     margin: 0;
     word-break: break-all;
 }
-.inner-list {
-}
 .inner-line {
     display: flex;
     margin: 10px 0;

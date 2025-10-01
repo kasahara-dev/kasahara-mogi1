@@ -3,19 +3,7 @@
 namespace Tests\Feature;
 
 use App\Models\Purchase;
-use Database\Seeders\AddressesTableSeeder;
-use Database\Seeders\CategoriesTableSeeder;
-use Database\Seeders\UsersTableSeeder;
-use Database\Seeders\CommentsTableSeeder;
-use Database\Seeders\CategoryItemSeeder;
-use Database\Seeders\ProfilesTableSeeder;
-use Database\Seeders\PurchasesTableSeeder;
-use Database\Seeders\DatabaseSeeder;
-use Database\Seeders\FavoritesTableSeeder;
-use Database\Seeders\ItemsTableSeeder;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 use App\Models\Item;
 use App\Models\User;

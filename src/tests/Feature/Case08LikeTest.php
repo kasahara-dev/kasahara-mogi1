@@ -2,17 +2,13 @@
 
 namespace Tests\Feature;
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Database\Seeders\CategoriesTableSeeder;
 use App\Models\User;
 use App\Models\Item;
 use App\Models\Category;
-use App\Models\Purchase;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Auth;
 
 class Case08LikeTest extends TestCase
 {

@@ -31,6 +31,14 @@ coachtech フリマ
 > src ディレクトリにある storage ディレクトリに権限を設定
 > `chmod -R 777 storage`
 
+### テスト手順
+
+1. .env ファイルから.env.testing を作成し、環境変数を変更
+2. `php artisan key:generate --env=testing`
+3. `php artisan config:clear`
+4. `php artisan migrate --env=testing`
+5. `php artisan test`
+
 ## 使用技術
 
 - PHP 8.1.33

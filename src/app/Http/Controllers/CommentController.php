@@ -24,6 +24,7 @@ class CommentController extends Controller
     }
     public function destroy(Request $request)
     {
+        // お気に入り解除
         $item = $request->favorite;
         Auth::user()->favItems()->detach($item);
         return redirect('/item/' . $item);
