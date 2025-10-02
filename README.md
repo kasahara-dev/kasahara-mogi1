@@ -52,3 +52,8 @@ coachtech フリマ
 ## URL
 
 トップページ：http://localhost/
+
+## テストユーザー
+
+- 住所登録済みユーザー メールアドレス：test1@example.com パスワード：password
+- 住所未登録ユーザー メールアドレス：test2@example.com パスワード：password
