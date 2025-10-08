@@ -21,7 +21,7 @@ coachtech フリマ
 
 1. `docker-compose exec php bash`
 2. `composer install`
-3. .env.example ファイルから.env を作成し、環境変数を下記に変更
+3. .env.example ファイルから.env を作成し、各環境変数を下記に変更
 
 - DB_HOST={任意の DB ホスト名}
 - DB_DATABASE={任意の DB 名}
