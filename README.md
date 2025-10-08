@@ -44,7 +44,7 @@ coachtech フリマ
 1. MySQL コンテナ上で`mysql -u root -p`
    パスワードは、docker-compose.yml ファイルの MYSQL_ROOT_PASSWORD:に設定されているパスワードを入力する。
 2. ```
-   CREATE DATABASE demo_test;`
+   CREATE DATABASE demo_test;
    SHOW DATABASES;
    ```
 3. config ディレクトリの中の database.php に下記追加
@@ -71,7 +71,7 @@ coachtech フリマ
  ],
 ```
 
-4. .env ファイルから.env.testing を作成し、環境変数を下記に変更
+4. .env ファイルから.env.testing を作成し、各環境変数を下記に変更
 
 - APP_ENV=test
 - APP_KEY=
@@ -90,10 +90,10 @@ coachtech フリマ
 ```
 
 9. `php artisan test`
-   > [!WARNING]
-   >
-   > - テストケース ID12 支払い方法選択機能について、Javascript テスト対応ができなかったため、テスト未実装です
-   > - テストケース ID16 メール認証機能のメール送信機能ととメール認証完了後遷移について、メールテスト対応ができなかったため、テスト未実装です
+
+> [!WARNING]
+> - テストケース ID12 支払い方法選択機能について、Javascript テスト対応ができなかったため、テスト未実装です
+> - テストケース ID16 メール認証機能のメール送信機能ととメール認証完了後遷移について、メールテスト対応ができなかったため、テスト未実装です
 
 ## 使用技術
 
