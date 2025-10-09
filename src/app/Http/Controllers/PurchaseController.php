@@ -59,7 +59,6 @@ class PurchaseController extends Controller
             $payment = 'card';
         }
         require_once '../vendor/autoload.php';
-        // require_once '../secrets.php';
 
         Stripe::setApiKey(config('services.stripe.secret_key'));
         header('Content-Type: application/json');
@@ -70,7 +69,6 @@ class PurchaseController extends Controller
             ],
             'line_items' => [
                 [
-                    # Provide the exact Price ID (e.g. price_1234) of the product you want to sell
                     'price_data' => [
                         'currency' => 'JPY',
                         'product_data' => [
