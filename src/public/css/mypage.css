@@ -1,0 +1,158 @@
+.user-info-area {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    width: 100%;
+    margin: 20px 0;
+}
+.user-title {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    column-gap: 1em;
+}
+.user-name {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    font-size: large;
+}
+.user-img {
+    width: 20%;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.user-btn-area {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+.profile-edit-btn {
+    padding: 0.5em 2em;
+    color: #ff5555;
+    background-color: white;
+    border: 2px solid;
+    font-weight: bold;
+    border-radius: 10px;
+    cursor: pointer;
+    margin: 1em auto;
+}
+.tab-titles {
+    display: flex;
+    margin-bottom: 50px;
+    width: 100%;
+    box-sizing: border-box;
+    border-bottom: 1px solid;
+}
+.tab-inactive {
+    text-decoration: none;
+    margin-right: 3%;
+    font-weight: bold;
+    color: black;
+}
+.tab-active {
+    text-decoration: none;
+    margin-right: 3%;
+    font-weight: bold;
+    color: red;
+}
+.items-area {
+    display: grid;
+    grid-template-columns: 23.95% 23.95% 23.95% 23.95%;
+    gap: 1em 1.4%;
+    width: 100%;
+}
+
+.item-area {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+.item-link {
+    text-decoration: none;
+}
+.item-image {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    cursor: pointer;
+    object-fit: cover;
+}
+.item-name {
+    color: black;
+    cursor: pointer;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+    width: 100%;
+}
+.item-sold {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: gray;
+    opacity: 0.7;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    pointer-events: none;
+}
+.item-sold-msg {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    margin: 10px;
+    color: white;
+    font-size: xx-large;
+    font-weight: bold;
+    pointer-events: none;
+}
+@media screen and (max-width: 768px) {
+    .user-info-area {
+        display: flex;
+        width: 100%;
+        margin: 20px 0 0;
+        flex-direction: column;
+        align-items: center;
+    }
+    .user-img {
+        width: 10%;
+    }
+    .tab-titles {
+        display: flex;
+        margin: 10px;
+        padding-left: 0;
+        width: 100%;
+        box-sizing: border-box;
+        border-bottom: 1px solid;
+    }
+    .items-area {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0 5px;
+        grid-auto-rows: 1fr;
+        width: 100%;
+    }
+    .item-area {
+        width: 100%;
+        height: 90%;
+        position: relative;
+    }
+    .item-image {
+        width: 100%;
+        height: 100%;
+        cursor: pointer;
+    }
+    .item-name {
+        cursor: pointer;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        background-color: gray;
+        opacity: 0.7;
+        color: black;
+        font-size: small;
+    }
+    .item-sold {
+        height: 100%;
+    }
+}

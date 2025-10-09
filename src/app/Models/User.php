@@ -6,11 +6,13 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
+// use Laravel\Cashier\Billable;
+// use Laravel\Sanctum\HasApiTokens;
 
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
+// class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasFactory, Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -41,4 +43,27 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    public function items()
+    {
+        return $this->hasMany('App\Models\Item');
+    }
+    public function comItems()
+    {
+        return $this->belongsToMany('App\Models\Item', 'comments')
+            ->withPivot('detail')
+            ->withTimestamps();
+    }
+    public function profile()
+    {
+        return $this->hasOne('App\Models\Profile');
+    }
+    public function favItems()
+    {
+        return $this->belongsToMany('App\Models\Item', 'favorites')
+            ->withTimestamps();
+    }
+    public function purchases()
+    {
+        return $this->hasMany('App\Models\Purchase');
+    }
 }

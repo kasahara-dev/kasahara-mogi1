@@ -1,0 +1,71 @@
+@extends('layout.app')
+
+@section('css')
+    <link rel="stylesheet" href="{{ asset('css/profile.css') }}">
+@endsection
+
+@section('content')
+    <div class="form-area">
+        <h1 class="form-title">プロフィール設定</h1>
+        <form class="form" action="/mypage/profile" method="post" enctype="multipart/form-data">
+            @method('PUT')
+            @csrf
+            <div class="img-area">
+                <img id="user-img" class="user-img" src="{{ asset(auth()->user()->profile->img_path) }}" alt="ユーザーアイコン" />
+                <input id="fileElem" name="user_img_input" type="file" class="profile-img-input" />
+                <button id="fileSelect" type="button" name="profile-img-btn" class="profile-img-btn">画像を選択する</button>
+            </div>
+            <div class="form-error">
+                @error('user_img_input')
+                    {{ $message }}
+                @enderror
+            </div>
+            <dl>
+                <dt class="form-name">ユーザー名</dt>
+                <dd class="form-content"><input type="text" name="name" class="form-input"
+                        value="{{ old('name', auth()->user()->name) }}" /></dd>
+                <dd class="form-error">
+                    @error('name'){{ $message }}@enderror
+                </dd>
+                <dt class="form-name">郵便番号</dt>
+                <dd class="form-content">
+                    @if(isset(auth()->user()->profile->address))
+                        <input type="text" name="post_number" class="form-input"
+                            value="{{ old('post_number', auth()->user()->profile->address->post_number) }}" />
+                    @else
+                        <input type="text" name="post_number" class="form-input" value="{{ old('post_number') }}" />
+                    @endif
+                </dd>
+                <dd class="form-error">
+                    @error('post_number'){{ $message }}@enderror
+                </dd>
+                <dt class="form-name">住所</dt>
+                <dd class="form-content">
+                    @if(isset(auth()->user()->profile->address))
+                        <input type="text" name="address" class="form-input"
+                            value="{{ old('address', auth()->user()->profile->address->address) }}" />
+                    @else
+                        <input type="text" name="address" class="form-input" value="{{ old('address') }}" />
+                    @endif
+                </dd>
+                <dd class="form-error">
+                    @error('address'){{ $message }}@enderror
+                </dd>
+                <dt class="form-name">ビル名</dt>
+                <dd class="form-content">
+                    @if(isset(auth()->user()->profile->address))
+                        <input type="text" name="building" class="form-input"
+                            value="{{ old('building', auth()->user()->profile->address->building) }}" />
+                    @else
+                        <input type="text" name="building" class="form-input" value="{{ old('building') }}" />
+                    @endif
+                </dd>
+                <dd class="form-error">
+                    @error('building'){{ $message }}@enderror
+                </dd>
+            </dl>
+            <button type="submit" class="submit-btn" name="send">更新する</button>
+        </form>
+    </div>
+    <script src="{{ asset('/js/selectImg.js') }}"></script>
+@endsection

@@ -1,0 +1,159 @@
+.contents-area {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    margin-top: 20px;
+    margin-bottom: 100px;
+}
+.image-area {
+    position: relative;
+    text-align: center;
+    margin: 0 10%;
+    aspect-ratio: 1 / 1;
+}
+.item-img {
+    width: 100%;
+    position: relative;
+    object-fit: cover;
+}
+.item-sold {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: gray;
+    opacity: 0.7;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+}
+.item-sold-msg {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    margin: 10px;
+    color: white;
+    font-size: xxx-large;
+    font-weight: bold;
+}
+.intro-area {
+    display: flex;
+    margin: 0 20px;
+    flex-direction: column;
+}
+.item-name {
+    margin: 0;
+    word-break: break-all;
+}
+.brand-name {
+    word-break: break-all;
+}
+.price-area {
+    margin-top: 3px;
+}
+.price {
+    font-size: x-large;
+}
+.item-icon {
+    width: 100%;
+}
+.fav-icon {
+    cursor: pointer;
+}
+.icons-area {
+    display: flex;
+    margin: 15px 0;
+}
+.fav-count {
+    cursor: pointer;
+    color: #ffd43b;
+}
+.icon-area {
+    display: flex;
+    width: 24px;
+    flex-direction: column;
+    align-items: center;
+    font-size: small;
+    margin: 0 10px;
+}
+.info-list {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+}
+.info-title {
+    font-weight: bold;
+    margin-top: 20px;
+}
+.info-detail {
+    margin: 0;
+    word-break: break-all;
+}
+.inner-line {
+    display: flex;
+    margin: 10px 0;
+    align-items: flex-start;
+}
+.inner-title {
+    font-size: small;
+    font-weight: bold;
+    white-space: nowrap;
+}
+.inner-detail {
+    font-size: small;
+    display: flex;
+    margin-left: 20px;
+}
+.categories-area {
+    flex-wrap: wrap;
+    row-gap: 0.5em;
+}
+.category-tag {
+    background-color: #d9d9d9;
+    border-radius: 15px;
+    margin-right: 10px;
+    padding: 0 10px;
+}
+.comments-area {
+    display: flex;
+    flex-direction: column;
+}
+.comment-title {
+    color: #5f5f5f;
+    font-weight: bolder;
+    margin: 10px 0;
+}
+.comment-user-area {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    column-gap: 1em;
+}
+.comment-user-icon {
+    width: 10%;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.comment-detail {
+    word-break: normal;
+    margin-bottom: 10px;
+    background-color: #e5e5e5;
+    padding: 10px;
+    margin-top: 0.5em;
+}
+.comment-info {
+    margin-top: 10px;
+    font-weight: bold;
+}
+.comment-input {
+    width: 100%;
+    height: 100px;
+    box-sizing: border-box;
+}
+@media screen and (max-width: 768px) {
+    .contents-area {
+        width: 100%;
+        display: flex;
+        margin-top: 20px;
+        flex-direction: column;
+    }
+}
