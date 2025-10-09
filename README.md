@@ -23,12 +23,12 @@ coachtech フリマ
 2. `composer install`
 3. .env.example ファイルから.env を作成し、各環境変数を下記に変更
 
-- DB_HOST={任意の DB ホスト名}
-- DB_DATABASE={任意の DB 名}
-- DB_USERNAME={任意の DB ユーザー名}
-- DB_PASSWORD={任意の DB パスワード}
-- STRIPE_PUBLIC_KEY={Stripe テスト用アカウントの公開鍵}
-- STRIPE_SECRET_KEY={Stripe テスト用アカウントの秘密鍵}
+- `DB_HOST={任意の DB ホスト名}`
+- `DB_DATABASE={任意の DB 名}`
+- `DB_USERNAME={任意の DB ユーザー名}`
+- `DB_PASSWORD={任意の DB パスワード}`
+- `STRIPE_PUBLIC_KEY={Stripe テスト用アカウントの公開鍵}`
+- `STRIPE_SECRET_KEY={Stripe テスト用アカウントの秘密鍵}`
 
 4. `php artisan key:generate`
 5. `php artisan migrate`
@@ -42,7 +42,7 @@ coachtech フリマ
 ### テスト手順
 
 1. MySQL コンテナ上で`mysql -u root -p`
-   パスワードは、docker-compose.yml ファイルの MYSQL_ROOT_PASSWORD:に設定されているパスワードを入力する。
+   パスワードは、docker-compose.yml ファイルの MYSQL_ROOT_PASSWORDに設定されているパスワードを入力する
 2. ```
    CREATE DATABASE demo_test;
    SHOW DATABASES;
@@ -73,11 +73,11 @@ coachtech フリマ
 
 4. .env ファイルから.env.testing を作成し、各環境変数を下記に変更
 
-- APP_ENV=test
-- APP_KEY=
-- DB_DATABASE=demo_test
-- DB_USERNAME=root
-- DB_PASSWORD=root
+- `APP_ENV=test`
+- `APP_KEY=`
+- `DB_DATABASE=demo_test`
+- `DB_USERNAME=root`
+- `DB_PASSWORD=root`
 
 5. `php artisan key:generate --env=testing`
 6. `php artisan config:clear`
@@ -92,6 +92,7 @@ coachtech フリマ
 9. `php artisan test`
 
 > [!WARNING]
+>
 > - テストケース ID12 支払い方法選択機能について、Javascript テスト対応ができなかったため、テスト未実装です
 > - テストケース ID16 メール認証機能のメール送信機能ととメール認証完了後遷移について、メールテスト対応ができなかったため、テスト未実装です
 
