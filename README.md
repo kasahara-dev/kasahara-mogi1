@@ -43,7 +43,7 @@ coachtech フリマ
 2. `mysql -u root -p`
 3. `root`
 4. `CREATE DATABASE demo_test;`
-5. config ディレクトリの中の database.php に下記追加
+5. `exit`
 6. .env ファイルから.env.testing を作成し、各環境変数を下記に変更
 
 - `APP_ENV=test`
@@ -52,10 +52,11 @@ coachtech フリマ
 - `DB_USERNAME=root`
 - `DB_PASSWORD=root`
 
-7. `php artisan key:generate --env=testing`
-8. `php artisan config:clear`
-9. `php artisan migrate --env=testing`
-10. `php artisan test`
+7. `docker compose exec php bash`
+8. `php artisan key:generate --env=testing`
+9. `php artisan config:clear`
+10. `php artisan migrate --env=testing`
+11. `php artisan test`
 
 > [!WARNING]
 >
