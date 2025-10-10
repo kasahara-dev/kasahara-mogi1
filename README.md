@@ -44,7 +44,8 @@ coachtech フリマ
 3. `root`
 4. `CREATE DATABASE demo_test;`
 5. `exit`
-6. .env ファイルから.env.testing を作成し、各環境変数を下記に変更
+6. `exit`
+7. .env ファイルから.env.testing を作成し、各環境変数を下記に変更
 
 - `APP_ENV=test`
 - `APP_KEY=`
@@ -52,11 +53,11 @@ coachtech フリマ
 - `DB_USERNAME=root`
 - `DB_PASSWORD=root`
 
-7. `docker compose exec php bash`
-8. `php artisan key:generate --env=testing`
-9. `php artisan config:clear`
-10. `php artisan migrate --env=testing`
-11. `php artisan test`
+8. `docker compose exec php bash`
+9. `php artisan key:generate --env=testing`
+10. `php artisan config:clear`
+11. `php artisan migrate --env=testing`
+12. `php artisan test`
 
 > [!WARNING]
 >
