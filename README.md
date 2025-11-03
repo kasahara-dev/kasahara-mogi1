@@ -80,6 +80,16 @@ coachtech フリマ
 | created_at | timestamp | | | | |
 | updated_at | timestamp | | | | |
 
+### profilesテーブル
+| カラム名 | 型 | primary key | unique key | not null | foreign key |
+| --- | --- | --- | --- | --- | --- |
+| id | unsigned_bigint | 〇	| | 〇 | |
+| user_id | unsigned_bigint | | | 〇 | users(id) |
+| img_path | string | | | | |
+| address_id | unsigned_bigint | | | | addresses(id) |
+| created_at | timestamp | | | | |
+| updated_at | timestamp | | | | |
+
 ## ER 図
 
 ![ER図](ER.drawio.png)
