@@ -6,7 +6,10 @@ use Tests\TestCase;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Faker\Factory;
 use App\Models\User;
-use Illuminate\Support\Facades\Mail;
+use Illuminate\Auth\Notifications\VerifyEmail;
+use Illuminate\Support\Facades\Notification;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\URL;
 
 class Case16MailVerifyTest extends TestCase
 {
@@ -19,7 +22,7 @@ class Case16MailVerifyTest extends TestCase
      */
     public function test_send()
     {
-        Mail::fake();
+        Notification::fake();
         $faker = Factory::create('ja_JP');
         $name = $faker->name();
         $email = $faker->safeEmail();
@@ -30,6 +33,8 @@ class Case16MailVerifyTest extends TestCase
             'password' => $password,
             'password_confirmation' => $password,
         ]);
+        $user = User::first();
+        Notification::assertSentTo($user, VerifyEmail::class);
     }
     public function test_verify()
     {
@@ -45,13 +50,19 @@ class Case16MailVerifyTest extends TestCase
     }
     public function test_redirect()
     {
-        $faker = Factory::create('ja_JP');
-        $email = $faker->safeEmail();
-        $password = $faker->unique->password;
-        $user = User::create([
-            'name' => $faker->name(),
-            'email' => $email,
-            'password' => bcrypt($password),
-        ]);
+        $user = User::factory()->create(['email_verified_at' => null]);
+
+        $verificationUrl = URL::temporarySignedRoute(
+            'verification.verify',
+            Carbon::now()->addMinutes(60),
+            [
+                'id' => $user->id,
+                'hash' => sha1($user->email),
+            ]
+        );
+
+        $response = $this->actingAs($user)->get($verificationUrl);
+        $this->assertAuthenticatedAs($user);
+        $response->assertRedirect('/mypage/profile');
     }
 }

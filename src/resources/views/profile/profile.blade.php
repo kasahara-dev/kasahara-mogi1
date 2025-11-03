@@ -51,7 +51,7 @@
                 <dd class="form-error">
                     @error('address'){{ $message }}@enderror
                 </dd>
-                <dt class="form-name">ビル名</dt>
+                <dt class="form-name">建物名</dt>
                 <dd class="form-content">
                     @if(isset(auth()->user()->profile->address))
                         <input type="text" name="building" class="form-input"

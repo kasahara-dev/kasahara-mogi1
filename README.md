@@ -58,17 +58,26 @@ coachtech フリマ
 10. `php artisan config:clear`
 11. `php artisan migrate --env=testing`
 12. `php artisan test`
-
-> [!WARNING]
->
-> - テストケース ID12 支払い方法選択機能について、Javascript テスト対応ができなかったため、テスト未実装です
-> - テストケース ID16 メール認証機能のメール送信機能ととメール認証完了後遷移について、メールテスト対応ができなかったため、テスト未実装です
+13. `php artisan dusk`
 
 ## 使用技術
 
 - PHP 8.1.33
 - Laravel 8.83.8
 - MySQL 8.0.26
+
+## テーブル仕様
+
+### usersテーブル
+|カラム名|型|primary key|unique key|not null|foreign key|
+|id|unsigned bigint|〇||〇||
+|name|string|||〇||
+|email|string||〇|〇|||
+|email_verified_at|timestamp|||||
+|password|string|||〇||
+|remember_token|string|||||
+|created_at|timestamp|||||
+|updated_at|timestamp|||||
 
 ## ER 図
 
