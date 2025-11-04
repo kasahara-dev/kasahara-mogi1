@@ -29,9 +29,9 @@
                     <dd class="form-content">
                         <div class="categories-area">
                             @foreach ($categories as $category)
-                                <input type="checkbox" value="{{ $category->id }}" name="category[]" id="{{$category}}"
+                                <input type="checkbox" value="{{ $category->id }}" name="category[]" id="category_{{$category}}"
                                     class="category-input" @if(!empty(old('category')) && in_array(($category->id), old('category'))) checked @endif />
-                                <label for="{{ $category }}" class="category-label">{{ $category->name }}</label>
+                                <label for="category_{{ $category }}" class="category-label">{{ $category->name }}</label>
                             @endforeach
                         </div>
                         <div class="form-error">
