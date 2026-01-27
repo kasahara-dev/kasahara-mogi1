@@ -76,110 +76,137 @@ coachtech フリマ
 
 ## テーブル仕様
 
-### usersテーブル
+<details>
+<summary>users テーブル</summary>
 
-| カラム名 | 型 | primary key | unique key | not null | foreign key |
-| --- | --- | --- | --- | --- | --- |
-| id | unsigned bigint | 〇 | | 〇 | |
-| name | string | | | 〇 | |
-| email | string | | 〇 | 〇 | | |
-| email_verified_at | timestamp | | | | |
-| password | string | | | 〇 | |
-| remember_token | string | | | | |
-| created_at | timestamp | | | | |
-| updated_at | timestamp | | | | |
+| カラム名          | 型              | primary key | unique key | not null | foreign key |
+| ----------------- | --------------- | ----------- | ---------- | -------- | ----------- | --- |
+| id                | unsigned bigint | 〇          |            | 〇       |             |
+| name              | string          |             |            | 〇       |             |
+| email             | string          |             | 〇         | 〇       |             |     |
+| email_verified_at | timestamp       |             |            |          |             |
+| password          | string          |             |            | 〇       |             |
+| remember_token    | string          |             |            |          |             |
+| created_at        | timestamp       |             |            |          |             |
+| updated_at        | timestamp       |             |            |          |             |
 
-### profilesテーブル
+</details>
 
-| カラム名 | 型 | primary key | unique key | not null | foreign key |
-| --- | --- | --- | --- | --- | --- |
-| id | unsigned_bigint | 〇	| | 〇 | |
-| user_id | unsigned_bigint | | | 〇 | users(id) |
-| img_path | string | | | | |
-| address_id | unsigned_bigint | | | | addresses(id) |
-| created_at | timestamp | | | | |
-| updated_at | timestamp | | | | |
+<details>
+<summary>profilesテーブル</summary>
 
-### itemsテーブル
+| カラム名   | 型              | primary key | unique key | not null | foreign key   |
+| ---------- | --------------- | ----------- | ---------- | -------- | ------------- |
+| id         | unsigned_bigint | 〇          |            | 〇       |               |
+| user_id    | unsigned_bigint |             |            | 〇       | users(id)     |
+| img_path   | string          |             |            |          |               |
+| address_id | unsigned_bigint |             |            |          | addresses(id) |
+| created_at | timestamp       |             |            |          |               |
+| updated_at | timestamp       |             |            |          |               |
 
-| カラム名 | 型 | primary key | unique key | not null | foreign key |
-| --- | --- | --- | --- | --- | --- |
-| id	| unsigned_bigint | | | 〇 | |
-| user_id | unsigned_bigint | | | 〇 | users(id) |
-| img_path | string | | | 〇 | |
-| condition | tynyint | | | 〇 | |
-| name | string | | | 〇 | |
-| brand | string | | | | |
-| detail | string | | | 〇 | |
-| price	| integer | | | 〇 | |
-| created_at | timestamp | | | | |
-| updated_at | timestamp | | | | |
+</details>
 
-### addressesテーブル
+<details>
+<summary>itemsテーブル</summary>
 
-| カラム名 | 型 | primary key | unique key | not null | foreign key |
-| --- | --- | --- | --- | --- | --- |
-| id | unsigned_bigint | 〇 | | 〇 | |
-| post_number | string | | | 〇 | |
-| address | string | | | 〇 | |
-| building | string | | | | |
-| created_at | timestamp | | | | |
-| updated_at | timestamp | | | | |
+| カラム名   | 型              | primary key | unique key | not null | foreign key |
+| ---------- | --------------- | ----------- | ---------- | -------- | ----------- |
+| id         | unsigned_bigint |             |            | 〇       |             |
+| user_id    | unsigned_bigint |             |            | 〇       | users(id)   |
+| img_path   | string          |             |            | 〇       |             |
+| condition  | tynyint         |             |            | 〇       |             |
+| name       | string          |             |            | 〇       |             |
+| brand      | string          |             |            |          |             |
+| detail     | string          |             |            | 〇       |             |
+| price      | integer         |             |            | 〇       |             |
+| created_at | timestamp       |             |            |          |             |
+| updated_at | timestamp       |             |            |          |             |
 
-### commentsテーブル
+</details>
 
-| カラム名 | 型 | primary key | unique key | not null | foreign key |
-| --- | --- | --- | --- | --- | --- |
-| id | unsigned_bigint | 〇 | | 〇 | |
-| item_id | unsigned_bigint | | | 〇 | items(id) |
-| user_id | unsigned_bigint | | | 〇 | users(id) |
-| detail | string | | | 〇 | |
-| created_at | timestamp | | | | |
-| updated_at | timestamp | | | | |
+<details>
+<summary>addressesテーブル</summary>
 
-### purchasesテーブル
+| カラム名    | 型              | primary key | unique key | not null | foreign key |
+| ----------- | --------------- | ----------- | ---------- | -------- | ----------- |
+| id          | unsigned_bigint | 〇          |            | 〇       |             |
+| post_number | string          |             |            | 〇       |             |
+| address     | string          |             |            | 〇       |             |
+| building    | string          |             |            |          |             |
+| created_at  | timestamp       |             |            |          |             |
+| updated_at  | timestamp       |             |            |          |             |
 
-| カラム名 | 型 | primary key | unique key | not null | foreign key |
-| --- | --- | --- | --- | --- | --- |
-| id | unsigned_bigint | 〇 | | 〇 | |
-| item_id | unsigned_bigint | | | 〇 | items(id) |
-| user_id | unsigned_bigint | | | 〇 | users(id) |
-| user_name	string | | | 〇 | |
-| payment | tinyint | | | 〇 | |
-| post_number | string | | | 〇 | |
-| address | string | | | 〇 | |
-| building | string | | | | |
-| created_at | timestamp | | | | |
-| updated_at | timestamp | | | | |
+</details>
 
-### categoriesテーブル
+<details>
+<summary>commentsテーブル</summary>
 
-| カラム名 | 型 | primary key | unique key | not null | foreign key |
-| --- | --- | --- | --- | --- | --- |
-| id | signeted_bigint | 〇 | | 〇 | |
-| name | string | | | 〇 | |
-| created_at | timestamp | | | | |
-| updated_at | timestamp | | | | |
+| カラム名   | 型              | primary key | unique key | not null | foreign key |
+| ---------- | --------------- | ----------- | ---------- | -------- | ----------- |
+| id         | unsigned_bigint | 〇          |            | 〇       |             |
+| item_id    | unsigned_bigint |             |            | 〇       | items(id)   |
+| user_id    | unsigned_bigint |             |            | 〇       | users(id)   |
+| detail     | string          |             |            | 〇       |             |
+| created_at | timestamp       |             |            |          |             |
+| updated_at | timestamp       |             |            |          |             |
 
-### favoritesテーブル
+</deatails>
 
-| カラム名 | 型 | primary key | unique key | not null | foreign key |
-| --- | --- | --- | --- | --- | --- |
-| id | signeted_bigint | 〇 | | 〇 | |
-| item_id | signeted_bigint | | | 〇 | items(id) |
-| user_id | signeted_bigint | | | 〇 | users(id) |
-| created_at | timestamp | | | | |
-| updated_at | timestamp | | | | |
+<details>
+<summary>purchasesテーブル</summary>
 
-### category_itemテーブル
+| カラム名         | 型              | primary key | unique key | not null | foreign key |
+| ---------------- | --------------- | ----------- | ---------- | -------- | ----------- |
+| id               | unsigned_bigint | 〇          |            | 〇       |             |
+| item_id          | unsigned_bigint |             |            | 〇       | items(id)   |
+| user_id          | unsigned_bigint |             |            | 〇       | users(id)   |
+| user_name string |                 |             | 〇         |          |
+| payment          | tinyint         |             |            | 〇       |             |
+| post_number      | string          |             |            | 〇       |             |
+| address          | string          |             |            | 〇       |             |
+| building         | string          |             |            |          |             |
+| created_at       | timestamp       |             |            |          |             |
+| updated_at       | timestamp       |             |            |          |             |
 
-| カラム名 | 型 | primary key | unique key | not null | foreign key |
-| --- | --- | --- | --- | --- | --- |
-| id | signeted_id | 〇 | | 〇 | |
-| category_id | signeted_id | | | 〇 | categories(id) |
-| item_id | signeted_id | | | 〇 | items(id) |
-| created_at | timestamp | | | | |
-| updated_at | timestamp | | | | |
+</details>
+
+<details>
+<summary>categoriesテーブル</summary>
+
+| カラム名   | 型              | primary key | unique key | not null | foreign key |
+| ---------- | --------------- | ----------- | ---------- | -------- | ----------- |
+| id         | signeted_bigint | 〇          |            | 〇       |             |
+| name       | string          |             |            | 〇       |             |
+| created_at | timestamp       |             |            |          |             |
+| updated_at | timestamp       |             |            |          |             |
+
+</details>
+
+<details>
+<summary>favoritesテーブル</summary>
+
+| カラム名   | 型              | primary key | unique key | not null | foreign key |
+| ---------- | --------------- | ----------- | ---------- | -------- | ----------- |
+| id         | signeted_bigint | 〇          |            | 〇       |             |
+| item_id    | signeted_bigint |             |            | 〇       | items(id)   |
+| user_id    | signeted_bigint |             |            | 〇       | users(id)   |
+| created_at | timestamp       |             |            |          |             |
+| updated_at | timestamp       |             |            |          |             |
+
+</details>
+
+<details>
+<summary>category_itemテーブル</summary>
+
+| カラム名    | 型          | primary key | unique key | not null | foreign key    |
+| ----------- | ----------- | ----------- | ---------- | -------- | -------------- |
+| id          | signeted_id | 〇          |            | 〇       |                |
+| category_id | signeted_id |             |            | 〇       | categories(id) |
+| item_id     | signeted_id |             |            | 〇       | items(id)      |
+| created_at  | timestamp   |             |            |          |                |
+| updated_at  | timestamp   |             |            |          |                |
+
+</details>
 
 ## ER 図
 

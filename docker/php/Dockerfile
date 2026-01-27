@@ -21,3 +21,5 @@ RUN apt-get update && apt-get install -y \
   && docker-php-ext-install zip pdo_mysql gd
 
 WORKDIR /var/www
+
+RUN useradd -m appuser
