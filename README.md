@@ -47,10 +47,10 @@ coachtech フリマ
 <summary>users テーブル</summary>
 
 | カラム名          | 型              | primary key | unique key | not null | foreign key |
-| ----------------- | --------------- | ----------- | ---------- | -------- | ----------- | --- |
+| ----------------- | --------------- | ----------- | ---------- | -------- | ----------- |
 | id                | unsigned bigint | 〇          |            | 〇       |             |
 | name              | string          |             |            | 〇       |             |
-| email             | string          |             | 〇         | 〇       |             |     |
+| email             | string          |             | 〇         | 〇       |             |
 | email_verified_at | timestamp       |             |            |          |             |
 | password          | string          |             |            | 〇       |             |
 | remember_token    | string          |             |            |          |             |
