@@ -9,7 +9,7 @@ use App\Models\User;
 use App\Models\Item;
 use App\Models\Profile;
 use Faker\Factory;
-
+use Illuminate\Foundation\Testing\DatabaseMigrations;
 class Case11PaymentTest extends DuskTestCase
 {
     /**
@@ -17,6 +17,7 @@ class Case11PaymentTest extends DuskTestCase
      *
      * @return void
      */
+    use DatabaseMigrations;
     public function testSubtotal()
     {
         $faker = Factory::create('ja_JP');
