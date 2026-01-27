@@ -14,14 +14,13 @@ coachtech フリマ
 1.  `git clone git@github.com:kasahara-dev/kasahara-mogi1.git`
 2.  `cd kasahara-mogi1`
 3.  `make init`
-4. .env の各環境変数を下記に変更
+4.  .env の各環境変数を下記に変更
 
 - `STRIPE_PUBLIC_KEY={Stripe テスト用アカウントの公開鍵}`
 - `STRIPE_SECRET_KEY={Stripe テスト用アカウントの秘密鍵}`
 
 > [!IMPORTANT]
 > MySQL は、OS によって起動しない場合があるのでそれぞれの PC に合わせて docker-compose.yml ファイルを編集
-
 
 > [!IMPORTANT]
 > "The stream or file could not be opened"エラーが発生した場合
@@ -117,7 +116,7 @@ coachtech フリマ
 | created_at | timestamp       |             |            |          |             |
 | updated_at | timestamp       |             |            |          |             |
 
-</deatails>
+</details>
 
 <details>
 <summary>purchasesテーブル</summary>
