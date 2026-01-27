@@ -4,33 +4,24 @@ coachtech フリマ
 
 ## 環境構築
 
-### Docker ビルド
-
-1.  `git clone git@github.com:kasahara-dev/kasahara-mogi1.git`
-2.  `cd kasahara-mogi1`
-3.  `docker-compose up -d --build`
-
-> [!IMPORTANT]
-> MySQL は、OS によって起動しない場合があるのでそれぞれの PC に合わせて docker-compose.yml ファイルを編集
-
 ### Stripe 設定
 
 1. Stripe テスト用アカウントを取得
 2. Stripe コンソール画面よりコンビニ払い、カード払いを有効化
 
-### Laravel 環境構築
+### Docker ビルド & laravel環境構築
 
-1. `docker compose exec php bash`
-2. `composer install`
-3. .env.example ファイルから.env を作成し、各環境変数を下記に変更
+1.  `git clone git@github.com:kasahara-dev/kasahara-mogi1.git`
+2.  `cd kasahara-mogi1`
+3.  `make init`
+4. .env の各環境変数を下記に変更
 
 - `STRIPE_PUBLIC_KEY={Stripe テスト用アカウントの公開鍵}`
 - `STRIPE_SECRET_KEY={Stripe テスト用アカウントの秘密鍵}`
 
-4. `php artisan key:generate`
-5. `php artisan migrate`
-6. `php artisan db:seed`
-7. `php artisan storage:link`
+> [!IMPORTANT]
+> MySQL は、OS によって起動しない場合があるのでそれぞれの PC に合わせて docker-compose.yml ファイルを編集
+
 
 > [!IMPORTANT]
 > "The stream or file could not be opened"エラーが発生した場合
@@ -39,34 +30,10 @@ coachtech フリマ
 
 ## テスト手順
 
-1. `docker compose exec mysql bash`
-2. `mysql -u root -p`
-3. `root`
-4. `CREATE DATABASE demo_test;`
-5. `exit`
-6. `exit`
-7. .env ファイルから.env.testing を作成し、各環境変数を下記に変更
+1. `make test`
 
-- `APP_ENV=test`
-- `APP_KEY=`
-- `DB_DATABASE=demo_test`
-- `DB_USERNAME=root`
-- `DB_PASSWORD=root`
-
-8. .env ファイルから.env.dusk.localを作成し、各環境変数を下記に変更
-
-- `APP_ENV=testing`
-- `APP_URL=http://nginx`
-
-9. `docker compose exec php bash`
-10. `php artisan key:generate --env=testing`
-11. `php artisan config:clear`
-12. `php artisan migrate --env=testing`
-13. `composer require --dev laravel/dusk`
-14. `php artisan dusk:install`
-15. `php artisan dusk:make LoginTest`
-16. `php artisan test`
-17. `php artisan dusk`
+> [!NOTE]
+> PHPUnit→dusk の順に実行されます
 
 ## 使用技術
 
