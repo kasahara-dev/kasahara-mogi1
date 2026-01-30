@@ -1,10 +1,23 @@
+data:
+	docker compose exec php php artisan migrate:fresh
+	docker compose exec php php artisan db:seed
+
+test:
+	-docker compose exec php php artisan test
+	docker compose exec php php artisan dusk
+
 init:
 	docker-compose up -d --build
-	docker-compose exec php composer install
-	docker-compose exec php cp .env.example .env
-	mkdir ./src/storage/app/public/img
-	mv ./src/public/img/copy_storage_img/*.jpg ./src/storage/app/public/img
-	docker-compose exec php php artisan key:generate
-	docker-compose exec php php artisan storage:link
-	docker-compose exec php chmod -R 777 storage bootstrap/cache
-	@make fresh
+	docker compose exec php composer instal
+	sleep 10
+	cp src/.env.example src/.env
+	docker compose exec php php artisan key:generate
+	docker compose exec php php artisan storage:link
+	docker compose exec php php artisan migrate:fresh
+	docker compose exec php php artisan db:seed
+	echo "CREATE DATABASE demo_test;"|docker compose exec -T mysql bash -c 'mysql -u root -proot'
+	cp src/.env.testing.example src/.env.testing
+	docker compose exec php php artisan key:generate --env=testing
+	cp src/.env.testing src/.env.dusk.local
+	sed -i 's/APP_ENV=test/APP_ENV=testing/g' src/.env.dusk.local
+	sed -i 's/APP_URL=http:\/\/localhost/APP_URL=http:\/\/nginx/g' src/.env.dusk.local
