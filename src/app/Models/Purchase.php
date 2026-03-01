@@ -16,6 +16,7 @@ class Purchase extends Model
         'post_number',
         'address',
         'building',
+        'status',
     ];
     public function user()
     {
