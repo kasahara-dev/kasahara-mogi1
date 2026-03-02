@@ -57,6 +57,19 @@
     font-weight: bold;
     color: red;
 }
+.tab-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1em;
+    height: 1em;
+    border: 1px solid red;
+    border-radius: 50%;
+    background-color: red;
+    color: white;
+    box-sizing: border-box;
+}
+
 .items-area {
     display: grid;
     grid-template-columns: 23.95% 23.95% 23.95% 23.95%;

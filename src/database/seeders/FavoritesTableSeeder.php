@@ -17,19 +17,13 @@ class FavoritesTableSeeder extends Seeder
     {
         DB::table('favorites')->insert(
             [
-                'user_id' => '1',
+                'user_id' => '2',
                 'item_id' => '4',
             ]
         );
         DB::table('favorites')->insert(
             [
-                'user_id' => '4',
-                'item_id' => '4',
-            ]
-        );
-        DB::table('favorites')->insert(
-            [
-                'user_id' => '5',
+                'user_id' => '3',
                 'item_id' => '4',
             ]
         );

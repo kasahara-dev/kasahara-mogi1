@@ -23,4 +23,16 @@ class Message extends Model
     {
         return $this->belongsTo('App\Models\User');
     }
+    public function receiverId()
+    {
+        if($this->purchase->user_id == $this->user_id){
+            $receiver_id = $this->purchase->item->user_id;
+        }else{
+            $receiver_id = $this->purchase->user_id;
+        }
+        return $receiver_id;
+    }
+    public function scopeUnread($query){
+        return $query->where('read',0);
+    }
 }

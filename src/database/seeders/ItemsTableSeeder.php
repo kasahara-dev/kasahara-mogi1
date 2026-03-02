@@ -44,7 +44,7 @@ class ItemsTableSeeder extends Seeder
         ];
         DB::table('items')->insert($param);
         $param = [
-            'user_id' => '2',
+            'user_id' => '1',
             'img_path' => 'img/item/Leather+Shoes+Product+Photo.jpg',
             'condition' => '4',
             'name' => '革靴',
@@ -54,7 +54,7 @@ class ItemsTableSeeder extends Seeder
         ];
         DB::table('items')->insert($param);
         $param = [
-            'user_id' => '2',
+            'user_id' => '1',
             'img_path' => 'img/item/Living+Room+Laptop.jpg',
             'condition' => '1',
             'name' => 'ノートPC',
@@ -84,7 +84,7 @@ class ItemsTableSeeder extends Seeder
         ];
         DB::table('items')->insert($param);
         $param = [
-            'user_id' => '3',
+            'user_id' => '2',
             'img_path' => 'img/item/Tumbler+souvenir.jpg',
             'condition' => '4',
             'name' => 'タンブラー',
@@ -94,7 +94,7 @@ class ItemsTableSeeder extends Seeder
         ];
         DB::table('items')->insert($param);
         $param = [
-            'user_id' => '3',
+            'user_id' => '2',
             'img_path' => 'img/item/Waitress+with+Coffee+Grinder.jpg',
             'condition' => '1',
             'name' => 'コーヒーミル',
@@ -104,7 +104,7 @@ class ItemsTableSeeder extends Seeder
         ];
         DB::table('items')->insert($param);
         $param = [
-            'user_id' => '3',
+            'user_id' => '2',
             'img_path' => 'img/item/外出メイクアップセット.jpg',
             'condition' => '2',
             'name' => 'メイクセット',

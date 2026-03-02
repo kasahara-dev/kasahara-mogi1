@@ -32,6 +32,14 @@ class UsersTableSeeder extends Seeder
             'updated_at' => now(),
         ];
         DB::table('users')->insert($param);
-        User::factory()->count(5)->create();
+        $param = [
+            'name' => 'テストユーザー3',
+            'email' => 'test3@example.com',
+            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password,
+            'email_verified_at' => now(),
+            'created_at' => now(),
+            'updated_at' => now(),
+        ];
+        DB::table('users')->insert($param);
     }
 }
