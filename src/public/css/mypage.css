@@ -119,6 +119,29 @@
     font-weight: bold;
     pointer-events: none;
 }
+.item-badge-area {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    pointer-events: none;
+}
+.item-badge {
+    position: absolute;
+    top: 0;
+    left: 1em;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 10%;
+    height: 10%;
+    border: 1px solid red;
+    border-radius: 50%;
+    background-color: red;
+    color: white;
+    box-sizing: border-box;
+}
 @media screen and (max-width: 768px) {
     .user-info-area {
         display: flex;

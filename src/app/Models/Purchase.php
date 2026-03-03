@@ -37,11 +37,16 @@ class Purchase extends Model
     }
     public function unreadMessagesCount()
     {
-        // $count = 0;
-        // if($this->messages->where('messages.user_id','<>', Auth::id())->where('read',0)->exists){
-            $count = $this->messages->where('messages.user_id','<>', Auth::id())->where('read',0)->count();
-            // \Log::info('messages user id is '.$this->messages()->user_id.'auth id is '.Auth::id());
-        // }
+        $count = $this->messages()->where('messages.user_id','<>', Auth::id())->where('read',0)->count();
         return $count;
+    }
+    public function reviewed(){
+        $reviewed = false;
+        if($this->reviews()->exists()){
+            if($this->reviews()->where('reviews.user_id',Auth::id())->exists()){
+                $reviewed = true;
+            }
+        }
+        return $reviewed;
     }
 }

@@ -36,12 +36,23 @@ class ProfileController extends Controller
             $items = $user->items();
         }
         elseif($page == 'in-progress'){
-            // 購入した商品の中で取引中の商品
-            $item_id = $user->purchases()->where('status', 0)->pluck('item_id');
-            // 出品した商品の中で取引中の商品
+            // 購入した商品の中で未評価の商品
+            foreach($user->purchases as $purchase){
+                if($purchase->reviewed()){
+                    ;
+                }else{
+                    $item_id[] = $purchase->item->id;
+                }
+            }
+            // 出品した商品の中で未評価の商品
             foreach ($user->items as $item) {
-                if($item->purchase()->where('status',0)->exists()){
-                    $item_id[] = $item->id;
+                if($item->purchase()->exists()){
+                    if($item->purchase->reviewed()){
+                        ;
+                    }
+                    else{
+                        $item_id[] = $item->id;
+                    }
                 }
             }
             $items = Item::whereIn('id', $item_id);
