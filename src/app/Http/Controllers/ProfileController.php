@@ -36,26 +36,7 @@ class ProfileController extends Controller
             $items = $user->items();
         }
         elseif($page == 'in-progress'){
-            // 購入した商品の中で未評価の商品
-            foreach($user->purchases as $purchase){
-                if($purchase->reviewed()){
-                    ;
-                }else{
-                    $item_id[] = $purchase->item->id;
-                }
-            }
-            // 出品した商品の中で未評価の商品
-            foreach ($user->items as $item) {
-                if($item->purchase()->exists()){
-                    if($item->purchase->reviewed()){
-                        ;
-                    }
-                    else{
-                        $item_id[] = $item->id;
-                    }
-                }
-            }
-            $items = Item::whereIn('id', $item_id);
+            $items = $user->getUnReviewedItems();
         }
         else {
             $purchases = $user->purchases()->pluck('item_id');

@@ -91,6 +91,9 @@ class PurchaseController extends Controller
 
         header("HTTP/1.1 303 See Other");
         header("Location: " . $checkout_session->url);
-
+    }
+    public function update($purchase_id){
+        Purchase::find($purchase_id)->update(['status' => 1]);
+        return redirect('/message/' . $purchase_id);
     }
 }

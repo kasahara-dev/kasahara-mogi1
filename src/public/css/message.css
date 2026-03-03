@@ -10,14 +10,36 @@
 .other-list--title {
     color: white;
     text-align: center;
+    font-size: medium;
+}
+.other-list--link {
+    text-decoration: none;
+    background-color: #eeefeb;
+    color: black;
+    text-align: center;
+    margin: 20px 10px;
+    display: block;
+    padding: 0.4em;
+    border-radius: 5px;
 }
 .details--area {
 }
 .title--area {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 .targe-user--area {
     display: flex;
     align-items: center;
+}
+.commit-btn {
+    border: none;
+    color: white;
+    background-color: #ff8282;
+    padding: 1em 2em;
+    border-radius: 40px;
+    cursor: pointer;
 }
 .img--area {
     height: 3em;
@@ -25,4 +47,23 @@
 }
 .title {
     font-size: 1.5em;
+}
+.item--area {
+    display: flex;
+}
+.item--img {
+    width: 100px;
+    height: 100px;
+    margin: 2em;
+}
+.item--info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.item--name {
+    font-size: large;
+    font-weight: bolder;
+}
+.item--price {
 }

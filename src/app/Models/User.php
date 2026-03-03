@@ -71,4 +71,27 @@ class User extends Authenticatable implements MustVerifyEmail
     public function reviews(){
         return $this->hasMany('App\Models\Review');
     }
+    public function getUnReviewedItems(){
+        // 購入した商品の中で未評価の商品
+        foreach($this->purchases as $purchase){
+            if($purchase->reviewed()){
+                ;
+            }else{
+                $item_id[] = $purchase->item->id;
+            }
+        }
+        // 出品した商品の中で未評価の商品
+        foreach ($this->items as $item) {
+            if($item->purchase()->exists()){
+                if($item->purchase->reviewed()){
+                    ;
+                }
+                else{
+                    $item_id[] = $item->id;
+                }
+            }
+        }
+        $items = Item::whereIn('id', $item_id);
+        return $items;
+    }
 }
