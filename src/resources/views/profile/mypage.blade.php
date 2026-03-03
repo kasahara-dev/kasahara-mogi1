@@ -37,7 +37,11 @@
         @if(!is_null($items))
             @foreach ($items as $item)
                 <div class="item-area">
-                    <a href="/item/{{ $item->id }}" class="item-link">
+                    @if($page == 'in-progress')
+                        <a href="/message/{{ $item->purchase->id }}" class="item-link">
+                    @else
+                        <a href="/item/{{ $item->id }}" class="item-link">
+                    @endif
                         <img title="{{ $item->detail }}" src="{{ asset($item->img_path) }}" alt="{{ $item->name }}"
                             class="item-image" name="{{ $item->id }}" />
                         @if (($page != 'buy') and ($page != 'in-progress') and isset($item->purchase))

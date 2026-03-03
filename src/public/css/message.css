@@ -1,0 +1,28 @@
+.contents--area {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    width: 100%;
+    min-height: calc(100vh - 60px);
+}
+.other-list--area {
+    background-color: #868686;
+}
+.other-list--title {
+    color: white;
+    text-align: center;
+}
+.details--area {
+}
+.title--area {
+}
+.targe-user--area {
+    display: flex;
+    align-items: center;
+}
+.img--area {
+    height: 3em;
+    width: 3em;
+}
+.title {
+    font-size: 1.5em;
+}
