@@ -100,7 +100,6 @@
 </div>
 <script>
     const purchaseId = {{ $purchase->id }};
-    console.log(purchaseId);
 </script>
 <script src={{ asset('js/messages.js') }}></script>
 <script src={{ asset('js/selectImg.js') }}></script>
