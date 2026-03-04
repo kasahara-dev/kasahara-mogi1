@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\MessageRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Purchase;
@@ -30,6 +31,10 @@ class MessageController extends Controller
             ->where('id','<>',$purchase->item->id)
             ->get();
         return view('message.message', compact('purchase','messages','target_user','purchaser','other_items'));
+    }
+    public function update(MessageRequest $request , $message_id){
+        $new_message = $request->message;
+        return back();
     }
     public function destroy($message_id){
         Message::destroy($message_id);

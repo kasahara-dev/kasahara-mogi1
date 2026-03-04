@@ -108,13 +108,29 @@
     font-weight: bold;
 }
 .message--detail {
-    width: 45%;
+    max-width: 45%;
     background-color: #d9d9d9;
     border-radius: 4px;
     padding: 1em;
+    width: fit-content;
+}
+.message--detail__edit {
+    background-color: #d9d9d9;
+    padding: 1em;
+    border-radius: 4px;
+    field-sizing: content;
+    border: none;
+    width: 45%;
+    font-size: large;
+    line-height: 1.3em;
+    resize: none;
+}
+.message-edit--form {
+    text-align: right;
 }
 .message-edit--area {
     display: flex;
+    justify-content: flex-end;
 }
 .message-edit--btn {
     color: #5f5f5f;

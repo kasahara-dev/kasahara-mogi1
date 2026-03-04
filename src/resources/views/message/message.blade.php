@@ -46,9 +46,16 @@
                         @if($message->img_path)
                             <img class="message--img" src="{{ asset($message->img_path) }}" alt="コメント画像">
                         @endif
-                        <div class="message--detail">{{ $message->detail }}</div>
-                        <div class="message-edit--area">
-                            <button class="message-edit--btn">編集</button>
+                        <form class="message-edit--form" action="/message/{{ $message->id }}" method="POST">
+                            @csrf
+                            @method('PUT')
+                            <textarea name="message[{{ $message->id }}]" class="message--detail__edit">{{ old('message.'.$message->id,$message->detail) }}</textarea>
+                            <div class="message-edit--area">
+                                @if($errors->has("message." . $message->id))
+                                    {{  $errors->first("message." . $message->id) }}
+                                @endif
+                                <button type="submit" class="message-edit--btn">編集</button>
+                            </form>
                             <form action="/message/{{ $message->id }}" method="POST">
                                 @csrf
                                 @method('DELETE')
