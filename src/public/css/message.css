@@ -124,6 +124,7 @@
     font-size: large;
     line-height: 1.3em;
     resize: none;
+    overflow-wrap: anywhere;
 }
 .message-edit--form {
     text-align: right;
@@ -138,10 +139,14 @@
     cursor: pointer;
     background: none;
     border: none;
+    outline: none;
 }
 .message-input--area {
     position: absolute;
     bottom: 0;
     left: 0;
     width: 100%;
+}
+.error-msg {
+    color: red;
 }

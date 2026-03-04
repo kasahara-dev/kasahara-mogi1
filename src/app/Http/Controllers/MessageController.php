@@ -33,7 +33,9 @@ class MessageController extends Controller
         return view('message.message', compact('purchase','messages','target_user','purchaser','other_items'));
     }
     public function update(MessageRequest $request , $message_id){
-        $new_message = $request->message;
+        $new_message = $request->message[$message_id];
+        Message::find($message_id)
+            ->update(['detail' => $new_message]);
         return back();
     }
     public function destroy($message_id){

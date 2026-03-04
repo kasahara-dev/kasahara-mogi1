@@ -51,10 +51,12 @@
                             @method('PUT')
                             <textarea name="message[{{ $message->id }}]" class="message--detail__edit">{{ old('message.'.$message->id,$message->detail) }}</textarea>
                             <div class="message-edit--area">
-                                @if($errors->has("message." . $message->id))
-                                    {{  $errors->first("message." . $message->id) }}
-                                @endif
-                                <button type="submit" class="message-edit--btn">編集</button>
+                                <div class="error-msg">
+                                    @if($errors->has("message." . $message->id))
+                                        {{  $errors->first("message." . $message->id) }}
+                                    @endif
+                                </div>
+                                <button type="submit" class="message-edit--btn" @if($errors->has("message." . $message->id)) autofocus @endif>編集</button>
                             </form>
                             <form action="/message/{{ $message->id }}" method="POST">
                                 @csrf
