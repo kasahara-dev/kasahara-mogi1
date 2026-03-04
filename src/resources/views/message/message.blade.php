@@ -35,6 +35,43 @@
                 <div class="item--price">￥{{ number_format($purchase->item->price) }}</div>
             </div>
         </div>
+        <div class="messages--area" id="messagesArea">
+            @foreach ($messages as $message)
+                @if($message->user_id==Auth::id())
+                    <div class="message--area__mine">
+                        <div class="message-header--area__mine">
+                            <div class="message-header--name">{{ Auth::user()->name }}</div>
+                            <img src="{{ asset(Auth::user()->profile->img_path) }}" class="message-header--icon" />
+                        </div>
+                        @if($message->img_path)
+                            <img class="message--img" src="{{ asset($message->img_path) }}" alt="コメント画像">
+                        @endif
+                        <div class="message--detail">{{ $message->detail }}</div>
+                        <div class="message-edit--area">
+                            <button class="message-edit--btn">編集</button>
+                            <form action="/message/{{ $message->id }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="message-edit--btn">削除</button>
+                            </form>
+                        </div>
+                    </div>
+                @else
+                    <div class="message--area__target">
+                        <div class="message-header--area__target">
+                            <img src="{{ asset($message->user->profile->img_path) }}" class="message-header--icon" />
+                            <div class="message-header--name">{{ $message->user->name }}</div>
+                        </div>
+                        @if($message->img_path)
+                            <img class="message--img" src="{{ asset($message->img_path) }}" alt="コメント画像">
+                        @endif
+                        <div class="message--detail">{{ $message->detail }}</div>
+                    </div>
+                @endif
+            @endforeach
+            <div class="message-input--area">input</div>
+        </div>
     </div>
 </div>
+<script src={{ asset('/js/messages.js') }}></script>
 @endsection

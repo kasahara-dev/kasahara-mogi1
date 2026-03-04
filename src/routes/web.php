@@ -52,7 +52,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::put('/mypage/profile', [ProfileController::class, 'update']);
     Route::get('/message/{purchase_id}', [MessageController::class, 'create']);
     Route::post('/message/{purchase_id}', [MessageController::class, 'store']);
-    Route::put('/message/{purchase_id}', [MessageController::class, 'update']);
-    Route::delete('/message/{purchase_id}', [MessageController::class, 'destroy']);
     Route::patch('/message/{purchase_id}', [PurchaseController::class,'update']);
+    Route::put('/message/{message_id}', [MessageController::class, 'update']);
+    Route::delete('/message/{message_id}', [MessageController::class, 'destroy']);
 });
