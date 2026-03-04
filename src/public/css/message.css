@@ -78,6 +78,10 @@
     overflow: auto;
     padding-bottom: 80px;
 }
+.message--img {
+    max-width: 45%;
+    margin-bottom: 0.5em;
+}
 .message--area__mine {
     display: flex;
     margin: 10px;
@@ -141,12 +145,51 @@
     border: none;
     outline: none;
 }
-.message-input--area {
+
+.error-msg {
+    color: red;
+    margin-left: 1em;
+}
+.new-message--area {
     position: absolute;
     bottom: 0;
     left: 0;
     width: 100%;
+    height: 2em;
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
 }
-.error-msg {
-    color: red;
+.message-input--area {
+    display: flex;
+    height: 2em;
+    align-items: center;
+}
+.message-input {
+    flex: 1;
+    margin: 0 1em;
+    height: 1.5em;
+}
+.message-img-input {
+    display: none;
+}
+.message-input-img--btn {
+    cursor: pointer;
+    border: 1px solid #ff5555;
+    border-radius: 2px;
+    background: none;
+    color: #ff5555;
+    font-weight: bold;
+    padding: 0.2em 1em;
+}
+.send-btn {
+    height: 100%;
+    outline: none;
+    border: none;
+    background: none;
+}
+.send-btn-img {
+    height: 100%;
+    object-fit: cover;
+    cursor: pointer;
 }

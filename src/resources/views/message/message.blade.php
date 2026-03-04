@@ -78,9 +78,23 @@
                     </div>
                 @endif
             @endforeach
-            <div class="message-input--area">input</div>
+            <div class="new-message--area">
+                <div class="error-msg">
+                    @error('new_message_text')
+                        {{ $message }}
+                    @enderror
+                </div>
+                <form class="message-input--area" action="/message/{{ $purchase->id }}" method="POST">
+                    @csrf
+                    <input type="text" name="new_message_text" class="message-input" placeholder="取引メッセージを記入してください" />
+                    <input id="fileElem" name="message_img_input" type="file" class="message-img-input" />
+                    <button id="fileSelect" type="button" class="message-input-img--btn">画像を追加</button>
+                    <button type="submit" class="send-btn" name="new-message-btn"><img class="send-btn-img" src="{{ asset('img/send-btn.jpg') }}" alt=""></button>
+                </form>
+            </div>
         </div>
     </div>
 </div>
 <script src={{ asset('/js/messages.js') }}></script>
+<script src="{{ asset('/js/selectImg.js') }}"></script>
 @endsection

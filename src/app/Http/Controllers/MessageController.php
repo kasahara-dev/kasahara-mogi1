@@ -2,12 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\MessageRequest;
+use App\Http\Requests\CreateMessageRequest;
+use App\Http\Requests\UpdateMessageRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Purchase;
 use App\Models\User;
 use App\Models\Message;
+use Storage;
+use Illuminate\Support\Str;
+
 class MessageController extends Controller
 {
     public function create($purchase_id)
@@ -32,7 +36,24 @@ class MessageController extends Controller
             ->get();
         return view('message.message', compact('purchase','messages','target_user','purchaser','other_items'));
     }
-    public function update(MessageRequest $request , $message_id){
+    public function store(CreateMessageRequest $request,$purchase_id){
+        $new_message = $request->new_message_text;
+        if($request->hasFile('message_img_input')){
+            $file = $request->file('message_img_input');
+            $fileName = Str::uuid() . '.' . $file->getClientOriginalExtension();
+            $path = 'storage/' . Storage::disk('public')->putFileAs('message', $file, $fileName);
+        }else{
+            $path = '';
+        }
+        Message::create([
+            'user_id' => Auth::user()->id,
+            'purchase_id' => $purchase_id,
+            'detail' => $new_message,
+            'img_path' => $path,
+        ]);
+        return back();
+    }
+    public function update(UpdateMessageRequest $request , $message_id){
         $new_message = $request->message[$message_id];
         Message::find($message_id)
             ->update(['detail' => $new_message]);

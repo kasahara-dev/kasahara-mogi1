@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class MessageRequest extends FormRequest
+class UpdateMessageRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,7 +26,8 @@ class MessageRequest extends FormRequest
         return [
             "message.*" => ['required', 'max:400'],
         ];
-    }public function messages()
+    }
+    public function messages()
     {
         return [
             'message.*.required' => '本文を入力してください',
