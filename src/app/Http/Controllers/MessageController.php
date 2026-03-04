@@ -39,7 +39,6 @@ class MessageController extends Controller
     public function store(CreateMessageRequest $request,$purchase_id){
         $new_message = $request->new_message_text;
         if($request->hasFile('message_img_input')){
-            \Log::info('here !');
             $file = $request->file('message_img_input');
             $fileName = Str::uuid() . '.' . $file->getClientOriginalExtension();
             $path = Storage::disk('public')->putFileAs('message', $file, $fileName);

@@ -1,7 +1,8 @@
 const newMessage = document.getElementById("new_message_text");
+const sendBtn = document.getElementById("send_btn");
 
 document.addEventListener("DOMContentLoaded", function () {
-    var container = document.getElementById("messagesArea");
+    const container = document.getElementById("messagesArea");
     container.scrollTop = container.scrollHeight;
 });
 
@@ -13,4 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (savedValue) {
         newMessage.value = savedValue;
     }
+});
+sendBtn.addEventListener("click", () => {
+    sessionStorage.removeItem("message" + purchaseId);
 });
