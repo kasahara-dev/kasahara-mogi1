@@ -41,7 +41,7 @@
                     <div class="message--area__mine">
                         <div class="message-header--area__mine">
                             <div class="message-header--name">{{ Auth::user()->name }}</div>
-                            <img src="{{ asset(Auth::user()->profile->img_path) }}" class="message-header--icon" />
+                            <img src="{{ asset(Auth::user()->profile->img_path) }}" class="message-header--icon"/>
                         </div>
                         @if($message->img_path)
                             <img class="message--img" src="{{ asset($message->img_path) }}" alt="コメント画像">
@@ -68,7 +68,7 @@
                 @else
                     <div class="message--area__target">
                         <div class="message-header--area__target">
-                            <img src="{{ asset($message->user->profile->img_path) }}" class="message-header--icon" />
+                            <img src="{{ asset($message->user->profile->img_path) }}" class="message-header--icon"/>
                             <div class="message-header--name">{{ $message->user->name }}</div>
                         </div>
                         @if($message->img_path)
@@ -83,8 +83,11 @@
                     @error('new_message_text')
                         {{ $message }}
                     @enderror
+                    @error('message_img_input')
+                        {{ $message }}
+                    @enderror
                 </div>
-                <form class="message-input--area" action="/message/{{ $purchase->id }}" method="POST">
+                <form class="message-input--area" action="/message/{{ $purchase->id }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <input type="text" name="new_message_text" class="message-input" placeholder="取引メッセージを記入してください" />
                     <input id="fileElem" name="message_img_input" type="file" class="message-img-input" />
@@ -95,6 +98,6 @@
         </div>
     </div>
 </div>
-<script src={{ asset('/js/messages.js') }}></script>
-<script src="{{ asset('/js/selectImg.js') }}"></script>
+<script src={{ asset('js/messages.js') }}></script>
+<script src={{ asset('js/selectImg.js') }}></script>
 @endsection

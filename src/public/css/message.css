@@ -168,7 +168,7 @@
 .message-input {
     flex: 1;
     margin: 0 1em;
-    height: 1.5em;
+    padding: 0.5em 1em;
 }
 .message-img-input {
     display: none;

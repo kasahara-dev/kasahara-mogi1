@@ -3,7 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use App\Rules\ImgFileName;
+use App\Rules\MessageImgFileName;
 
 class CreateMessageRequest extends FormRequest
 {
@@ -25,7 +25,7 @@ class CreateMessageRequest extends FormRequest
     public function rules()
     {
         return[
-            'message_img_input' => ['nullable','mimetypes:image/jpeg,image/png', new ImgFileName()],
+            'message_img_input' => ['nullable' , 'mimetypes:image/jpeg,image/png' , new MessageImgFileName()],
             'new_message_text' => ['required', 'max:400'],
         ];
     }
