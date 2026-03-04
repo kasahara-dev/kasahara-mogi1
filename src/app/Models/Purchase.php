@@ -49,4 +49,12 @@ class Purchase extends Model
         }
         return $reviewed;
     }
+    public function getTargetUserId(){
+        if($this->user_id == Auth::id()){
+            $target_user = $this->item->user_id;
+        }else{
+            $target_user = $this->user_id;
+        }
+        return $target_user;
+    }
 }

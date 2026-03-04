@@ -6,7 +6,10 @@ use App\Http\Requests\PurchaseRequest;
 use Illuminate\Http\Request;
 use App\Models\Item;
 use App\Models\Purchase;
+use App\Models\User;
+use App\Mail\TransactionCompletedMail;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Stripe\Stripe;
 class PurchaseController extends Controller
 {
@@ -93,7 +96,13 @@ class PurchaseController extends Controller
         header("Location: " . $checkout_session->url);
     }
     public function update($purchase_id){
-        Purchase::find($purchase_id)->update(['status' => 1]);
+        $purchase = Purchase::find($purchase_id);
+        $purchase->update(['status' => 1]);
+        $target_user_id = $purchase->getTargetUserId();
+        $email = User::find($target_user_id)->email;
+        $link = env('APP_URL') . '/message/' . $purchase_id;
+        $data = ['item_name' => $purchase->item->name,'link' => $link];
+        Mail::to($email)->send(new TransactionCompletedMail($data));
         return redirect('/message/' . $purchase_id);
     }
 }
