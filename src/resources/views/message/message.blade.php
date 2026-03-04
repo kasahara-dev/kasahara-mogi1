@@ -13,6 +13,19 @@
         @endforeach
     </div>
     <div class="details--area">
+        @if($purchase->status == 1)
+            <div class="modal--area">
+                <div class="rate--box">
+                    <form action="/review/{{ $purchase->id }}" method="POST" class="rate-form">
+                        <div class="rate-title--area">取引が完了しました。</div>
+                        <div class="rate-select--area">今回の取引相手はどうでしたか？</div>
+                        <div class="rate-submit--area">
+                            <button class="rate-submit--btn">送信する</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        @endif
         <div class="title--area">
             <div class="targe-user--area">
                 <img class="img--area" src="{{ asset($target_user->profile->img_path) }}" alt="取引相手アイコン" />
