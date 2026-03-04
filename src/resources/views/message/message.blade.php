@@ -89,7 +89,7 @@
                 </div>
                 <form class="message-input--area" action="/message/{{ $purchase->id }}" method="POST" enctype="multipart/form-data">
                     @csrf
-                    <input type="text" name="new_message_text" class="message-input" placeholder="取引メッセージを記入してください" />
+                    <input type="text" name="new_message_text" class="message-input" placeholder="取引メッセージを記入してください" id="new_message_text"/>
                     <input id="fileElem" name="message_img_input" type="file" class="message-img-input" />
                     <button id="fileSelect" type="button" class="message-input-img--btn">画像を追加</button>
                     <button type="submit" class="send-btn" name="new-message-btn"><img class="send-btn-img" src="{{ asset('img/send-btn.jpg') }}" alt=""></button>
@@ -98,6 +98,10 @@
         </div>
     </div>
 </div>
+<script>
+    const purchaseId = {{ $purchase->id }};
+    console.log(purchaseId);
+</script>
 <script src={{ asset('js/messages.js') }}></script>
 <script src={{ asset('js/selectImg.js') }}></script>
 @endsection
