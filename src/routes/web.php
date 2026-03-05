@@ -53,6 +53,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/message/{purchase_id}', [MessageController::class, 'create']);
     Route::post('/message/{purchase_id}', [MessageController::class, 'store']);
     Route::patch('/message/{purchase_id}', [PurchaseController::class,'update']);
-    Route::put('/message/{message_id}', [MessageController::class, 'update']);
-    Route::delete('/message/{message_id}', [MessageController::class, 'destroy']);
+    Route::put('/message/{purchase_id}', [MessageController::class, 'update']);
+    Route::delete('/message/{purchase_id}', [MessageController::class, 'destroy']);
 });

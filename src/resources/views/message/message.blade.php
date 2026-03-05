@@ -36,7 +36,7 @@
                     <form action="/message/{{ $purchase->id }}" method="post">
                         @csrf
                         @method('PATCH')
-                        <button type="submit" class="commit-btn">取引を完了する</button>
+                        <button @if($purchase->status == 1) disabled @endif type="submit" class="commit-btn">取引を完了する</button>
                     </form>
                 @endif
             </div>
