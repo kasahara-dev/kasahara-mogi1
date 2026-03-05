@@ -18,16 +18,10 @@ sendBtn.addEventListener("click", () => {
     sessionStorage.removeItem("message" + purchaseId);
 });
 
-const rateIds = {};
-
-for (let key in rateConfig) {
-    rateIds[key] = "rate" + key;
-}
 const radios = document.querySelectorAll('input[name="rate"]');
 const labels = document.querySelectorAll('input[name="rate"]');
 radios.forEach((radio) => {
     radio.addEventListener("change", (e) => {
-        console.log(e.target.value + "が選ばれました");
         labels.forEach((label) => {
             if (label.value <= e.target.value) {
                 document

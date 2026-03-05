@@ -19,6 +19,7 @@ class CreateReviewsTable extends Migration
             $table->foreignId('user_id')->constrained('users');
             $table->integer('rate');
             $table->timestamps();
+            $table->unique(['purchase_id','user_id']);
         });
     }
 

@@ -11,6 +11,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\AddressController;
 use App\Http\Controllers\MessageController;
+use App\Http\Controllers\ReviewController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -52,7 +53,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::put('/mypage/profile', [ProfileController::class, 'update']);
     Route::get('/message/{purchase_id}', [MessageController::class, 'create']);
     Route::post('/message/{purchase_id}', [MessageController::class, 'store']);
-    Route::patch('/message/{purchase_id}', [PurchaseController::class,'update']);
+    Route::patch('/message/{purchase_id}', [PurchaseController::class, 'update']);
     Route::put('/message/{purchase_id}', [MessageController::class, 'update']);
     Route::delete('/message/{purchase_id}', [MessageController::class, 'destroy']);
+    Route::post('/review/{purchase_id}', [ReviewController::class, 'store']);
 });

@@ -24,6 +24,7 @@
                         </div>
                     @else
                         <form action="/review/{{ $purchase->id }}" method="POST" class="rate-form">
+                            @csrf
                             <div class="rate-title--area">取引が完了しました。</div>
                             <div class="rate-select--area">
                                 <div class="rate-select--msg">今回の取引相手はどうでしたか？</div>
@@ -35,7 +36,7 @@
                                 </div>
                             </div>
                             <div class="rate-submit--area">
-                                <button class="rate-submit--btn">送信する</button>
+                                <button type="submit" class="rate-submit--btn">送信する</button>
                             </div>
                         </form>
                     @endif
@@ -133,7 +134,6 @@
 </div>
 <script>
     const purchaseId = {{ $purchase->id }};
-    const rateConfig = @json(config('rate'));
 </script>
 <script src={{ asset('js/messages.js') }}></script>
 <script src={{ asset('js/selectImg.js') }}></script>
