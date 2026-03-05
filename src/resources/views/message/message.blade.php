@@ -62,19 +62,19 @@
                         <form class="message-edit--form" action="/message/{{ $message->id }}" method="POST">
                             @csrf
                             @method('PUT')
-                            <textarea name="message[{{ $message->id }}]" class="message--detail__edit">{{ old('message.'.$message->id,$message->detail) }}</textarea>
+                            <textarea @if($purchase->status == 1) disabled @endif name="message[{{ $message->id }}]" class="message--detail__edit">{{ old('message.'.$message->id,$message->detail) }}</textarea>
                             <div class="message-edit--area">
                                 <div class="error-msg">
                                     @if($errors->has("message." . $message->id))
                                         {{  $errors->first("message." . $message->id) }}
                                     @endif
                                 </div>
-                                <button type="submit" class="message-edit--btn" @if($errors->has("message." . $message->id)) autofocus @endif>編集</button>
+                                <button @if($purchase->status == 1) disabled @endif type="submit" class="message-edit--btn" @if($errors->has("message." . $message->id)) autofocus @endif>編集</button>
                             </form>
                             <form action="/message/{{ $message->id }}" method="POST">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="message-edit--btn">削除</button>
+                                <button @if($purchase->status == 1) disabled @endif type="submit" class="message-edit--btn">削除</button>
                             </form>
                         </div>
                     </div>
@@ -102,10 +102,10 @@
                 </div>
                 <form class="message-input--area" action="/message/{{ $purchase->id }}" method="POST" enctype="multipart/form-data">
                     @csrf
-                    <input type="text" name="new_message_text" class="message-input" placeholder="取引メッセージを記入してください" id="new_message_text" value="{{ old("new_message_text") }}"/>
+                    <input @if($purchase->status == 1) disabled @endif type="text" name="new_message_text" class="message-input" placeholder="取引メッセージを記入してください" id="new_message_text" value="{{ old("new_message_text") }}"/>
                     <input id="fileElem" name="message_img_input" type="file" class="message-img-input" />
-                    <button id="fileSelect" type="button" class="message-input-img--btn">画像を追加</button>
-                    <button type="submit" class="send-btn" name="new-message-btn" id="send_btn"><img class="send-btn-img" src="{{ asset('img/send-btn.jpg') }}" alt=""></button>
+                    <button @if($purchase->status == 1) disabled @endif id="fileSelect" type="button" class="message-input-img--btn">画像を追加</button>
+                    <button @if($purchase->status == 1) disabled @endif type="submit" class="send-btn" name="new-message-btn" id="send_btn"><img class="send-btn-img" src="{{ asset('img/send-btn.jpg') }}" alt=""></button>
                 </form>
             </div>
         </div>
