@@ -16,13 +16,29 @@
         @if($purchase->status == 1)
             <div class="modal--area">
                 <div class="rate--box">
-                    <form action="/review/{{ $purchase->id }}" method="POST" class="rate-form">
+                    @if($purchase->reviewed())
                         <div class="rate-title--area">取引が完了しました。</div>
-                        <div class="rate-select--area">今回の取引相手はどうでしたか？</div>
+                        <div class="rate-select--area">評価済みです</div>
                         <div class="rate-submit--area">
-                            <button class="rate-submit--btn">送信する</button>
+                            <button disabled class="rate-submit--btn">送信する</button>
                         </div>
-                    </form>
+                    @else
+                        <form action="/review/{{ $purchase->id }}" method="POST" class="rate-form">
+                            <div class="rate-title--area">取引が完了しました。</div>
+                            <div class="rate-select--area">
+                                <div class="rate-select--msg">今回の取引相手はどうでしたか？</div>
+                                <div class="rate-select-radio--area">
+                                    @foreach (config('rate') as $key => $value)
+                                        <input type="radio" name="rate" id="rate{{ $key }}" value="{{ $value }}" @if($value == count(config('rate'))) checked @endif class="rate-select-radio"/>
+                                        <label for="rate{{ $key }}" class="rate-select--star__active">&#9733</label>
+                                    @endforeach
+                                </div>
+                            </div>
+                            <div class="rate-submit--area">
+                                <button class="rate-submit--btn">送信する</button>
+                            </div>
+                        </form>
+                    @endif
                 </div>
             </div>
         @endif
@@ -48,7 +64,11 @@
                 <div class="item--price">￥{{ number_format($purchase->item->price) }}</div>
             </div>
         </div>
-        <div class="messages--area" id="messagesArea">
+        @if($purchase->status == 1)
+            <div class="messages--area scroll-stop" id="messagesArea">
+        @else
+            <div class="messages--area" id="messagesArea">
+        @endif
             @foreach ($messages as $message)
                 @if($message->user_id==Auth::id())
                     <div class="message--area__mine">
