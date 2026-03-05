@@ -54,14 +54,14 @@ class MessageController extends Controller
         ]);
         return back();
     }
-    public function update(UpdateMessageRequest $request , $message_id){
-        $new_message = $request->message[$message_id];
-        Message::find($message_id)
+    public function update(UpdateMessageRequest $request,$purchase_id){
+        $new_message = $request->message[$request->message_id];
+        Message::find($request->message_id)
             ->update(['detail' => $new_message]);
         return back();
     }
-    public function destroy($message_id){
-        Message::destroy($message_id);
+    public function destroy(Request $request,$purchase_id){
+        Message::destroy($request->message_id);
         return back();
     }
 }

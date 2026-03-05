@@ -59,7 +59,7 @@
                         @if($message->img_path)
                             <img class="message--img" src="{{ asset($message->img_path) }}" alt="コメント画像">
                         @endif
-                        <form class="message-edit--form" action="/message/{{ $message->id }}" method="POST">
+                        <form class="message-edit--form" action="/message/{{ $purchase->id }}?message_id={{ $message->id }}" method="POST">
                             @csrf
                             @method('PUT')
                             <textarea @if($purchase->status == 1) disabled @endif name="message[{{ $message->id }}]" class="message--detail__edit">{{ old('message.'.$message->id,$message->detail) }}</textarea>
@@ -71,7 +71,7 @@
                                 </div>
                                 <button @if($purchase->status == 1) disabled @endif type="submit" class="message-edit--btn" @if($errors->has("message." . $message->id)) autofocus @endif>編集</button>
                             </form>
-                            <form action="/message/{{ $message->id }}" method="POST">
+                            <form action="/message/{{ $purchase->id }}?message_id={{ $message->id }}" method="POST">
                                 @csrf
                                 @method('DELETE')
                                 <button @if($purchase->status == 1) disabled @endif type="submit" class="message-edit--btn">削除</button>
