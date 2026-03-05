@@ -52,7 +52,7 @@
     grid-template-rows: 1fr 2fr 1fr;
 }
 .rate-title--area {
-    font-size: large;
+    font-size: 2.5vw;
     display: flex;
     align-items: center;
     padding: 0 1em;
@@ -60,12 +60,12 @@
 .rate-select--area {
     border-top: 1px solid;
     border-bottom: 1px solid;
-    padding: 1em;
+    padding: 0 1em;
     display: flex;
     flex-direction: column;
 }
 .rate-select--msg {
-    font-size: medium;
+    font-size: 2vw;
     color: #868686;
 }
 .rate-select-radio--area {
@@ -82,11 +82,11 @@
 .rate-select--star__active {
     cursor: pointer;
     color: #fff048;
-    font-size: 3em;
+    font-size: 5vw;
 }
 .rate-submit--area {
     display: flex;
-    padding: 0.5em 1em;
+    padding: 0 1em;
     justify-content: flex-end;
     align-items: center;
 }
