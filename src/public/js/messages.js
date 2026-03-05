@@ -37,7 +37,6 @@ radios.forEach((radio) => {
                         "rate-select--star__active",
                         "rate-select--star__inactive",
                     );
-
             }
         });
     });

@@ -64,7 +64,13 @@ class ProfileController extends Controller
                 $messages_count++;
             }
         }
-        return view('profile.mypage', compact('page', 'items','messages_count'));
+        // 評価
+        if(Auth::user()->getRatesCount() > 0){
+            $rate = round(Auth::user()->getRatesAvg());
+        }else{
+            $rate = 0;
+        }
+        return view('profile.mypage', compact('page', 'items','messages_count','rate'));
     }
     public function update(ProfileRequest $request)
     {

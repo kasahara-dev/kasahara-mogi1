@@ -8,7 +8,14 @@
     <div class="user-info-area">
         <div class="user-title">
             <img class="user-img" src="{{ asset(auth()->user()->profile->img_path) }}" alt="ユーザーアイコン" />
-            <div class="user-name">{{ auth()->user()->name }}</div>
+            <div class="user-name--area">
+                <div class="user-name">{{ auth()->user()->name }}</div>
+                @if($rate)
+                    <div class="user-rate--area">
+                        <div class="user-rate">&#9733;{{ round(auth()->user()->getRatesAvg())}}</div>
+                    </div>
+                @endif
+            </div>
         </div>
         <div class="user-btn-area">
             <form action="/mypage/profile" method="GET">
