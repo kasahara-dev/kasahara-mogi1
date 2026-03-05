@@ -1,13 +1,12 @@
 const newMessage = document.getElementById("new_message_text");
 const sendBtn = document.getElementById("send_btn");
-
 document.addEventListener("DOMContentLoaded", function () {
     const container = document.getElementById("messagesArea");
     container.scrollTop = container.scrollHeight;
 });
 
-newMessage.addEventListener('input', () => {
-    sessionStorage.setItem('message' + purchaseId, newMessage.value);
+newMessage.addEventListener("input", () => {
+    sessionStorage.setItem("message" + purchaseId, newMessage.value);
 });
 document.addEventListener("DOMContentLoaded", () => {
     const savedValue = sessionStorage.getItem("message" + purchaseId);
@@ -17,4 +16,35 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 sendBtn.addEventListener("click", () => {
     sessionStorage.removeItem("message" + purchaseId);
+});
+
+const rateIds = {};
+
+for (let key in rateConfig) {
+    rateIds[key] = "rate" + key;
+}
+const radios = document.querySelectorAll('input[name="rate"]');
+const labels = document.querySelectorAll('input[name="rate"]');
+radios.forEach((radio) => {
+    radio.addEventListener("change", (e) => {
+        console.log(e.target.value + "が選ばれました");
+        labels.forEach((label) => {
+            if (label.value <= e.target.value) {
+                document
+                    .getElementById("label" + label.value)
+                    .classList.replace(
+                        "rate-select--star__inactive",
+                        "rate-select--star__active",
+                    );
+            } else {
+                document
+                    .getElementById("label" + label.value)
+                    .classList.replace(
+                        "rate-select--star__active",
+                        "rate-select--star__inactive",
+                    );
+
+            }
+        });
+    });
 });

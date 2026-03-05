@@ -30,7 +30,7 @@
                                 <div class="rate-select-radio--area">
                                     @foreach (config('rate') as $key => $value)
                                         <input type="radio" name="rate" id="rate{{ $key }}" value="{{ $value }}" @if($value == count(config('rate'))) checked @endif class="rate-select-radio"/>
-                                        <label for="rate{{ $key }}" class="rate-select--star__active">&#9733</label>
+                                        <label for="rate{{ $key }}" id="label{{ $key }}" class="rate-select--star__active">&#9733</label>
                                     @endforeach
                                 </div>
                             </div>
@@ -133,6 +133,7 @@
 </div>
 <script>
     const purchaseId = {{ $purchase->id }};
+    const rateConfig = @json(config('rate'));
 </script>
 <script src={{ asset('js/messages.js') }}></script>
 <script src={{ asset('js/selectImg.js') }}></script>

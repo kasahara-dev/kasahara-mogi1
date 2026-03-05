@@ -84,6 +84,11 @@
     color: #fff048;
     font-size: 5vw;
 }
+.rate-select--star__inactive {
+    cursor: pointer;
+    color: #D9D9D9;
+    font-size: 5vw;
+}
 .rate-submit--area {
     display: flex;
     padding: 0 1em;
