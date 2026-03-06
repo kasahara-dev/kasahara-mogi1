@@ -152,8 +152,6 @@
     font-size: large;
     font-weight: bolder;
 }
-.item--price {
-}
 .messages--area {
     flex-grow: 1;
     overflow: auto;
@@ -226,7 +224,6 @@
     border: none;
     outline: none;
 }
-
 .error-msg {
     color: red;
     margin-left: 1em;
