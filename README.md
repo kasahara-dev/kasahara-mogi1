@@ -208,14 +208,17 @@ coachtech フリマ
 
 ## URL
 
-トップページ：http://localhost/
-MailHog：http://localhost:8025
+- トップページ：http://localhost/
+- MailHog：http://localhost:8025
 
 ## テストユーザー
 
-- テストユーザー 1(CO01～CO05出品ユーザー)メールアドレス：`test1@example.com` パスワード：`password`
-- テストユーザー 2(CO06～CO10出品ユーザー)メールアドレス：`test2@example.com` パスワード：`password`
-- テストユーザー 3(何も紐づけられていないユーザー)メールアドレス：`test3@example.com` パスワード：`password`
+- テストユーザー 1(CO01～CO05出品ユーザー)  
+  メールアドレス：`test1@example.com` パスワード：`password`
+- テストユーザー 2(CO06～CO10出品ユーザー)  
+  メールアドレス：`test2@example.com` パスワード：`password`
+- テストユーザー 3(何も紐づけられていないユーザー)  
+  メールアドレス：`test3@example.com` パスワード：`password`
 
 > [!IMPORTANT]
 > いずれのアイテムも購入されていません
