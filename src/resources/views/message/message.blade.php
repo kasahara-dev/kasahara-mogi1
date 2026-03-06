@@ -135,6 +135,6 @@
 <script>
     const purchaseId = {{ $purchase->id }};
 </script>
+<script src={{ asset('js/selectMessageImg.js') }}></script>
 <script src={{ asset('js/messages.js') }}></script>
-<script src={{ asset('js/selectImg.js') }}></script>
 @endsection
