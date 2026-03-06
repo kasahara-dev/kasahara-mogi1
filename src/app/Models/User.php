@@ -119,13 +119,13 @@ class User extends Authenticatable implements MustVerifyEmail
         if($this->getRatesCount() == 0){
             return 0;
         }else{
-            $purchaseIds = Review::where('user_id','<>',$this->id)->pluck('purchase_id');
-            $itemIds = Item::where('user_id',$this->id)->pluck('id');
-            $soldPurchaseIds = Purchase::whereIn('item_id',$itemIds)->pluck('id');
-            $by_purchaser = Review::whereIn('purchase_id',$soldPurchaseIds)->pluck('rate');
-            $boughtPurchaseIds = Purchase::where('user_id',$this->id)->pluck('id');
-            $by_seller = Review::whereIn('purchase_id',$boughtPurchaseIds)->pluck('rate');
-            $by_all = $by_purchaser->merge($by_seller)->avg();
+            $reviews = Review::where('user_id','<>',$this->id)->get();
+            $myItemIds = Item::where('user_id',$this->id)->pluck('id');
+            $soldPurchaseIds = Purchase::whereIn('item_id', $myItemIds)->pluck('id');
+            $by_buyer = $reviews->whereIn('purchase_id', $soldPurchaseIds)->pluck('rate');
+            $myPurchaseIds = Purchase::where('user_id',$this->id)->pluck('id');
+            $by_seller = $reviews->whereIn('purchase_id',$myPurchaseIds)->pluck('rate');
+            $by_all = $by_buyer->merge($by_seller)->avg();
             return $by_all;
         }
     }

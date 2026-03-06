@@ -18,10 +18,8 @@
                 <div class="rate--box">
                     @if($purchase->reviewed())
                         <div class="rate-title--area">取引が完了しました。</div>
-                        <div class="rate-select--area">評価済みです</div>
-                        <div class="rate-submit--area">
-                            <button disabled class="rate-submit--btn">送信する</button>
-                        </div>
+                        <div class="rate-select--area"></div>
+                        <div class="rated--area">評価済みです</div>
                     @else
                         <form action="/review/{{ $purchase->id }}" method="POST" class="rate-form">
                             @csrf

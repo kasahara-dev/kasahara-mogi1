@@ -2,7 +2,6 @@
     display: grid;
     grid-template-columns: 1fr 4fr;
     width: 100%;
-    /* min-height: calc(100vh - 80px); */
 }
 .other-list--area {
     background-color: #868686;
@@ -86,7 +85,7 @@
 }
 .rate-select--star__inactive {
     cursor: pointer;
-    color: #D9D9D9;
+    color: #d9d9d9;
     font-size: 5vw;
 }
 .rate-submit--area {
@@ -102,6 +101,13 @@
     color: white;
     padding: 0.5em 1em;
     cursor: pointer;
+}
+.rated--area {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
 }
 .title--area {
     display: flex;
@@ -267,7 +273,4 @@
     height: 100%;
     object-fit: cover;
     cursor: pointer;
-}
-.scroll-stop {
-    overflow: hidden;
 }
