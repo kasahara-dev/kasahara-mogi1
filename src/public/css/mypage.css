@@ -4,6 +4,23 @@
     width: 100%;
     margin: 20px 0;
 }
+.user-name--area {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.user-rate--area {
+    display: flex;
+    gap: 0.5em;
+}
+.user-rate--icon__active {
+    color: #fff048;
+    font-size: 1.5em;
+}
+.user-rate--icon__inactive {
+    color: #d9d9d9;
+    font-size: 1.5em;
+}
 .user-title {
     display: flex;
     width: 100%;
@@ -20,7 +37,6 @@
     width: 20%;
     aspect-ratio: 1 / 1;
     border-radius: 50%;
-    object-fit: cover;
 }
 .user-btn-area {
     display: flex;
@@ -57,6 +73,19 @@
     font-weight: bold;
     color: red;
 }
+.tab-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.3em;
+    height: 1.3em;
+    border: 1px solid red;
+    border-radius: 50%;
+    background-color: red;
+    color: white;
+    box-sizing: border-box;
+}
+
 .items-area {
     display: grid;
     grid-template-columns: 23.95% 23.95% 23.95% 23.95%;
@@ -105,6 +134,29 @@
     font-size: xx-large;
     font-weight: bold;
     pointer-events: none;
+}
+.item-badge-area {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    pointer-events: none;
+}
+.item-badge {
+    position: absolute;
+    top: 0;
+    left: 1em;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 10%;
+    height: 10%;
+    border: 1px solid red;
+    border-radius: 50%;
+    background-color: red;
+    color: white;
+    box-sizing: border-box;
 }
 @media screen and (max-width: 768px) {
     .user-info-area {

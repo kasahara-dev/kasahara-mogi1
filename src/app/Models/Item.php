@@ -4,7 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 class Item extends Model
 {
@@ -53,5 +54,14 @@ class Item extends Model
         if (!empty($userId)) {
             $query->where('items.user_id', '<>', $userId);
         }
+    }
+        public function getLatestReceivedMessageDateTimeAttribute()
+    {
+        if($this->purchase->messages()->where('user_id','<>',Auth::id())->exists()){
+            $date = $this->purchase->messages()->where('user_id','<>',Auth::id())->orderBy('created_at','desc')->first()->created_at;
+        }else{
+            $date = Carbon::createFromTimestamp(0);
+        }
+        return $date;
     }
 }

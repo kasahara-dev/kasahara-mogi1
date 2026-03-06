@@ -22,6 +22,7 @@ class CreatePurchasesTable extends Migration
             $table->string('post_number');
             $table->string('address');
             $table->string('building')->nullable();
+            $table->tinyInteger('status')->default(0)->comment('0:取引中、1:取引完了');
             $table->timestamp('created_at')->useCurrent()->nullable();
             $table->timestamp('updated_at')->useCurrent()->nullable();
         });

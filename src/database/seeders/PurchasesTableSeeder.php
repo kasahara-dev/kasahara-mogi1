@@ -26,10 +26,29 @@ class PurchasesTableSeeder extends Seeder
             'building' => '新宿ビル',
         ];
         DB::table('purchases')->insert($param);
-        $userName = User::find('1')->name;
         $param = [
-            'item_id' => '8',
-            'user_id' => '1',
+            'item_id' => '2',
+            'user_id' => '3',
+            'user_name' => $userName,
+            'payment' => '2',
+            'post_number' => '111-1111',
+            'address' => '北海道',
+            'building' => '北海ビル',
+        ];
+        DB::table('purchases')->insert($param);
+                $param = [
+            'item_id' => '3',
+            'user_id' => '3',
+            'user_name' => $userName,
+            'payment' => '2',
+            'post_number' => '111-1111',
+            'address' => '北海道',
+            'building' => '北海ビル',
+        ];
+        DB::table('purchases')->insert($param);
+        $param = [
+            'item_id' => '4',
+            'user_id' => '3',
             'user_name' => $userName,
             'payment' => '2',
             'post_number' => '111-1111',

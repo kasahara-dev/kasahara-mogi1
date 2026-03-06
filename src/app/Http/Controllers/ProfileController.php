@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Purchase;
 use Illuminate\Http\Request;
 use App\Models\Item;
 use App\Models\Profile;
 use App\Models\Address;
+use App\Models\Message;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\ProfileRequest;
 use Illuminate\Support\Str;
@@ -32,16 +34,43 @@ class ProfileController extends Controller
         $user = Auth::user();
         if ($page == 'sell') {
             $items = $user->items();
-        } else {
+        }
+        elseif($page == 'in-progress'){
+            $items = $user->getUnReviewedItems();
+        }
+        else {
             $purchases = $user->purchases()->pluck('item_id');
             $items = Item::whereIn('id', $purchases);
         }
-        $items->orderBy('updated_at', 'desc')->orderBy('id', 'desc')->with('purchase');
+        if ($page == 'in-progress') {
+        }
+        else{
+            $items->orderBy('updated_at', 'desc')->orderBy('id', 'desc')->with('purchase');
+        }
         // 表示商品取得
         if (!is_null($items)) {
-            $items = $items->get();
+            if($page == 'in-progress'){
+                // 取引中はメッセージ新着順表示
+                $items = $items->with('purchase')->get()->sortByDesc('latestReceivedMessageDateTime');
+            } else {
+                $items = $items->get();
+            }
         }
-        return view('profile.mypage', compact('page', 'items'));
+        // 新着メッセージ件数取得
+        $messages_count = 0;
+        $messages = Message::unread()->get();
+        foreach($messages as $message){
+            if($message->receiverId() == Auth::id()){
+                $messages_count++;
+            }
+        }
+        // 評価
+        if(Auth::user()->getRatesCount() > 0){
+            $rate = round(Auth::user()->getRatesAvg());
+        }else{
+            $rate = 0;
+        }
+        return view('profile.mypage', compact('page', 'items','messages_count','rate'));
     }
     public function update(ProfileRequest $request)
     {
