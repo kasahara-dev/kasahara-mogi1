@@ -10,6 +10,16 @@
     justify-content: center;
 }
 .user-rate--area {
+    display: flex;
+    gap: 0.5em;
+}
+.user-rate--icon__active {
+    color: #fff048;
+    font-size: 1.5em;
+}
+.user-rate--icon__inactive {
+    color: #d9d9d9;
+    font-size: 1.5em;
 }
 .user-title {
     display: flex;
@@ -27,7 +37,6 @@
     width: 20%;
     aspect-ratio: 1 / 1;
     border-radius: 50%;
-    object-fit: cover;
 }
 .user-btn-area {
     display: flex;

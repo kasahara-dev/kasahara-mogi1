@@ -12,7 +12,13 @@
                 <div class="user-name">{{ auth()->user()->name }}</div>
                 @if($rate)
                     <div class="user-rate--area">
-                        <div class="user-rate">&#9733;{{ round(auth()->user()->getRatesAvg())}}</div>
+                    @foreach (config('rate') as $key => $value)
+                            @if($value <= round(auth()->user()->getRatesAvg()))
+                                <div class="user-rate--icon__active">&#9733</div>
+                            @else
+                                <div class="user-rate--icon__inactive">&#9733</div>
+                            @endif
+                    @endforeach
                     </div>
                 @endif
             </div>
