@@ -31,9 +31,6 @@ coachtech フリマ
 
 1. `make test`
 
-> [!NOTE]
-> PHPUnit→dusk の順に実行されます
-
 ## 使用技術
 
 - PHP 8.1.33
@@ -131,6 +128,7 @@ coachtech フリマ
 | post_number      | string          |             |            | 〇       |             |
 | address          | string          |             |            | 〇       |             |
 | building         | string          |             |            |          |             |
+| status           | tinyint         |             |            | 〇       |             |
 | created_at       | timestamp       |             |            |          |             |
 | updated_at       | timestamp       |             |            |          |             |
 
@@ -174,6 +172,36 @@ coachtech フリマ
 
 </details>
 
+<details>
+<summary>messagesテーブル</summary>
+
+| カラム名    | 型          | primary key | unique key | not null | foreign key   |
+| ----------- | ----------- | ----------- | ---------- | -------- | ------------- |
+| id          | signeted_id | 〇          |            | 〇       |               |
+| purchase_id | signeted_id |             |            | 〇       | purchases(id) |
+| user_id     | signeted_id |             |            | 〇       | users(id)     |
+| detail      | text        |             |            | 〇       |               |
+| img_path    | string      |             |            |          |               |
+| read        | tinyint     |             |            | 〇       |               |
+| created_at  | timestamp   |             |            |          |               |
+| updated_at  | timestamp   |             |            |          |               |
+
+</details>
+
+<details>
+<summary>reviewsテーブル</summary>
+
+| カラム名    | 型          | primary key | unique key | not null | foreign key   |
+| ----------- | ----------- | ----------- | ---------- | -------- | ------------- |
+| id          | signeted_id | 〇          |            | 〇       |               |
+| purchase_id | signeted_id |             | 〇(UK1)    | 〇       | purchases(id) |
+| user_id     | signeted_id |             | 〇(UK1)    | 〇       | users(id)     |
+| rate        | integer     |             |            | 〇       |               |
+| created_at  | timestamp   |             |            |          |               |
+| updated_at  | timestamp   |             |            |          |               |
+
+</details>
+
 ## ER 図
 
 ![ER図](ER.drawio.png)
@@ -181,11 +209,13 @@ coachtech フリマ
 ## URL
 
 トップページ：http://localhost/
+MailHog：http://localhost:8025
 
 ## テストユーザー
 
-- テストユーザー 1(住所登録済みユーザー)メールアドレス：`test1@example.com` パスワード：`password`
-- テストユーザー 2(住所未登録ユーザー)メールアドレス：`test2@example.com` パスワード：`password`
+- テストユーザー 1(CO01～CO05出品ユーザー)メールアドレス：`test1@example.com` パスワード：`password`
+- テストユーザー 2(CO06～CO10出品ユーザー)メールアドレス：`test2@example.com` パスワード：`password`
+- テストユーザー 3(何も紐づけられていないユーザー)メールアドレス：`test3@example.com` パスワード：`password`
 
 > [!IMPORTANT]
-> テストデータでは、すでに複数ユーザーで出品、購入、お気に入り、コメント登録がされています
+> いずれのアイテムも購入されていません

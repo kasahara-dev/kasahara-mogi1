@@ -3,8 +3,7 @@ data:
 	docker compose exec php php artisan db:seed
 
 test:
-	-docker compose exec php php artisan test
-	docker compose exec php php artisan dusk
+	docker compose exec php php artisan test
 
 init:
 	docker-compose up -d --build

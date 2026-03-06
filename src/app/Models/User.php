@@ -74,6 +74,7 @@ class User extends Authenticatable implements MustVerifyEmail
     }
     public function getUnReviewedItems()
     {
+        $item_id = [];
         // 購入した商品の中で未評価の商品
         foreach ($this->purchases as $purchase) {
             if ($purchase->reviewed()) {
@@ -92,19 +93,25 @@ class User extends Authenticatable implements MustVerifyEmail
                 }
             }
         }
-        $items = Item::whereIn('id', $item_id);
+        if(Item::exists()){
+            $items = Item::whereIn('id', $item_id);
+        }else{
+            $items=Item::make();
+        }
         return $items;
     }
     public function getRatesCount()
     {
         $count = 0;
-        if(Review::where('user_id','<>',$this->id)->exists()){
-            $purchaseIds = Review::where('user_id','<>',$this->id)->pluck('purchase_id');
-            // 購入者からの評価
-            $itemIds = Item::where('user_id',$this->id)->pluck('id');
-            $count += Purchase::whereIn('item_id',$itemIds)->whereIn('id',$purchaseIds)->count();
-            // 出品者からの評価
-            $count += Purchase::where('user_id',$this->id)->whereIn('id',$purchaseIds)->count();
+        if(Item::exists()){
+            if(Review::where('user_id','<>',$this->id)->exists()){
+                $purchaseIds = Review::where('user_id','<>',$this->id)->pluck('purchase_id');
+                // 購入者からの評価
+                $itemIds = Item::where('user_id',$this->id)->pluck('id');
+                $count += Purchase::whereIn('item_id',$itemIds)->whereIn('id',$purchaseIds)->count();
+                // 出品者からの評価
+                $count += Purchase::where('user_id',$this->id)->whereIn('id',$purchaseIds)->count();
+            }
         }
         return $count;
     }
