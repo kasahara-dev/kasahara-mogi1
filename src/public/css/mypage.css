@@ -77,13 +77,14 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 1.3em;
+    min-width: 1.3em;
     height: 1.3em;
     border: 1px solid red;
     border-radius: 50%;
     background-color: red;
     color: white;
     box-sizing: border-box;
+    white-space: nowrap;
 }
 
 .items-area {
@@ -142,21 +143,6 @@
     width: 100%;
     aspect-ratio: 1 / 1;
     pointer-events: none;
-}
-.item-badge {
-    position: absolute;
-    top: 0;
-    left: 1em;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 10%;
-    height: 10%;
-    border: 1px solid red;
-    border-radius: 50%;
-    background-color: red;
-    color: white;
-    box-sizing: border-box;
 }
 @media screen and (max-width: 768px) {
     .user-info-area {
