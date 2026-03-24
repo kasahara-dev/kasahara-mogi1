@@ -64,7 +64,7 @@
                         @endif
                         @if($page == 'in-progress' and isset($item->purchase->messages) and $item->purchase->unreadMessagesCount() > 0)
                             <div class="item-badge-area">
-                                <p class="item-badge">{{ $item->purchase->unreadMessagesCount() }}</p>
+                                <p class="tab-badge">{{ $item->purchase->unreadMessagesCount() }}</p>
                             </div>
                         @endif
                         <label for="{{ $item->id }}" class="item-name">{{ $item->name }}</label>
